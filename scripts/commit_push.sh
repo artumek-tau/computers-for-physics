@@ -16,7 +16,7 @@ if [[ -n $(git status -s) ]]; then
     git pull 
 
     # Push changes to remote repository
-    git push origin main  # Change 'main' to your branch name if different
+    git push  # Change 'main' to your branch name if different
 else
     echo "No changes to commit."
 fi

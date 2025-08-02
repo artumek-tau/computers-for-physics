@@ -5,18 +5,11 @@ format: jb-book
 root: intro
 chapters:
 - file: 0_intro
-- file: 1_intro copy.ipynb
-- file: 1_types_operators_assignments-a
-- file: 2_functions-a
-- file: 3_conditions
-- file: 4_lists_ranges
-- file: 5_loops
-- file: 6_assignments-b
-- file: 7_functions-b
-- file: 8_tuples_dicts
-- file: 9_list-comprehensions
-- file: 10_files_string-formats
-- file: 11_files
-- file: 12_questions-from-exams-a
-- file: gale_shapely
+- file: 1_week
+- file: 2_week
+- file: 3_week
+- file: 4_week
+- file: 5_week
+- file: 6_week
+
 
