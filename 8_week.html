@@ -459,7 +459,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ייבוא ספריות והגדרות ראשוניות</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">פעולות מטריציוניות</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-matmul">@ ו-np.matmul</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-dot">np.dot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-t">transpose / .T</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-linalg-solve">פתרון מערכות לינאריות: <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1">למה לא לחשב (A^{-1})?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">דוגמה מתמטית</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">הקשר פיסיקלי</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מדד חשוב: מספר התניה (Condition Number)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">כלל אצבע</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d">דוגמה מסכמת (2): דיפוזיה בהליכת-אקראי 1D</a></li>
 </ul>
             </nav>
@@ -474,31 +489,33 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numpy">
 <h1>שבוע 8 - Numpy מתקדם<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
-<p>מחברת זו ממשיכה את הבסיס ממחברת NumPy קודמת, ומעמיקה בנושאים שימושיים לפיסיקה חישובית:</p>
+<p>שבוע זה ממשיך את הבסיס ממחברת NumPy קודמת, ומעמיקה בנושאים שימושיים לפיסיקה חישובית:</p>
 <ul class="simple">
 <li><p>פעולות מטריציוניות: &#64;, np.matmul, np.dot, transpose, ו-np.linalg.solve.</p></li>
 <li><p>ערכים/וקטורים עצמיים: np.linalg.eig, np.linalg.eigvals, קשרים ל-trace ול-det; אינטואיציה פיסיקלית.</p></li>
 <li><p>SVD (בלי הוכחות): np.linalg.svd ורעיון דחיסה/פירוק מצבים.</p></li>
-<li><p>מחולל אקראי מודרני: np.random.default_rng, סידור (seed) ושיחזור תוצאות; התפלגויות נפוצות ודגימה וקטורית.</p></li>
+<li><p>מחולל אקראי מודרני: np.random.default_rng, seed ושיחזור תוצאות; התפלגויות נפוצות ודגימה וקטורית.</p></li>
 <li><p>דוגמא מסכמת: הערכת מונטה-קרלו של π ותנועת דיפוזיה בהליכת-אקראי 1D.</p></li>
 <li><p>הערה: בחלק ה-SVD ניתן (אך לא חובה) להסתמך על הדגמה מהרפרנס של NumPy:
 <a class="reference external" href="https://numpy.org/numpy-tutorials/content/tutorial-svd.html">https://numpy.org/numpy-tutorials/content/tutorial-svd.html</a></p></li>
 </ul>
-<p>ייבוא ספריות והגדרות ראשוניות</p>
-<p>נשתמש ב-NumPy וב-Matplotlib. נגדיר גם מחולל אקראי מודרני ליכולת שחזור (reproducibility).
-מחולל מספרים “אקראיים” במחשב הוא למעשה <strong>פסאודו-אקראי</strong>: הוא מייצר רצף דטרמיניסטי ({u_t}) מתוך מצב פנימי (S_t). קביעת <strong>seed</strong> מגדירה את המצב ההתחלתי (S_0), ולכן מבטיחה רפליקציה מלאה של הניסוי — אותו seed ⇒ אותו רצף ⇒ אותם תוצאות. זה קריטי למחקר חישובי: דיבוג, בדיקות יחידה, ביקורות עמיתים, והפעלות חוזרות.</p>
+<section id="id1">
+<h2>ייבוא ספריות והגדרות ראשוניות<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>נשתמש ב-NumPy וב-Matplotlib. נגדיר גם מחולל אקראי מודרני המאפשר שחזור של קוד על אף השימוש במספרים אקראיים (reproducibility).
+מחולל מספרים “אקראיים” במחשב הוא למעשה <strong>פסאודו-אקראי</strong>: הוא מייצר רצף דטרמיניסטי. קביעת <strong>seed</strong> מגדירה את המצב ההתחלתי ולכן מבטיחה יכולת שחזור מלאה של הניסוי:
+אותו seed ⇒ אותו רצף ⇒ אותם תוצאות.
+זה קריטי למחקר חישובי: דיבוג, בדיקות יחידה, ביקורות עמיתים, והפעלות חוזרות.</p>
 <p>במחברת זאת נשתמש ב<code class="docutils literal notranslate"><span class="pre">default_rng</span></code> ממספר סיבות:</p>
 <ol class="arabic simple">
-<li><p><strong>בידוד מצב</strong>: כל <code class="docutils literal notranslate"><span class="pre">Generator</span></code> שומר מצב פנימי משלו. אין זיהום של “מצב גלובלי” כמו ב-<code class="docutils literal notranslate"><span class="pre">np.random.seed</span></code>/<code class="docutils literal notranslate"><span class="pre">np.random.*</span></code> הישנים.</p></li>
-<li><p><strong>יציבות קדימה</strong>: ה-API החדש מבודד הבדלי מימוש. קוד המשתמש ב-<code class="docutils literal notranslate"><span class="pre">Generator</span></code> צפוי יותר לאורך גרסאות, וקל יותר לשלוט בו.</p></li>
+<li><p><strong>בידוד מצב</strong>:  <code class="docutils literal notranslate"><span class="pre">default_rng</span></code> יוצרת כל קריאה ל <code class="docutils literal notranslate"><span class="pre">Generator</span></code> ששומר מצב פנימי משלו. כך נמנע מיצירה של “מצב גלובלי” כמו ב-<code class="docutils literal notranslate"><span class="pre">np.random.seed</span></code>/<code class="docutils literal notranslate"><span class="pre">np.random.*</span></code> הישנים.</p></li>
+<li><p><strong>יציבות</strong>: קוד המשתמש ב-<code class="docutils literal notranslate"><span class="pre">Generator</span></code> צפוי יותר לאורך גרסאות, וקל יותר לשלוט בו.</p></li>
 <li><p><strong>ממשק נקי</strong>: פונקציות דגימה אחידות תחת <code class="docutils literal notranslate"><span class="pre">rng.*</span></code> (למשל <code class="docutils literal notranslate"><span class="pre">rng.normal</span></code>, <code class="docutils literal notranslate"><span class="pre">rng.poisson</span></code>, <code class="docutils literal notranslate"><span class="pre">rng.choice</span></code>).</p></li>
 </ol>
 <p>כיצד נקבע seed?</p>
 <ul class="simple">
-<li><p>בקוד דוגמתי/הדרכתי: לקבע seed בפתיחה (למשל <code class="docutils literal notranslate"><span class="pre">seed=42</span></code>) כדי לאפשר רפליקציה.</p></li>
-<li><p>בניסויים “אמיתיים”: או לקבע seed ולתעד אותו (לשיחזור), או ליצור seed אקראי מהמערכת אך <strong>לשמור אותו ללוג</strong>.</p></li>
-<li><p><strong>לא</strong> לעשות re-seed בלולאה או בכל קריאה — זה מייצר <em>אותו</em> רצף שוב ושוב (באג נפוץ).</p></li>
-<li><p>העדיפו פונקציות שמקבלות <code class="docutils literal notranslate"><span class="pre">rng</span></code> כפרמטר — כך תכתבו קוד טסטבילי ונקי מתלות גלובלית.</p></li>
+<li><p>נקבע seed בראשית הקוד בפתיחה (למשל <code class="docutils literal notranslate"><span class="pre">seed=42</span></code>) כדי לאפשר רפליקציה.</p></li>
+<li><p>נקפיד <strong>לא</strong> לעשות re-seed בלולאה או בכל קריאה ,זה מאתחל את אותו הרצף שוב ושוב (באג נפוץ).</p></li>
+<li><p>העדיפו פונקציות שמקבלות <code class="docutils literal notranslate"><span class="pre">rng</span></code> כפרמטר — כך תכתבו קוד נקי מתלות גלובלית.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -518,16 +535,22 @@ document.write(`
 </div>
 </div>
 </div>
-<p>פעולות מטריציוניות: &#64;, np.matmul, np.dot, transpose, ו-np.linalg.solve
-&#64; ו-np.matmul</p>
-<p>האופרטור &#64; שקול ל-np.matmul עבור מכפלות מטריציות.</p>
-<p>שניהם תומכים בבאצ’ינג (batch/broadcast) במימדים גבוהים.</p>
-<p>לא מבצעים כפל איבר-איבר; לשם כך משתמשים ב-*.</p>
-<p>np.dot</p>
-<p>עבור שני וקטורים – מחזיר מכפלה סקלרית.</p>
-<p>עבור מטריצות דו-ממדיות – שקול למכפלת מטריצות.</p>
-<p>במימדים גבוהים הכללים שונים מעט (כפל לאורך הצירים האחרונים) – להעדיף &#64;/matmul לקוד ברור.</p>
-<p>transpose / .T</p>
+</section>
+<section id="id2">
+<h2>פעולות מטריציוניות<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="np-matmul">
+<h3>&#64; ו-np.matmul<a class="headerlink" href="#np-matmul" title="Link to this heading">#</a></h3>
+<p>האופרטור &#64; שקול ל-np.matmul עבור מכפלות מטריציות. שניהם תומכים בבאצ’ינג (batch/broadcast) במימדים גבוהים.
+שימו לב כי גם האופרטור וגם הפונקציה <strong>לא</strong> מבצעים כפל איבר-איבר; לשם כך משתמשים ב-*.</p>
+</section>
+<section id="np-dot">
+<h3>np.dot<a class="headerlink" href="#np-dot" title="Link to this heading">#</a></h3>
+<p>עבור שני וקטורים – מחזיר מכפלה סקלרית.
+עבור מטריצות דו-ממדיות – שקול למכפלת מטריצות.
+במימדים גבוהים הכללים שונים מעט (כפל לאורך הצירים האחרונים) ולכן נעדיף &#64;/matmul לקוד ברור.</p>
+</section>
+<section id="transpose-t">
+<h3>transpose / .T<a class="headerlink" href="#transpose-t" title="Link to this heading">#</a></h3>
 <p>טרנספוז של מטריצה 2D מחליף שורות בעמודות.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -587,9 +610,56 @@ document.write(`
 </div>
 </div>
 </div>
-<p>פתרון מערכות לינאריות: np.linalg.solve</p>
-<p>במקום לחשב <span class="math notranslate nohighlight">\(A^-1\)</span> (לא יציב נומרית ולעיתים איטי), נפתור ישירות <span class="math notranslate nohighlight">\(Ax=b\)</span> עם np.linalg.solve(A, b).</p>
-<p>קונטקסט פיסיקלי קצר: מציאת פוטנציאלים/זרמים במעגלים לינאריים, תומכי תגובה (response) במערכות לינאריות, או מקדמי התפתחות בזמן קצר.</p>
+</section>
+</section>
+<section id="np-linalg-solve">
+<h2>פתרון מערכות לינאריות: <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code><a class="headerlink" href="#np-linalg-solve" title="Link to this heading">#</a></h2>
+<p>כאשר נדרש פתרון של מערכת לינארית מהצורה:</p>
+<p>[
+A , x = b,
+]</p>
+<p>יש שתי גישות עיקריות:</p>
+<ol class="arabic simple">
+<li><p>לחשב את (A^{-1}) ואז להציב (x = A^{-1}b).</p></li>
+<li><p>להשתמש ישירות באלגוריתם נומרי ל-<code class="docutils literal notranslate"><span class="pre">solve</span></code>.</p></li>
+</ol>
+<section id="a-1">
+<h3>למה לא לחשב (A^{-1})?<a class="headerlink" href="#a-1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>חוסר יציבות נומרית</strong>: חישוב מפורש של (A^{-1}) עלול להעצים שגיאות עיגול, במיוחד כאשר המטריצה קרובה לסינגולריות (ill-conditioned).</p></li>
+<li><p><strong>יעילות</strong>: מציאת הפתרון באמצעות <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code> משתמשת בפירוק LU (או שיטות דומות) המותאם ישירות לפתרון מערכת, מהיר יותר מחישוב מטריצה הפוכה מלאה.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>דוגמה מתמטית<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>נניח (A) בגודל (n\times n).</p>
+<ul class="simple">
+<li><p>חישוב (A^{-1}) דורש (O(n^3)) פעולות, ואחר כך כפל מטריציוני (O(n^2)).</p></li>
+<li><p>לעומת זאת, <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code> פותר את המערכת ב-(O(n^3)) <strong>בלי</strong> לייצר מטריצה הפוכה מיותרת.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>הקשר פיסיקלי<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>מערכות לינאריות (Ax=b) צצות בפיסיקה בכל מקום:</p>
+<ul class="simple">
+<li><p><strong>מעגלים חשמליים</strong>: לפי חוקי אוהם וקירכהוף, מקבלים מערכת משוואות לינאריות בזרמים/מתחים.</p></li>
+<li><p><strong>מכניקה קלאסית</strong>: מערכות של קפיצים/מסות קטנות עם חיבורים לינאריים → נדרשים הפתרונות לכוחות/תזוזות.</p></li>
+<li><p><strong>אנליזת תגובה (response analysis)</strong>: פתרון משוואות לינאריות לתגובה של מערכת בזמן/במרחב.</p></li>
+<li><p><strong>חישוב התפתחות בזמן קצר</strong>: למשל באינטגרציה נומרית של משוואות דיפרנציאליות — צעד אחד כולל פתרון לינארי.</p></li>
+</ul>
+</section>
+<section id="condition-number">
+<h3>מדד חשוב: מספר התניה (Condition Number)<a class="headerlink" href="#condition-number" title="Link to this heading">#</a></h3>
+<p>אם (\kappa(A)) גדול, אז הפתרון רגיש מאוד לשגיאות קטנות ב-(b) או ב-(A).<br />
+בפועל ניתן לבדוק:
+[
+\kappa(A) = |A| , |A^{-1}|,
+]
+עם <code class="docutils literal notranslate"><span class="pre">np.linalg.cond(A)</span></code>. ערכים גדולים מצביעים על בעיית יציבות.</p>
+</section>
+<section id="id5">
+<h3>כלל אצבע<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><strong>אל תחשבו (A^{-1})</strong> אלא השתמשו ב-<code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code>, ובדקו את ה-condition number אם אתם חושדים שמדובר במטריצה “כמעט סינגולרית”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve Ax = b (single RHS)</span>
@@ -892,8 +962,10 @@ det(A) = מכפלת הערכים העצמיים.</p>
 </div>
 </div>
 </div>
-<section id="id1">
-<h2>דוגמה מסכמת (1): הערכת מונטה–קרלו של π<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section id="id6">
+<h2>דוגמה מסכמת (1): הערכת מונטה–קרלו של π<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>הרעיון: לדגום (N) נקודות אחידות בריבוע ([-1,1]\times[-1,1]),<br />
 ולחשב את החלק מהן שנמצא בתוך מעגל היחידה.</p>
 <p>[
@@ -1083,7 +1155,22 @@ x_{t+1} ;=; x_t + \xi_t, \qquad \xi_t \in {-1, +1}, \quad P(\xi_t=+1)=P(\xi_t=-1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ייבוא ספריות והגדרות ראשוניות</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">פעולות מטריציוניות</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-matmul">@ ו-np.matmul</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-dot">np.dot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-t">transpose / .T</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-linalg-solve">פתרון מערכות לינאריות: <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1">למה לא לחשב (A^{-1})?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">דוגמה מתמטית</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">הקשר פיסיקלי</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מדד חשוב: מספר התניה (Condition Number)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">כלל אצבע</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d">דוגמה מסכמת (2): דיפוזיה בהליכת-אקראי 1D</a></li>
 </ul>
   </nav></div>
