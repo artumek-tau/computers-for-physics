@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/rtl.css?v=dc79e408" />
@@ -474,17 +474,32 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numpy">
 <h1>שבוע 8 - Numpy מתקדם<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
-<p>NumPy מתקדם לפיסיקאים – פעולות מטריציוניות, ערכים עצמיים, וסטטיסטיקה מודרנית</p>
 <p>מחברת זו ממשיכה את הבסיס ממחברת NumPy קודמת, ומעמיקה בנושאים שימושיים לפיסיקה חישובית:</p>
-<p>פעולות מטריציוניות: &#64;, np.matmul, np.dot, transpose, ו-np.linalg.solve.</p>
-<p>ערכים/וקטורים עצמיים: np.linalg.eig, np.linalg.eigvals, קשרים ל-trace ול-det; אינטואיציה פיסיקלית.</p>
-<p>הזכרה עדינה של SVD (בלי הוכחות): np.linalg.svd ורעיון דחיסה/פירוק מצבים.</p>
-<p>מחולל אקראי מודרני: np.random.default_rng, סידור (seed) ושיחזור תוצאות; התפלגויות נפוצות ודגימה וקטורית.</p>
-<p>דוגמא מסכמת: הערכת מונטה-קרלו של π ותנועת דיפוזיה בהליכת-אקראי 1D.</p>
-<p>הערה: בחלק ה-SVD ניתן (אך לא חובה) להסתמך על הדגמה מהרפרנס של NumPy:
-<a class="reference external" href="https://numpy.org/numpy-tutorials/content/tutorial-svd.html">https://numpy.org/numpy-tutorials/content/tutorial-svd.html</a></p>
+<ul class="simple">
+<li><p>פעולות מטריציוניות: &#64;, np.matmul, np.dot, transpose, ו-np.linalg.solve.</p></li>
+<li><p>ערכים/וקטורים עצמיים: np.linalg.eig, np.linalg.eigvals, קשרים ל-trace ול-det; אינטואיציה פיסיקלית.</p></li>
+<li><p>SVD (בלי הוכחות): np.linalg.svd ורעיון דחיסה/פירוק מצבים.</p></li>
+<li><p>מחולל אקראי מודרני: np.random.default_rng, סידור (seed) ושיחזור תוצאות; התפלגויות נפוצות ודגימה וקטורית.</p></li>
+<li><p>דוגמא מסכמת: הערכת מונטה-קרלו של π ותנועת דיפוזיה בהליכת-אקראי 1D.</p></li>
+<li><p>הערה: בחלק ה-SVD ניתן (אך לא חובה) להסתמך על הדגמה מהרפרנס של NumPy:
+<a class="reference external" href="https://numpy.org/numpy-tutorials/content/tutorial-svd.html">https://numpy.org/numpy-tutorials/content/tutorial-svd.html</a></p></li>
+</ul>
 <p>ייבוא ספריות והגדרות ראשוניות</p>
-<p>נשתמש ב-NumPy וב-Matplotlib. נגדיר גם מחולל אקראי מודרני ליכולת שחזור (reproducibility).</p>
+<p>נשתמש ב-NumPy וב-Matplotlib. נגדיר גם מחולל אקראי מודרני ליכולת שחזור (reproducibility).
+מחולל מספרים “אקראיים” במחשב הוא למעשה <strong>פסאודו-אקראי</strong>: הוא מייצר רצף דטרמיניסטי ({u_t}) מתוך מצב פנימי (S_t). קביעת <strong>seed</strong> מגדירה את המצב ההתחלתי (S_0), ולכן מבטיחה רפליקציה מלאה של הניסוי — אותו seed ⇒ אותו רצף ⇒ אותם תוצאות. זה קריטי למחקר חישובי: דיבוג, בדיקות יחידה, ביקורות עמיתים, והפעלות חוזרות.</p>
+<p>במחברת זאת נשתמש ב<code class="docutils literal notranslate"><span class="pre">default_rng</span></code> ממספר סיבות:</p>
+<ol class="arabic simple">
+<li><p><strong>בידוד מצב</strong>: כל <code class="docutils literal notranslate"><span class="pre">Generator</span></code> שומר מצב פנימי משלו. אין זיהום של “מצב גלובלי” כמו ב-<code class="docutils literal notranslate"><span class="pre">np.random.seed</span></code>/<code class="docutils literal notranslate"><span class="pre">np.random.*</span></code> הישנים.</p></li>
+<li><p><strong>יציבות קדימה</strong>: ה-API החדש מבודד הבדלי מימוש. קוד המשתמש ב-<code class="docutils literal notranslate"><span class="pre">Generator</span></code> צפוי יותר לאורך גרסאות, וקל יותר לשלוט בו.</p></li>
+<li><p><strong>ממשק נקי</strong>: פונקציות דגימה אחידות תחת <code class="docutils literal notranslate"><span class="pre">rng.*</span></code> (למשל <code class="docutils literal notranslate"><span class="pre">rng.normal</span></code>, <code class="docutils literal notranslate"><span class="pre">rng.poisson</span></code>, <code class="docutils literal notranslate"><span class="pre">rng.choice</span></code>).</p></li>
+</ol>
+<p>כיצד נקבע seed?</p>
+<ul class="simple">
+<li><p>בקוד דוגמתי/הדרכתי: לקבע seed בפתיחה (למשל <code class="docutils literal notranslate"><span class="pre">seed=42</span></code>) כדי לאפשר רפליקציה.</p></li>
+<li><p>בניסויים “אמיתיים”: או לקבע seed ולתעד אותו (לשיחזור), או ליצור seed אקראי מהמערכת אך <strong>לשמור אותו ללוג</strong>.</p></li>
+<li><p><strong>לא</strong> לעשות re-seed בלולאה או בכל קריאה — זה מייצר <em>אותו</em> רצף שוב ושוב (באג נפוץ).</p></li>
+<li><p>העדיפו פונקציות שמקבלות <code class="docutils literal notranslate"><span class="pre">rng</span></code> כפרמטר — כך תכתבו קוד טסטבילי ונקי מתלות גלובלית.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
