@@ -474,10 +474,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מספר התניה (Condition Number)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">פתרון בסיסי</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">מספר התניה והשפעתו</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">פתרון עם  מספר אגפי ימין בבת אחת</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">פתרון עם  מספר אגפים בצד ימין בבת אחת</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstsq">מתי להשתמש ב־<code class="docutils literal notranslate"><span class="pre">lstsq</span></code>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-squares">שיטת הריבועים הפחותים (Least Squares)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ערכים עצמיים, וקטורים עצמיים, עקבה ודטרמיננטה</a></li>
@@ -757,7 +757,7 @@ x = \texttt{np.linalg.solve}(A, b)
 </div>
 </section>
 <section id="id7">
-<h4>פתרון עם  מספר אגפי ימין בבת אחת<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<h4>פתרון עם  מספר אגפים בצד ימין בבת אחת<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiple right-hand sides (Ax = B)</span>
@@ -778,37 +778,25 @@ x = \texttt{np.linalg.solve}(A, b)
 </div>
 </section>
 </section>
-<section id="lstsq">
-<h3>מתי להשתמש ב־<code class="docutils literal notranslate"><span class="pre">lstsq</span></code>?<a class="headerlink" href="#lstsq" title="Link to this heading">#</a></h3>
+<section id="least-squares">
+<h3>שיטת הריבועים הפחותים (Least Squares)<a class="headerlink" href="#least-squares" title="Link to this heading">#</a></h3>
 <p>במקרים שבהם המערכת <span class="math notranslate nohighlight">\(Ax = b\)</span> היא <strong>עודפת</strong> (יותר משוואות מנעלמים, <span class="math notranslate nohighlight">\(m &gt; n\)</span>) או <strong>חסרה</strong> (יותר נעלמים ממשוואות, <span class="math notranslate nohighlight">\(m &lt; n\)</span>), ייתכן שאין פתרון יחיד.</p>
-<p>במקרים אלו משתמשים בשיטת <strong>Least Squares</strong>:
-$<span class="math notranslate nohighlight">\(
+<p>במקרים אלו משתמשים בשיטת <strong>Least Squares</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
 x^\ast = \arg \min_x \|Ax - b\|_2
-\)</span>$</p>
+\]</div>
 <p>כלומר: אנו מחפשים את הווקטור <span class="math notranslate nohighlight">\(x\)</span> שמקטין ככל האפשר את השגיאה המרובעת בין <span class="math notranslate nohighlight">\(Ax\)</span> לבין <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <p>ב־NumPy:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">residuals</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">דוגמאות</span> <span class="n">שימוש</span> <span class="n">נפוצות</span> <span class="n">בפיסיקה</span> <span class="n">והנדסה</span><span class="p">:</span>
-
-<span class="o">-</span> <span class="n">התאמת</span> <span class="n">נתונים</span> <span class="p">(</span><span class="n">Data</span> <span class="n">Fitting</span><span class="p">):</span> <span class="n">התאמת</span> <span class="n">קו</span> <span class="n">ישר</span> <span class="n">או</span> <span class="n">פולינום</span> <span class="n">לנקודות</span> <span class="n">ניסוי</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">שחזורים</span> <span class="n">חישוביים</span><span class="p">:</span> <span class="n">כאשר</span> <span class="n">המערכת</span> <span class="n">חסרה</span> <span class="p">(</span><span class="n">underdetermined</span><span class="p">),</span> <span class="n">מחפשים</span> <span class="n">פתרון</span> <span class="n">מינימום</span><span class="o">-</span><span class="n">נורמה</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">אנליזת</span> <span class="n">רעש</span><span class="p">:</span> <span class="n">מציאת</span> <span class="n">קירוב</span> <span class="n">הטוב</span> <span class="n">ביותר</span> <span class="n">לנתונים</span> <span class="n">כאשר</span> <span class="err">$</span><span class="n">b</span><span class="err">$</span> <span class="n">מכיל</span> <span class="n">רעש</span> <span class="n">ניסוי</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-    <span class="n">דוגמאות</span> <span class="n">שימוש</span> <span class="n">נפוצות</span> <span class="n">בפיסיקה</span> <span class="n">והנדסה</span><span class="p">:</span>
-            <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
+<p>דוגמאות שימוש נפוצות בפיסיקה והנדסה:</p>
+<ul class="simple">
+<li><p>התאמת נתונים (Data Fitting): התאמת קו ישר או פולינום לנקודות ניסוי.</p></li>
+<li><p>שחזורים חישוביים: כאשר המערכת חסרה (underdetermined), מחפשים פתרון מינימום-נורמה.</p></li>
+<li><p>אנליזת רעש: מציאת קירוב הטוב ביותר לנתונים כאשר <span class="math notranslate nohighlight">\(b\)</span> מכיל רעש ניסוי.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Synthetic data: y ≈ a + b x</span>
@@ -826,6 +814,11 @@ x^\ast = \arg \min_x \|Ax - b\|_2
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.44784207, 2.07187258]), array([0.52182849]))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,6 +830,9 @@ x^\ast = \arg \min_x \|Ax - b\|_2
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f5208da8329ea5965dd3982b9a46c33bd95db76a0d8fe0c178251041fa6770bf.png" src="_images/f5208da8329ea5965dd3982b9a46c33bd95db76a0d8fe0c178251041fa6770bf.png" />
 </div>
 </div>
 </section>
@@ -872,6 +868,14 @@ det(A) = מכפלת הערכים העצמיים.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(True,
+ True,
+ (np.float64(9.0), np.float64(9.000000000000002)),
+ (np.float64(17.999999999999996), np.float64(18.000000000000007)))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -880,6 +884,13 @@ det(A) = מכפלת הערכים העצמיים.</p>
               <span class="p">[</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]])</span>
 <span class="n">wB</span><span class="p">,</span> <span class="n">VB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 <span class="n">wB</span><span class="p">,</span> <span class="n">VB</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.+1.j, 0.-1.j]),
+ array([[0.70710678+0.j        , 0.70710678-0.j        ],
+        [0.        -0.70710678j, 0.        +0.70710678j]]))
 </pre></div>
 </div>
 </div>
@@ -914,6 +925,18 @@ det(A) = מכפלת הערכים העצמיים.</p>
 <span class="c1"># SVD</span>
 <span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Vt</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># SVD</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Vt</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="ne">TypeError</span>: only length-1 arrays can be converted to Python scalars
 </pre></div>
 </div>
 </div>
@@ -1250,10 +1273,10 @@ x_{t+1} ;=; x_t + \xi_t, \qquad \xi_t \in {-1, +1}, \quad P(\xi_t=+1)=P(\xi_t=-1
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מספר התניה (Condition Number)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">פתרון בסיסי</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">מספר התניה והשפעתו</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">פתרון עם  מספר אגפי ימין בבת אחת</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">פתרון עם  מספר אגפים בצד ימין בבת אחת</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lstsq">מתי להשתמש ב־<code class="docutils literal notranslate"><span class="pre">lstsq</span></code>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-squares">שיטת הריבועים הפחותים (Least Squares)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ערכים עצמיים, וקטורים עצמיים, עקבה ודטרמיננטה</a></li>
