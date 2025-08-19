@@ -766,7 +766,7 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">{}</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{}</span> <span class="pre">=</span> <span class="pre">D</span></code></p></td>
 <td><p>יוצר מילון ריק</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D[k]</span> <span class="pre">=</span> <span class="pre">value</span></code></p></td>
@@ -781,19 +781,19 @@ document.write(`
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D.get(k,</span> <span class="pre">[d])</span></code></p></td>
 <td><p>מחזיר את <code class="docutils literal notranslate"><span class="pre">D[k]</span></code> אם קיים, אחרת את <code class="docutils literal notranslate"><span class="pre">d</span></code> (ברירת מחדל: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D.keys()</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">()D.keys</span></code></p></td>
 <td><p>מחזיר תצוגה של כל המפתחות במילון</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D.values()</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">()D.values</span></code></p></td>
 <td><p>מחזיר תצוגה של כל הערכים במילון</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D.items()</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">()D.items</span></code></p></td>
 <td><p>מחזיר תצוגה של זוגות <code class="docutils literal notranslate"><span class="pre">(מפתח,</span> <span class="pre">ערך)</span></code> כ־tuples</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D.pop(k,</span> <span class="pre">[d])</span></code></p></td>
 <td><p>מסיר את המפתח <code class="docutils literal notranslate"><span class="pre">k</span></code> ומחזיר את ערכו; אם לא נמצא מחזיר <code class="docutils literal notranslate"><span class="pre">d</span></code> או שגיאה</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D.copy()</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">()D.copy</span></code></p></td>
 <td><p>יוצר העתק רדוד של המילון (המילון בלבד מועתק, לא האובייקטים שבתוכו)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D.update(other)</span></code></p></td>
@@ -1129,7 +1129,7 @@ d : 1
 <h2>פורמט מחרוזות<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <section id="string-formatting">
 <h3>עריכת מחרוזות לפני פורמט: String Formatting<a class="headerlink" href="#string-formatting" title="Link to this heading">#</a></h3>
-<p>השתמשו ב- <code class="docutils literal notranslate"><span class="pre">str.format()</span></code> או בתחביר <code class="docutils literal notranslate"><span class="pre">f&quot;&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">f''</span></code> כדי להגדיר רפורמט של מחרוזת</p>
+<p>השתמשו ב- <code class="docutils literal notranslate"><span class="pre">()str.format</span></code> או בתחביר <code class="docutils literal notranslate"><span class="pre">f&quot;&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">f''</span></code> כדי להגדיר רפורמט של מחרוזת</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;rick&#39;</span>
@@ -1240,7 +1240,7 @@ d : 1
 <section id="id16">
 <h2>פתיחת חיבור לקובץ<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>הפונקציה <code class="docutils literal notranslate"><span class="pre">open()</span></code> מחזירה אובייקט קובץ</p></li>
+<li><p>הפונקציה <code class="docutils literal notranslate"><span class="pre">()open</span></code> מחזירה אובייקט קובץ</p></li>
 </ul>
 <ul class="simple">
 <li><p>לרוב משתמשים בה עם שני ארגומנטים:</p></li>
@@ -1390,9 +1390,9 @@ The end
 <section id="id20">
 <h2>ארבע דרכים נפוצות לקריאה מקובץ<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">f.read()</span></code> – קורא את כל הקובץ כמחרוזת אחת</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">f.readline()</span></code> – קורא את השורה הבאה (יחסית למיקום הנוכחי)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code> – מחזיר רשימה של כל השורות שנותרו</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()f.read</span></code> – קורא את כל הקובץ כמחרוזת אחת</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()f.readline</span></code> – קורא את השורה הבאה (יחסית למיקום הנוכחי)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()f.readlines</span></code> – מחזיר רשימה של כל השורות שנותרו</p></li>
 <li><p>לולאת <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>

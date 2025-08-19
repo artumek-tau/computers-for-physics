@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/rtl.css?v=dc79e408" />
@@ -468,20 +468,22 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-linalg-solve">פתרון מערכות לינאריות: <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1">למה לא לחשב <span class="math notranslate nohighlight">\(A^{-1}\)</span>?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ניתוח סיבוכיות</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">הקשר פיסיקלי</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מספר התניה (Condition Number)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">פתרון בסיסי</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">מספר התניה והשפעתו</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">פתרון עם  מספר אגפים בצד ימין בבת אחת</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מספר התניה (Condition Number)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">כלל אצבע</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">פתרון בסיסי</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">מספר התניה והשפעתו</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">פתרון עם  מספר אגפים בצד ימין בבת אחת</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-squares">שיטת הריבועים הפחותים (Least Squares)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">דוגמה: התאמת קו ישר בשיטת Least Squares</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ערכים עצמיים, וקטורים עצמיים, עקבה ודטרמיננטה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ערכים עצמיים, וקטורים עצמיים, עקבה ודטרמיננטה</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">אינטואיציה פיסיקלית</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">קשרים שימושיים</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd">SVD – פירוק לערכים סינגולריים</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d">דוגמה מסכמת (2): דיפוזיה בהליכת-אקראי 1D</a></li>
 </ul>
             </nav>
@@ -664,26 +666,16 @@ $<span class="math notranslate nohighlight">\(
 x = \texttt{np.linalg.solve}(A, b)
 \)</span>$</p></li>
 </ol>
-<hr class="docutils" />
-<section id="a-1">
-<h3>למה לא לחשב <span class="math notranslate nohighlight">\(A^{-1}\)</span>?<a class="headerlink" href="#a-1" title="Link to this heading">#</a></h3>
+<p>מדוע לא נחשב את <span class="math notranslate nohighlight">\(A^{-1}\)</span> ישירות?</p>
 <ul class="simple">
 <li><p><strong>חוסר יציבות נומרית</strong>: חישוב מפורש של <span class="math notranslate nohighlight">\(A^{-1}\)</span> עלול להעצים שגיאות עיגול, במיוחד כאשר <span class="math notranslate nohighlight">\(A\)</span> קרובה לסינגולרית (ill-conditioned).</p></li>
 <li><p><strong>יעילות</strong>: מציאת הפתרון באמצעות <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code> משתמשת בפירוק LU (או שיטות דומות) המותאם ישירות לפתרון מערכת. זה מהיר יותר מחישוב מטריצה הפוכה מלאה.</p></li>
 </ul>
-</section>
-<hr class="docutils" />
-<section id="id3">
-<h3>ניתוח סיבוכיות<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>אם <span class="math notranslate nohighlight">\(A\)</span> מטריצה בגודל <span class="math notranslate nohighlight">\(n \times n\)</span>:</p>
 <ul class="simple">
 <li><p>חישוב <span class="math notranslate nohighlight">\(A^{-1}\)</span> דורש <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span> פעולות, ואחר כך כפל מטריציוני <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span>.</p></li>
 <li><p>לעומת זאת, <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code> פותר את המערכת ישירות ב־<span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span> <strong>בלי</strong> לייצר מטריצה הפוכה מיותרת.</p></li>
 </ul>
-</section>
-<hr class="docutils" />
-<section id="id4">
-<h3>הקשר פיסיקלי<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>מערכות לינאריות מהצורה <span class="math notranslate nohighlight">\(Ax = b\)</span> מופיעות בפיסיקה בכל מקום:</p>
 <ul class="simple">
 <li><p><strong>מעגלים חשמליים</strong>: לפי חוקי אוהם וקירכהוף מתקבלת מערכת משוואות לינאריות בזרמים/מתחים.</p></li>
@@ -691,8 +683,6 @@ x = \texttt{np.linalg.solve}(A, b)
 <li><p><strong>אנליזת תגובה (response analysis)</strong>: פתרון משוואות לינאריות לתגובה של מערכת בזמן או במרחב.</p></li>
 <li><p><strong>חישוב התפתחות בזמן קצר</strong>: למשל בצעד אינטגרציה נומרית של משוואות דיפרנציאליות — צעד אחד דורש פתרון לינארי.</p></li>
 </ul>
-</section>
-<hr class="docutils" />
 <section id="condition-number">
 <h3>מספר התניה (Condition Number)<a class="headerlink" href="#condition-number" title="Link to this heading">#</a></h3>
 <p>רגישות המערכת נמדדת לפי מספר ההתניה <span class="math notranslate nohighlight">\(\kappa(A)\)</span>:</p>
@@ -703,13 +693,15 @@ x = \texttt{np.linalg.solve}(A, b)
 <p>כאשר ערך גדול של <span class="math notranslate nohighlight">\(\kappa(A)\)</span> אומר שהפתרון <span class="math notranslate nohighlight">\(x\)</span> רגיש מאוד לשגיאות קטנות ב־<span class="math notranslate nohighlight">\(b\)</span> או ב־<span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>ב־NumPy ניתן לחשב זאת בעזרת:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-
-<span class="c1">### כלל אצבע</span>
-<span class="o">**</span><span class="n">אל</span> <span class="n">תחשבו</span> \<span class="p">(</span><span class="n">A</span><span class="o">^</span><span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">}</span>\<span class="p">)</span><span class="o">**</span> <span class="n">אלא</span> <span class="n">השתמשו</span> <span class="n">ב</span><span class="o">-</span><span class="err">`</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="err">`</span><span class="p">,</span> <span class="n">ובדקו</span> <span class="n">את</span> <span class="n">ה</span><span class="o">-</span><span class="n">condition</span> <span class="n">number</span> <span class="n">אם</span> <span class="n">אתם</span> <span class="n">חושדים</span> <span class="n">שמדובר</span> <span class="n">במטריצה</span> <span class="s2">&quot;כמעט סינגולרית&quot;</span><span class="o">.</span>
 </pre></div>
 </div>
-<section id="id5">
-<h4>פתרון בסיסי<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+</section>
+<section id="id3">
+<h3>כלל אצבע<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><strong>אל תחשבו (A^{-1})</strong> אלא השתמשו ב-<code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code>, ובדקו את ה-condition number אם אתם חושדים שמדובר במטריצה “כמעט סינגולרית”.</p>
+</section>
+<section id="id4">
+<h3>פתרון בסיסי<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve Ax = b (single RHS)</span>
@@ -730,8 +722,8 @@ x = \texttt{np.linalg.solve}(A, b)
 </div>
 </div>
 </section>
-<section id="id6">
-<h4>מספר התניה והשפעתו<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<section id="id5">
+<h3>מספר התניה והשפעתו<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nearly singular system: sensitive to perturbations</span>
@@ -756,8 +748,8 @@ x = \texttt{np.linalg.solve}(A, b)
 </div>
 </div>
 </section>
-<section id="id7">
-<h4>פתרון עם  מספר אגפים בצד ימין בבת אחת<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<section id="id6">
+<h3>פתרון עם  מספר אגפים בצד ימין בבת אחת<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiple right-hand sides (Ax = B)</span>
@@ -776,7 +768,6 @@ x = \texttt{np.linalg.solve}(A, b)
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="least-squares">
 <h3>שיטת הריבועים הפחותים (Least Squares)<a class="headerlink" href="#least-squares" title="Link to this heading">#</a></h3>
@@ -797,6 +788,43 @@ x^\ast = \arg \min_x \|Ax - b\|_2
 <li><p>שחזורים חישוביים: כאשר המערכת חסרה (underdetermined), מחפשים פתרון מינימום-נורמה.</p></li>
 <li><p>אנליזת רעש: מציאת קירוב הטוב ביותר לנתונים כאשר <span class="math notranslate nohighlight">\(b\)</span> מכיל רעש ניסוי.</p></li>
 </ul>
+</section>
+<section id="id7">
+<h3>דוגמה: התאמת קו ישר בשיטת Least Squares<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>נניח שיש לנו נתונים ניסיוניים המתוארים בקירוב על־ידי קו ישר:</p>
+<div class="math notranslate nohighlight">
+\[
+y \approx a + b x
+\]</div>
+<p>כאשר <span class="math notranslate nohighlight">\(a\)</span> הוא הקבוע החופשי (intercept) ו־<span class="math notranslate nohighlight">\(b\)</span> הוא השיפוע.</p>
+<p>בפועל, המדידות אינן מדויקות אלא כוללות <strong>רעש ניסויי</strong>. לכן, נרצה למצוא את הקו
+<span class="math notranslate nohighlight">\(\hat{y} = a^\ast + b^\ast x\)</span> שמקטין את טעות הריבועים הממוצעת (שיטת least-squares):</p>
+<div class="math notranslate nohighlight">
+\[
+(a^\ast, b^\ast) = \arg \min_{a,b} \; \sum_{i=1}^N \big( y_i - (a + b x_i) \big)^2
+\]</div>
+<p>במטריצה־וקטור, ניתן לכתוב:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{y} \approx A \mathbf{c},
+\]</div>
+<p>כאשר:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> היא מטריצת <strong>design</strong> בגודל <span class="math notranslate nohighlight">\(N \times 2\)</span>:
+$<span class="math notranslate nohighlight">\(
+A = 
+\begin{bmatrix}
+1 &amp; x_1 \\
+1 &amp; x_2 \\
+\vdots &amp; \vdots \\
+1 &amp; x_N
+\end{bmatrix}
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{c} = \begin{bmatrix} a \\ b \end{bmatrix}\)</span> הוא וקטור הפרמטרים.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y}\)</span> הוא וקטור התצפיות (כולל רעש).</p></li>
+</ul>
+<p>נפתור את בעיית least-squares עם <code class="docutils literal notranslate"><span class="pre">np.linalg.lstsq</span></code>, אשר מחזירה את <span class="math notranslate nohighlight">\(a^\ast, b^\ast\)</span>
+כך שהקו מתאים בצורה הטובה ביותר לנתונים.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Synthetic data: y ≈ a + b x</span>
@@ -839,14 +867,47 @@ x^\ast = \arg \min_x \|Ax - b\|_2
 </section>
 <section id="id8">
 <h2>ערכים עצמיים, וקטורים עצמיים, עקבה ודטרמיננטה<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p>למטריצה A מתקבלים ערכים עצמיים <span class="math notranslate nohighlight">\(\lambda_i\)</span> ווקטורים עצמיים <span class="math notranslate nohighlight">\(v_i\)</span> כך ש- <span class="math notranslate nohighlight">\(A*v_i = \lambda_i*v_i\)</span>
-בפיסיקה: אלו מצבים נורמליים במערכות לינאריות (לדוגמה, תנודות קטנות של מערכת מסוימת), כיווני יציבות/אי-יציבות, וצירי עיקריים בקירוב קוודרטי.</p>
-<p>np.linalg.eig(A) מחזירה (w, V) כאשר w – ערכים עצמיים, ו-V – וקטורים עצמיים בעמודות.</p>
-<p>np.linalg.eigvals(A) מחזירה רק ערכים עצמיים.</p>
-<p>עבור מטריצה סימטרית (הרמיטית ממשית), הערכים עצמיים ממשיים ווקטורים עצמיים אורתונורמליים.</p>
-<p>קשרים שימושיים:
-trace(A) = סכום הערכים העצמיים.
-det(A) = מכפלת הערכים העצמיים.</p>
+<p>למטריצה <span class="math notranslate nohighlight">\(A\)</span> מתקבלים <strong>ערכים עצמיים</strong> <span class="math notranslate nohighlight">\(\lambda_i\)</span> ו־<strong>וקטורים עצמיים</strong> <span class="math notranslate nohighlight">\(v_i\)</span> כך ש־</p>
+<div class="math notranslate nohighlight">
+\[
+A v_i = \lambda_i v_i .
+\]</div>
+<section id="id9">
+<h3>אינטואיציה פיסיקלית<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>בפיסיקה, ערכים ווקטורים עצמיים מופיעים בהקשרים רבים:</p>
+<ul class="simple">
+<li><p><strong>מצבים נורמליים</strong> במערכות לינאריות — למשל תנודות קטנות סביב נקודת שיווי משקל.</p></li>
+<li><p><strong>כיווני יציבות/אי־יציבות</strong> במערכות דינמיות.</p></li>
+<li><p><strong>צירים עיקריים</strong> של התפלגות או קירוב קוודרטי (principal axes).</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.linalg.eig(A)</span></code> מחזירה <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">V)</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code> – מערך הערכים העצמיים.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V</span></code> – מטריצה שבה כל עמודה היא וקטור עצמי מתאים.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.linalg.eigvals(A)</span></code> מחזירה רק את הערכים העצמיים.</p></li>
+</ul>
+<p>במקרה של מטריצה <strong>סימטרית</strong> (או הרמיטית ממשית), מתקיים:</p>
+<ul class="simple">
+<li><p>הערכים העצמיים ממשיים.</p></li>
+<li><p>הווקטורים העצמיים ניתנים לבחירה כאורתונורמליים (זווית ישרה ונורמה 1).</p></li>
+<li><p>לשימוש כזה עדיף <code class="docutils literal notranslate"><span class="pre">np.linalg.eigh</span></code>, המנצל את מבנה הסימטריה ומחזיר תוצאה יציבה יותר.</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>קשרים שימושיים<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>העקבה (trace) של מטריצה היא סכום הערכים העצמיים:
+$<span class="math notranslate nohighlight">\(
+\mathrm{trace}(A) = \sum_i \lambda_i
+\)</span>$</p></li>
+<li><p>הדטרמיננטה (det) היא מכפלת הערכים העצמיים:
+$<span class="math notranslate nohighlight">\(
+\det(A) = \prod_i \lambda_i
+\)</span>$</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Symmetric example: prefer eigh</span>
@@ -895,8 +956,11 @@ det(A) = מכפלת הערכים העצמיים.</p>
 </div>
 </div>
 </div>
-<p>אזכור: SVD – פירוק לערכים סינגולריים (ללא הוכחות)
-ה-SVD מפרק מטריצה  <span class="math notranslate nohighlight">\(A\)</span> ל<span class="math notranslate nohighlight">\(U\Sigma V^T\)</span>, כאשר <span class="math notranslate nohighlight">\(\Sigma\)</span> מכילה ערכים סינגולריים אי-שליליים מסודרים מהגדול לקטן. שימושים:</p>
+</section>
+</section>
+<section id="svd">
+<h2>SVD – פירוק לערכים סינגולריים<a class="headerlink" href="#svd" title="Link to this heading">#</a></h2>
+<p>ה-SVD מפרק מטריצה  <span class="math notranslate nohighlight">\(A\)</span> ל<span class="math notranslate nohighlight">\(U\Sigma V^T\)</span>, כאשר <span class="math notranslate nohighlight">\(\Sigma\)</span> מכילה ערכים סינגולריים אי-שליליים מסודרים מהגדול לקטן. שימושים:</p>
 <p>דחיסת מידע/הפחתת מימד -</p>
 <p>ניתוח מצבים דומיננטיים -</p>
 <ul class="simple">
@@ -1067,8 +1131,8 @@ det(A) = מכפלת הערכים העצמיים.</p>
 </div>
 </div>
 </section>
-<section id="id9">
-<h2>דוגמה מסכמת (1): הערכת מונטה–קרלו של π<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h2>דוגמה מסכמת (1): הערכת מונטה–קרלו של π<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>הרעיון: לדגום (N) נקודות אחידות בריבוע ([-1,1]\times[-1,1]),<br />
 ולחשב את החלק מהן שנמצא בתוך מעגל היחידה.</p>
 <p>[
@@ -1267,20 +1331,22 @@ x_{t+1} ;=; x_t + \xi_t, \qquad \xi_t \in {-1, +1}, \quad P(\xi_t=+1)=P(\xi_t=-1
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-linalg-solve">פתרון מערכות לינאריות: <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1">למה לא לחשב <span class="math notranslate nohighlight">\(A^{-1}\)</span>?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ניתוח סיבוכיות</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">הקשר פיסיקלי</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מספר התניה (Condition Number)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">פתרון בסיסי</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">מספר התניה והשפעתו</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">פתרון עם  מספר אגפים בצד ימין בבת אחת</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">מספר התניה (Condition Number)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">כלל אצבע</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">פתרון בסיסי</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">מספר התניה והשפעתו</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">פתרון עם  מספר אגפים בצד ימין בבת אחת</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-squares">שיטת הריבועים הפחותים (Least Squares)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">דוגמה: התאמת קו ישר בשיטת Least Squares</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ערכים עצמיים, וקטורים עצמיים, עקבה ודטרמיננטה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ערכים עצמיים, וקטורים עצמיים, עקבה ודטרמיננטה</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">אינטואיציה פיסיקלית</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">קשרים שימושיים</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd">SVD – פירוק לערכים סינגולריים</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">דוגמה מסכמת (1): הערכת מונטה–קרלו של π</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d">דוגמה מסכמת (2): דיפוזיה בהליכת-אקראי 1D</a></li>
 </ul>
   </nav></div>
