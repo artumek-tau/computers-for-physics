@@ -657,14 +657,8 @@ A x = b
 \]</div>
 <p>יש שתי גישות עיקריות:</p>
 <ol class="arabic simple">
-<li><p>לחשב במפורש את <span class="math notranslate nohighlight">\(A^{-1}\)</span> ואז להציב:
-$<span class="math notranslate nohighlight">\(
-x = A^{-1} b
-\)</span>$</p></li>
-<li><p>להשתמש ישירות באלגוריתם נומרי לפתרון המערכת:
-$<span class="math notranslate nohighlight">\(
-x = \texttt{np.linalg.solve}(A, b)
-\)</span>$</p></li>
+<li><p>לחשב במפורש את <span class="math notranslate nohighlight">\(A^{-1}\)</span> ואז להציב <span class="math notranslate nohighlight">\(x = A^{-1} b\)</span></p></li>
+<li><p>להשתמש ישירות באלגוריתם נומרי לפתרון המערכת <span class="math notranslate nohighlight">\(x = \texttt{np.linalg.solve}(A, b)\)</span></p></li>
 </ol>
 <p>מדוע לא נחשב את <span class="math notranslate nohighlight">\(A^{-1}\)</span> ישירות?</p>
 <ul class="simple">
@@ -772,7 +766,7 @@ x = \texttt{np.linalg.solve}(A, b)
 <section id="least-squares">
 <h3>שיטת הריבועים הפחותים (Least Squares)<a class="headerlink" href="#least-squares" title="Link to this heading">#</a></h3>
 <p>במקרים שבהם המערכת <span class="math notranslate nohighlight">\(Ax = b\)</span> היא <strong>עודפת</strong> (יותר משוואות מנעלמים, <span class="math notranslate nohighlight">\(m &gt; n\)</span>) או <strong>חסרה</strong> (יותר נעלמים ממשוואות, <span class="math notranslate nohighlight">\(m &lt; n\)</span>), ייתכן שאין פתרון יחיד.</p>
-<p>במקרים אלו משתמשים בשיטת <strong>Least Squares</strong>:</p>
+<p>במקרים אלו ניתן להשתמש בשיטת <strong>Least Squares</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
 x^\ast = \arg \min_x \|Ax - b\|_2
