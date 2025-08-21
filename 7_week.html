@@ -195,6 +195,7 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">שבוע 7 - Numpy</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="8_week.html">שבוע 8 - Numpy מתקדם</a></li>
 </ul>
 
@@ -458,6 +459,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 7 - Numpy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ספריות בפייתון</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">עקרונות עבודה מומלצים</a></li>
 </ul>
@@ -468,14 +470,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">Slicing (פריסה):</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">חיתוך (Slicing) של מערך</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">קשר בין מערך ותת־מערך</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-array-indexing">Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
-</ul>
-</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-array-indexing">Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-array-indexing">Boolean array indexing (אינדוקס בוליאני):</a></li>
 </ul>
 </li>
@@ -485,9 +483,25 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">כללי ה־broadcasting:</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">דוגמאות נוספות:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-product-broadcasting">כפל חיצוני (Outer Product) באמצעות Broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#row-wise">הוספת וקטור לכל שורה (Row-wise)</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-broadcasting-with-an-added-row-axis">Explicit broadcasting with an added row axis:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#column-wise">הוספת וקטור לכל עמודה (Column-wise)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-broadcasting">כפל בסקלר (Scalar) באמצעות Broadcasting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">דוגמאות נוספות של Broadcasting שימושי</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -588,8 +602,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>מערך של NumPy בר־שינוי (mutable).
-כאן מחליפים את הערך של האיבר הראשון מ־1 ל־5, והמערך כולו הופך להיות <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.</p>
+<p>מערך של NumPy הינו בר־שינוי (mutable).
+בקטע הקוד הקודם מחליפים את הערך של האיבר הראשון מ־1 ל־5, והמערך כולו הופך להיות <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>    <span class="c1"># Create a rank 2 array</span>
@@ -597,7 +611,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>כאן יוצרים מערך דו־ממדי (Rank 2), מתוך רשימה מקוננת.
+<p>בקטע הקוד הקודם יוצרים מערך דו־ממדי (Rank 2), מתוך רשימה מקוננת.
 הרשימה הראשונה <code class="docutils literal notranslate"><span class="pre">[1,2,3]</span></code> הופכת לשורה ראשונה, והרשימה <code class="docutils literal notranslate"><span class="pre">[4,5,6]</span></code> הופכת לשורה שנייה.
 כלומר b מייצג טבלה (מטריצה) עם 2 שורות ו־3 עמודות.</p>
 <div class="cell docutils container">
@@ -669,16 +683,16 @@ document.write(`
  [7 7]]
 [[1. 0.]
  [0. 1.]]
-[[0.10446178 0.89943175]
- [0.02688111 0.31887094]]
+[[0.67542465 0.67622758]
+ [0.02720123 0.21881653]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="uAOEwQEPBibA" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#uAOEwQEPBibA {
+<div class="output text_html"><div id="YfrCBvDzkiZM" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#YfrCBvDzkiZM {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -895,7 +909,7 @@ document.write(`
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsuAOEwQEPBibA=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
+</style></div><script type="application/javascript">var questionsYfrCBvDzkiZM=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -1958,8 +1972,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("uAOEwQEPBibA")) {
-    show_questions(questionsuAOEwQEPBibA, uAOEwQEPBibA);
+  if (document.getElementById("YfrCBvDzkiZM")) {
+    show_questions(questionsYfrCBvDzkiZM, YfrCBvDzkiZM);
   } else {
     setTimeout(try_show, 200);
   }
@@ -1993,8 +2007,7 @@ function try_show() {
 <section id="id4">
 <h4>חיתוך (Slicing) של מערך<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>נשתמש ב־slicing כדי לבחור תת־מערך:<br />
-שתי השורות הראשונות (אינדקסים 0 ו־1)<br />
-ועמודות 1 ו־2 (האינדקסים האמצעיים).</p>
+שתי השורות הראשונות (אינדקסים 0 ו־1) ועמודות 1 ו־2 (האינדקסים האמצעיים).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use slicing to pull out the subarray consisting of the first 2 rows</span>
@@ -2028,8 +2041,8 @@ function try_show() {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="BvzuOZayfkzr" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#BvzuOZayfkzr {
+<div class="output text_html"><div id="EPHAjzNCDtvA" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#EPHAjzNCDtvA {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -2246,7 +2259,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsBvzuOZayfkzr=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05ea\u05d7\u05d6\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsEPHAjzNCDtvA=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05dc\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d5\u05ea \u05d9\u05d7\u05d6\u05d9\u05e8\u05d5 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05db\u05ea\u05d9\u05d1\u05d4 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9\u05ea"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -3309,8 +3322,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("BvzuOZayfkzr")) {
-    show_questions(questionsBvzuOZayfkzr, BvzuOZayfkzr);
+  if (document.getElementById("EPHAjzNCDtvA")) {
+    show_questions(questionsEPHAjzNCDtvA, EPHAjzNCDtvA);
   } else {
     setTimeout(try_show, 200);
   }
@@ -3326,7 +3339,7 @@ function try_show() {
 </section>
 <section id="rank-1-rank-2">
 <h4>אינדוקס של שורות: Rank 1 לעומת Rank 2<a class="headerlink" href="#rank-1-rank-2" title="Link to this heading">#</a></h4>
-<p>כאשר משלבים אינדוקס עם מספר שלם וחיתוך, מתקבלת <strong>שורה כדימוי חד־ממדי (Rank 1)</strong>.<br />
+<p>כאשר משלבים אינדוקס עם מספר שלם וחיתוך, מתקבלת <strong>שורה בייצוג חד־ממדי (Rank 1)</strong>.<br />
 כאשר משתמשים רק בפריסה (slice), נשמרת <strong>הדרגה המקורית (Rank 2)</strong> ולכן מקבלים עדיין מערך דו־ממדי.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3344,8 +3357,9 @@ function try_show() {
 </div>
 </div>
 </div>
+</section>
 <section id="id6">
-<h5>אינדוקס של עמודות: Rank 1 לעומת Rank 2<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
+<h4>אינדוקס של עמודות: Rank 1 לעומת Rank 2<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p>אותו עיקרון חל גם על עמודות:</p>
 <ul class="simple">
 <li><p>אינדוקס עם מספר שלם יחזיר וקטור חד־ממדי.</p></li>
@@ -3370,7 +3384,6 @@ function try_show() {
 </div>
 </div>
 </section>
-</section>
 <section id="integer-array-indexing">
 <h4>Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):<a class="headerlink" href="#integer-array-indexing" title="Link to this heading">#</a></h4>
 <p>בעת פריסה מתקבל תמיד תת־מערך. אינדוקס בעזרת מערכי מספרים שלמים מאפשר לבנות מערך חדש מאיברים שרירותיים של מערך אחר.</p>
@@ -3378,7 +3391,9 @@ function try_show() {
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3395,7 +3410,8 @@ function try_show() {
 התוצאה היא מערך חדש שבו מופיעים הערכים שנבחרו לפי המיקומים שצוינו.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> 
 </pre></div>
 </div>
 </div>
@@ -3444,8 +3460,9 @@ function try_show() {
 </div>
 </div>
 </div>
+</section>
 <section id="id7">
-<h5>טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
+<h4>טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <p>נבנה מערך בגודל 4x3 (ארבע שורות ושלושה עמודות):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3509,7 +3526,6 @@ function try_show() {
 </div>
 </div>
 </section>
-</section>
 <section id="boolean-array-indexing">
 <h4>Boolean array indexing (אינדוקס בוליאני):<a class="headerlink" href="#boolean-array-indexing" title="Link to this heading">#</a></h4>
 <p>מאפשר לבחור איברים שמקיימים תנאי.</p>
@@ -3521,31 +3537,14 @@ function try_show() {
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
-
-
-<span class="n">bool_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Find the elements of a that are bigger than 2;</span>
-                     <span class="c1"># this returns a numpy array of Booleans of the same</span>
-                     <span class="c1"># shape as a, where each slot of bool_idx tells</span>
-                     <span class="c1"># whether that element of a is &gt; 2.</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">bool_idx</span><span class="p">)</span>    
-
-<span class="c1"># We use boolean array indexing to construct a rank 1 array</span>
-<span class="c1"># consisting of the elements of a corresponding to the True values</span>
-<span class="c1"># of bool_idx</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">bool_idx</span><span class="p">])</span>  
-
-<span class="c1"># We can do all of the above in a single concise statement:</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">])</span>     
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[False False]
- [ True  True]
- [ True  True]]
-[3 4 5 6]
-[3 4 5 6]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2]
+ [3 4]
+ [5 6]]
 </pre></div>
 </div>
 </div>
@@ -3727,8 +3726,8 @@ float32
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="bWCNjAiTgpca" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#bWCNjAiTgpca {
+<div class="output text_html"><div id="IniBRVVYOxOI" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#IniBRVVYOxOI {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -3945,7 +3944,7 @@ float32
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsbWCNjAiTgpca=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsIniBRVVYOxOI=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -5008,8 +5007,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("bWCNjAiTgpca")) {
-    show_questions(questionsbWCNjAiTgpca, bWCNjAiTgpca);
+  if (document.getElementById("IniBRVVYOxOI")) {
+    show_questions(questionsIniBRVVYOxOI, IniBRVVYOxOI);
   } else {
     setTimeout(try_show, 200);
   }
@@ -5021,8 +5020,8 @@ function try_show() {
 }
 </script></div>
 </div>
-<p>שימו לב: הכוכבית * היא כפל איבר־איבר, לא כפל מטריצות.
-לכפל מטריצי משתמשים ב־dot — כמתודה על המערך או כפונקציה במודול:</p>
+<p>שימו לב: האופרטור <code class="docutils literal notranslate"><span class="pre">*</span></code> ב־NumPy מייצג <strong>כפל איבר־איבר</strong> (elementwise).<br />
+כדי לבצע <strong>כפל מטריציוני אמיתי</strong> יש להשתמש בפונקציה <code class="docutils literal notranslate"><span class="pre">dot</span></code> — או כמתודה על המערך (<code class="docutils literal notranslate"><span class="pre">a.dot(b)</span></code>) או כפונקציה במודול (<code class="docutils literal notranslate"><span class="pre">np.dot(a,b)</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -5031,31 +5030,55 @@ function try_show() {
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
 
 <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
-
-<span class="c1"># Inner product of vectors; both produce 219</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
-
-<span class="c1"># Matrix / vector product; both produce the rank 1 array [29 67]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
-
-<span class="c1"># Matrix / matrix product; both produce the rank 2 array</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>מכפלה פנימית (inner product) של שני וקטורים חד־ממדיים מחזירה סקלר.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>       
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>   
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>219
 219
+</pre></div>
+</div>
+</div>
+</div>
+<p>מכפלת מטריצה־וקטור מחזירה וקטור חדש (Rank 1).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>       <span class="c1"># [29 67]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>   <span class="c1"># [29 67]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[29 67]
 [29 67]
-[29 67]
-[[19 22]
+</pre></div>
+</div>
+</div>
+</div>
+<p>מכפלת מטריצה־מטריצה מחזירה מטריצה חדשה (Rank 2).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[19 22]
  [43 50]]
-[[19 22]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[19 22]
  [43 50]]
 </pre></div>
 </div>
@@ -5113,7 +5136,7 @@ function try_show() {
 <section id="broadcasting">
 <h3>Broadcasting (שידור)<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h3>
 <p>Broadcasting הוא מנגנון שמאפשר ל־NumPy לבצע פעולות אריתמטיות בין מערכים בצורות שונות, ע״י שימוש חוזר במערך קטן יותר מול מערך גדול יותר.</p>
-<p>לדוגמה, הוספת וקטור קבוע לכל שורה במטריצה:</p>
+<p>ללא Broadcasting , אם נרצה להוסיף וקטור קבוע לכל שורה במטריצה, נאלץ להקצות מערך בגודל הסופי ולהשתמש בלולאה (יקר חישובית) על מנת להוסיף את הוקטור לכל שורה במטריצה:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -5137,6 +5160,9 @@ function try_show() {
  [ 5  5  7]
  [ 8  8 10]
  [11 11 13]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -5165,6 +5191,8 @@ function try_show() {
 </div>
 </div>
 <p>למה זה עובד? כי NumPy “מרחיבה” את v לצורה (4,3) באופן לוגי (ללא הקצאת זיכרון מיותרת).</p>
+<p>מצורפת תמונה להמחשה של broadcasting:</p>
+<p><img alt="Alt text" src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/02.05-broadcasting.png" /></p>
 <section id="id8">
 <h4>כללי ה־broadcasting:<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <p>כדי שהפעולה תצליח, חייבים להתקיים הכללים הבאים:</p>
@@ -5173,10 +5201,10 @@ function try_show() {
 </ol>
 <p>אם למערכים יש מספר ממדים שונה, מוסיפים 1 בתחילת ה־shape של המערך הקטן יותר, עד שאורכי הצורות שווים.
 למשל:</p>
-<p>(3, 4)     ← מערך דו־ממדי
+<p>(4, 3)     ← מערך דו־ממדי
 (4)        ← מערך חד־ממדי</p>
-<p>⇒  (3, 4)
-(1, 4) ← נוספה 1 בתחילת ה־shape</p>
+<p>⇒  (4, 3)
+(4, 1) ← נוספה 1 בתחילת ה־shape</p>
 <ol class="arabic simple" start="2">
 <li><p>תאימות ממדית
 בממד מסוים שתי הצורות נחשבות תואמות אם: הגודל בממד הזה שווה בשני המערכים, או לאחד מהם יש גודל 1 בממד הזה.</p></li>
@@ -5185,8 +5213,8 @@ function try_show() {
 (3, 1, 5)
 (3, 4, 5)   ← בממד האמצעי: 1 מול 4 → תואם</p>
 <p>דוגמה (לא תואמים):
-(2, 3)
-(4, 3)   ← בממד הראשון: 2 מול 4 → לא תואם</p>
+(3, 2)
+(3, 4)   ← בממד הראשון: 2 מול 4 → לא תואם</p>
 <ol class="arabic simple" start="3">
 <li><p>בדיקת כל הממדים</p></li>
 </ol>
@@ -5206,42 +5234,31 @@ function try_show() {
 לדוגמא:
 מערך A בגודל (2, 3) ומערך B בגודל (3). NumPy הופכת את B ל־(1, 3), משכפלת אותו על פני השורה (ממד 0), ומבצעת את הפעולה איבר־איבר לקבלת מערך בגודל (2, 3).</p>
 <p><a class="reference external" href="https://scipy.github.io/old-wiki/pages/EricsBroadcastingDoc">להסבר נוסף</a></p>
-<p>דוגמאות נוספות:</p>
+</section>
+</section>
+<section id="id9">
+<h3>דוגמאות נוספות:<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<section id="outer-product-broadcasting">
+<h4>כפל חיצוני (Outer Product) באמצעות Broadcasting<a class="headerlink" href="#outer-product-broadcasting" title="Link to this heading">#</a></h4>
+<p>כדי לחשב כפל חיצוני בין שני וקטורים, נרצה להפוך את הווקטור הראשון לעמודה ולהכפיל איבר־איבר בווקטור השני. התוצאה היא מטריצה שכל איבר בה הוא מכפלת איבר מהווקטור הראשון באיבר מתאים מהווקטור השני.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="c1"># Compute outer product of vectors</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># v has shape (3,)</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>    <span class="c1"># w has shape (2,)</span>
-<span class="c1"># To compute an outer product, we first reshape v to be a column</span>
-<span class="c1"># vector of shape (3, 1); we can then broadcast it against w to yield</span>
-<span class="c1"># an output of shape (3, 2), which is the outer product of v and w:</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>    <span class="c1"># shape (3,)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>       <span class="c1"># shape (2,)</span>
 
-<span class="c1"># Add a vector to each row of a matrix</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
-<span class="c1"># x has shape (2, 3) and v has shape (3,) so they broadcast to (2, 3),</span>
-<span class="c1"># giving the following matrix:</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># Make v a column vector, then broadcast against w</span>
+<span class="n">outer_vw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">w</span>   <span class="c1"># (3,1) * (2,) -&gt; (3,2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outer_vw</span><span class="p">)</span>
 
-<span class="c1"># Add a vector to each column of a matrix</span>
-<span class="c1"># x has shape (2, 3) and w has shape (2,).</span>
-<span class="c1"># If we transpose x then it has shape (3, 2) and can be broadcast</span>
-<span class="c1"># against w to yield a result of shape (3, 2); transposing this result</span>
-<span class="c1"># yields the final result of shape (2, 3) which is the matrix x with</span>
-<span class="c1"># the vector w added to each column. Gives the following matrix:</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="c1"># Another solution is to reshape w to be a column vector of shape (2, 1);</span>
-<span class="c1"># we can then broadcast it directly against x to produce the same</span>
-<span class="c1"># output.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="c1"># Alternative, more concise forms:</span>
+<span class="n">outer_vw2</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">w</span>             <span class="c1"># (3,1) * (2,) -&gt; (3,2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outer_vw2</span><span class="p">)</span>
 
-<span class="c1"># Multiply a matrix by a constant:</span>
-<span class="c1"># x has shape (2, 3). Numpy treats scalars as arrays of shape ();</span>
-<span class="c1"># these can be broadcast together to shape (2, 3), producing the</span>
-<span class="c1"># following array:</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Using dedicated function for clarity:</span>
+<span class="n">outer_vw3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>             <span class="c1"># outer product directly</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outer_vw3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5249,14 +5266,111 @@ function try_show() {
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 4  5]
  [ 8 10]
  [12 15]]
-[[2 4 6]
- [5 7 9]]
-[[ 5  6  7]
- [ 9 10 11]]
-[[ 5  6  7]
- [ 9 10 11]]
-[[ 2  4  6]
- [ 8 10 12]]
+[[ 4  5]
+ [ 8 10]
+ [12 15]]
+[[ 4  5]
+ [ 8 10]
+ [12 15]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="row-wise">
+<h4>הוספת וקטור לכל שורה (Row-wise)<a class="headerlink" href="#row-wise" title="Link to this heading">#</a></h4>
+<p>כאשר ממד הווקטור מתאים למספר העמודות במטריצה, ניתן להוסיף אותו לכל שורה באמצעות Broadcasting.</p>
+<p>x = np.array([[1, 2, 3],
+[4, 5, 6]])              # shape (2,3)</p>
+<p>row_added = x + v                      # (2,3) + (3,) -&gt; (2,3)
+print(row_added)</p>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="explicit-broadcasting-with-an-added-row-axis">
+<h1>Explicit broadcasting with an added row axis:<a class="headerlink" href="#explicit-broadcasting-with-an-added-row-axis" title="Link to this heading">#</a></h1>
+<p>row_added2 = x + v[None, :]            # (2,3) + (1,3) -&gt; (2,3)
+print(row_added2)</p>
+<section id="column-wise">
+<h2>הוספת וקטור לכל עמודה (Column-wise)<a class="headerlink" href="#column-wise" title="Link to this heading">#</a></h2>
+<p>ניתן להוסיף וקטור באורך מספר השורות לכל עמודה. אפשר לעשות זאת ע”י טרנספוזיציה או ע”י שינוי צורה מפורש של הווקטור לעמודה.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using transpose trick</span>
+<span class="n">col_added</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>                <span class="c1"># (3,2)-&gt;(3,2), then back to (2,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col_added</span><span class="p">)</span>
+
+<span class="c1"># More direct and readable:</span>
+<span class="n">col_added2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>            <span class="c1"># (2,3) + (2,1) -&gt; (2,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col_added2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">46</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Using transpose trick</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">col_added</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>                <span class="c1"># (3,2)-&gt;(3,2), then back to (2,3)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">col_added</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># More direct and readable:</span>
+
+<span class="ne">ValueError</span>: operands could not be broadcast together with shapes (3,4) (2,) 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="scalar-broadcasting">
+<h3>כפל בסקלר (Scalar) באמצעות Broadcasting<a class="headerlink" href="#scalar-broadcasting" title="Link to this heading">#</a></h3>
+<p>סקלר מתנהג כמו מערך ריק ממדים ומתרחב לצורת המטריצה.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scaled</span><span class="p">)</span>
+
+<span class="c1"># דוגמאות נוספות קצרות עם סקלר:</span>
+<span class="n">scaled_div</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scaled_div</span><span class="p">)</span>
+
+<span class="n">shifted</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shifted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>דוגמאות נוספות של Broadcasting שימושי<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>הכפלת כל עמודה במשקל שונה (למשל לנרמול/סקיילינג פיצ’רים).</p></li>
+<li><p>החסרת ממוצע עמודות (Centering) — פעולת הכנה נפוצה לניתוח נתונים.</p></li>
+<li><p>נרמול שורות לאורך יחידה — שימושי בווקטורים/דגימות.</p></li>
+<li><p>כפל חיצוני בין וקטורים באורכים אחרים להמחשת הכללה.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Column-wise scaling</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">])</span>  <span class="c1"># shape (3,)</span>
+<span class="n">scaled_cols</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">weights</span>                <span class="c1"># (2,3) * (3,) -&gt; (2,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scaled_cols</span><span class="p">)</span>
+
+<span class="c1"># 2) Centering by column means</span>
+<span class="n">col_means</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># shape (1,3)</span>
+<span class="n">x_centered</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">col_means</span>                  <span class="c1"># (2,3) - (1,3) -&gt; (2,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_centered</span><span class="p">)</span>
+
+<span class="c1"># 3) Row normalization to unit length</span>
+<span class="n">row_norms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># shape (2,1)</span>
+<span class="n">x_row_unit</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">row_norms</span>                             <span class="c1"># (2,3)/(2,1) -&gt; (2,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_row_unit</span><span class="p">)</span>
+
+<span class="c1"># 4) Another outer product example with different sizes</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>   <span class="c1"># shape (4,)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>      <span class="c1"># shape (3,)</span>
+<span class="n">outer_pq</span> <span class="o">=</span> <span class="n">p</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">q</span>     <span class="c1"># (4,1) * (3,) -&gt; (4,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outer_pq</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5264,8 +5378,8 @@ function try_show() {
 <p>בדרך כלל broadcasting הופך את הקוד לקצר ומהיר יותר — מומלץ להשתמש בו כשאפשר.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="YzTycctjSGOD" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#YzTycctjSGOD {
+<div class="output text_html"><div id="IKLIbuTLhrUf" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#IKLIbuTLhrUf {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -5482,7 +5596,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsYzTycctjSGOD=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsIKLIbuTLhrUf=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -6545,8 +6659,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("YzTycctjSGOD")) {
-    show_questions(questionsYzTycctjSGOD, YzTycctjSGOD);
+  if (document.getElementById("IKLIbuTLhrUf")) {
+    show_questions(questionsIKLIbuTLhrUf, IKLIbuTLhrUf);
   } else {
     setTimeout(try_show, 200);
   }
@@ -6558,8 +6672,6 @@ function try_show() {
 }
 </script></div>
 </div>
-</section>
-</section>
 </section>
 </section>
 
@@ -6627,6 +6739,7 @@ function try_show() {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 7 - Numpy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ספריות בפייתון</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">עקרונות עבודה מומלצים</a></li>
 </ul>
@@ -6637,14 +6750,10 @@ function try_show() {
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">Slicing (פריסה):</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">חיתוך (Slicing) של מערך</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">קשר בין מערך ותת־מערך</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-array-indexing">Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
-</ul>
-</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-array-indexing">Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-array-indexing">Boolean array indexing (אינדוקס בוליאני):</a></li>
 </ul>
 </li>
@@ -6654,9 +6763,25 @@ function try_show() {
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">כללי ה־broadcasting:</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">דוגמאות נוספות:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-product-broadcasting">כפל חיצוני (Outer Product) באמצעות Broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#row-wise">הוספת וקטור לכל שורה (Row-wise)</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-broadcasting-with-an-added-row-axis">Explicit broadcasting with an added row axis:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#column-wise">הוספת וקטור לכל עמודה (Column-wise)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-broadcasting">כפל בסקלר (Scalar) באמצעות Broadcasting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">דוגמאות נוספות של Broadcasting שימושי</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
