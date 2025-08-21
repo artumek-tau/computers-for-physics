@@ -464,20 +464,25 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">NumPy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-s-arrays">Numpy’s Arrays (מערכים)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array indexing (אינדוקס במערכים)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">חיתוך (Slicing) של מערך</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">קשר בין מערך ותת־מערך</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array indexing (אינדוקס במערכים)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">Slicing (פריסה):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">חיתוך (Slicing) של מערך</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">קשר בין מערך ותת־מערך</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-array-indexing">Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-array-indexing">Boolean array indexing (אינדוקס בוליאני):</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#datatypes">Datatypes (טיפוסי נתונים)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-math">Array math (פעולות מתמטיות על מערכים)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting (שידור)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">כללי ה־broadcasting:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datatypes">Datatypes (טיפוסי נתונים)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-math">Array math (פעולות מתמטיות על מערכים)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting (שידור)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">כללי ה־broadcasting:</a></li>
 </ul>
 </li>
 </ul>
@@ -672,16 +677,16 @@ document.write(`
  [0. 1.]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.5748623  0.93074186]
- [0.97416818 0.22237876]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.97830952 0.05189905]
+ [0.17155289 0.5616604 ]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="EkIASAZUwjvw" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#EkIASAZUwjvw {
+<div class="output text_html"><div id="MBzqkxkZYzyd" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#MBzqkxkZYzyd {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -898,7 +903,7 @@ document.write(`
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsEkIASAZUwjvw=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
+</style></div><script type="application/javascript">var questionsMBzqkxkZYzyd=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -1961,8 +1966,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("EkIASAZUwjvw")) {
-    show_questions(questionsEkIASAZUwjvw, EkIASAZUwjvw);
+  if (document.getElementById("MBzqkxkZYzyd")) {
+    show_questions(questionsMBzqkxkZYzyd, MBzqkxkZYzyd);
   } else {
     setTimeout(try_show, 200);
   }
@@ -1978,8 +1983,9 @@ function try_show() {
 <section id="array-indexing">
 <h3>Array indexing (אינדוקס במערכים)<a class="headerlink" href="#array-indexing" title="Link to this heading">#</a></h3>
 <p>ל־NumPy יש כמה דרכים לגשת לטווח אינדקסים במערכים.</p>
-<p>Slicing (פריסה):
-בדומה לרשומות בפייתון, גם מערכים ניתנים לפריסה (slice). מאחר שמערכים יכולים להיות רב־ממדיים, יש לציין פריסה לכל ממד.</p>
+<section id="slicing">
+<h4>Slicing (פריסה):<a class="headerlink" href="#slicing" title="Link to this heading">#</a></h4>
+<p>בדומה לרשומות בפייתון, גם מערכים ניתנים לפריסה (slice). מאחר שמערכים יכולים להיות רב־ממדיים, יש לציין פריסה לכל ממד.</p>
 <p>ניצור מערך בגודל 3x4, כלומר שלוש שורות וארבעה עמודות:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1992,8 +1998,8 @@ function try_show() {
 </div>
 </div>
 </section>
-<section id="slicing">
-<h3>חיתוך (Slicing) של מערך<a class="headerlink" href="#slicing" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h4>חיתוך (Slicing) של מערך<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>נשתמש ב־slicing כדי לבחור תת־מערך:<br />
 שתי השורות הראשונות (אינדקסים 0 ו־1)<br />
 ועמודות 1 ו־2 (האינדקסים האמצעיים).</p>
@@ -2007,8 +2013,8 @@ function try_show() {
 </div>
 </div>
 </section>
-<section id="id4">
-<h3>קשר בין מערך ותת־מערך<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h4>קשר בין מערך ותת־מערך<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>חשוב לדעת: חיתוך במערכים של NumPy מחזיר <strong>מבט (View)</strong> אל הנתונים המקוריים, ולא עותק.<br />
 לכן שינוי בתת־מערך ישפיע על המערך המקורי.</p>
 <div class="cell docutils container">
@@ -2030,8 +2036,8 @@ function try_show() {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="UugVkSrXiOuE" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#UugVkSrXiOuE {
+<div class="output text_html"><div id="kAcuCQcTmyNg" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#kAcuCQcTmyNg {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -2248,7 +2254,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsUugVkSrXiOuE=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05ea\u05d7\u05d6\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionskAcuCQcTmyNg=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05ea\u05d7\u05d6\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -3311,8 +3317,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("UugVkSrXiOuE")) {
-    show_questions(questionsUugVkSrXiOuE, UugVkSrXiOuE);
+  if (document.getElementById("kAcuCQcTmyNg")) {
+    show_questions(questionskAcuCQcTmyNg, kAcuCQcTmyNg);
   } else {
     setTimeout(try_show, 200);
   }
@@ -3325,6 +3331,7 @@ function try_show() {
 </script></div>
 </div>
 <p>ניתן לשלב אינדוקס עם פריסה. שילוב כזה מפיק מערך בדרגה נמוכה יותר מהמקור.</p>
+</section>
 <section id="rank-1-rank-2">
 <h4>אינדוקס של שורות: Rank 1 לעומת Rank 2<a class="headerlink" href="#rank-1-rank-2" title="Link to this heading">#</a></h4>
 <p>כאשר משלבים אינדוקס עם מספר שלם וחיתוך, מתקבלת <strong>שורה כדימוי חד־ממדי (Rank 1)</strong>.<br />
@@ -3345,9 +3352,8 @@ function try_show() {
 </div>
 </div>
 </div>
-</section>
-<section id="id5">
-<h4>אינדוקס של עמודות: Rank 1 לעומת Rank 2<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<section id="id6">
+<h5>אינדוקס של עמודות: Rank 1 לעומת Rank 2<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
 <p>אותו עיקרון חל גם על עמודות:</p>
 <ul class="simple">
 <li><p>אינדוקס עם מספר שלם יחזיר וקטור חד־ממדי.</p></li>
@@ -3371,6 +3377,7 @@ function try_show() {
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="integer-array-indexing">
 <h4>Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):<a class="headerlink" href="#integer-array-indexing" title="Link to this heading">#</a></h4>
@@ -3445,8 +3452,8 @@ function try_show() {
 </div>
 </div>
 </div>
-<section id="id6">
-<h5>טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
+<section id="id7">
+<h5>טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <p>נבנה מערך בגודל 4x3 (ארבע שורות ושלושה עמודות):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3513,12 +3520,16 @@ function try_show() {
 </section>
 <section id="boolean-array-indexing">
 <h4>Boolean array indexing (אינדוקס בוליאני):<a class="headerlink" href="#boolean-array-indexing" title="Link to this heading">#</a></h4>
-<p>מאפשר לבחור איברים שמקיימים תנאי:</p>
+<p>מאפשר לבחור איברים שמקיימים תנאי.</p>
+<p>נבנה מערך בגודל 3x2:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+
 
 <span class="n">bool_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Find the elements of a that are bigger than 2;</span>
                      <span class="c1"># this returns a numpy array of Booleans of the same</span>
@@ -3547,38 +3558,130 @@ function try_show() {
 </div>
 </div>
 </div>
+<p>נשתמש במסיכה בוליאנית (Boolean Mask). נבדוק אילו איברים במערך גדולים מ־2.<br />
+התוצאה היא מערך חדש באותו גודל, המכיל ערכי <strong>True/False</strong> לפי התנאי.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bool_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bool_idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[False False]
+ [ True  True]
+ [ True  True]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>כאשר משתמשים במערך הבוליאני כאינדקס, מתקבל מערך חד־ממדי עם כל האיברים עבורם התנאי מתקיים.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">bool_idx</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 4 5 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>ניתן לבצע את כל השלבים יחד בשורה אחת, על ידי הכנסת התנאי ישירות לאינדוקס.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 4 5 6]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="datatypes">
-<h4>Datatypes (טיפוסי נתונים)<a class="headerlink" href="#datatypes" title="Link to this heading">#</a></h4>
+<h3>Datatypes (טיפוסי נתונים)<a class="headerlink" href="#datatypes" title="Link to this heading">#</a></h3>
 <p>כל מערך ב־NumPy מכיל איברים מאותו טיפוס.
-ספריית NumPy מספקת מגוון טיפוסים מספריים, לרוב היא תנחש את הטיפוס בעת יצירה, אך ניתן גם לציין טיפוס במפורש:</p>
+ספריית NumPy מספקת מגוון טיפוסים מספריים, לרוב היא תנחש את הטיפוס בעת יצירה, אך ניתן גם לציין טיפוס במפורש.</p>
+<p>כאשר יוצרים מערך ממספרים שלמים רגילים, NumPy בוחר טיפוס שלם (int):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>   <span class="c1"># Let numpy choose the datatype</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>         
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>   <span class="c1"># Let numpy choose the datatype</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>             
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>   <span class="c1"># Force a particular datatype</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>                        
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>       <span class="c1"># NumPy infers integer type</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>             <span class="c1"># Usually int32 or int64 depending on the system</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int64
-float64
-int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>כאשר יוצרים מערך ממספרים ממשיים (עם נקודה עשרונית), NumPy בוחר טיפוס נקודה צפה (float).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>   <span class="c1"># NumPy infers float type</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>             <span class="c1"># Usually float64</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>ניתן גם להכריח שימוש בטיפוס מסוים בזמן יצירת המערך, באמצעות הפרמטר <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>   <span class="c1"># Force explicit integer type (int64)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>מעבר לטיפוסים בסיסיים כמו int ו־float, NumPy תומך גם בטיפוסים נוספים:</p>
+<ul class="simple">
+<li><p><strong>מספרים מרוכבים</strong> (<code class="docutils literal notranslate"><span class="pre">complex64</span></code>, <code class="docutils literal notranslate"><span class="pre">complex128</span></code>) – שימושי במכניקה קוונטית ובעיבוד אותות.</p></li>
+<li><p><strong>טיפוסי נקודה צפה מדויקים יותר או פחות</strong> (<code class="docutils literal notranslate"><span class="pre">float32</span></code>, <code class="docutils literal notranslate"><span class="pre">float64</span></code>) – בחירה בהתאם לאיזון בין דיוק למהירות/זיכרון.</p></li>
+<li><p><strong>טיפוסי שלם שונים</strong> (<code class="docutils literal notranslate"><span class="pre">int8</span></code>, <code class="docutils literal notranslate"><span class="pre">int16</span></code>, <code class="docutils literal notranslate"><span class="pre">int32</span></code>, <code class="docutils literal notranslate"><span class="pre">int64</span></code>) – שימושי כשיש מגבלות זיכרון או צורך ביעילות.</p></li>
+</ul>
+<p>יכולת השליטה בטיפוס הנתונים מאפשרת גם חיסכון במשאבים וגם התאמה לצרכים המדעיים הספציפיים של החישוב.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example with complex numbers</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mi">4</span><span class="n">j</span><span class="p">])</span>    <span class="c1"># Complex array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>                <span class="c1"># complex128 by default</span>
+
+<span class="c1"># Example with lower precision floats</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>  <span class="c1"># Explicit float32</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complex128
+float32
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="array-math">
-<h4>Array math (פעולות מתמטיות על מערכים)<a class="headerlink" href="#array-math" title="Link to this heading">#</a></h4>
-<p>פונקציות מתמטיות בסיסיות פועלות איבר־איבר; הן זמינות כאופרטורים וכפונקציות במודול NumPy:</p>
+<h3>Array math (פעולות מתמטיות על מערכים)<a class="headerlink" href="#array-math" title="Link to this heading">#</a></h3>
+<p>ב־NumPy פונקציות מתמטיות בסיסיות פועלות <strong>איבר־איבר</strong> (elementwise).<br />
+כלומר, הפעולה מתבצעת על כל זוג איברים מקבילים במערכים, והתוצאה היא מערך חדש.<br />
+אותן פעולות זמינות גם כאופרטורים (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>) וגם כפונקציות מתוך NumPy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -3632,8 +3735,8 @@ int64
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="YdnNskXNFrFz" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#YdnNskXNFrFz {
+<div class="output text_html"><div id="kmsYojQYHpvs" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#kmsYojQYHpvs {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -3850,7 +3953,7 @@ int64
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsYdnNskXNFrFz=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionskmsYojQYHpvs=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -4913,8 +5016,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("YdnNskXNFrFz")) {
-    show_questions(questionsYdnNskXNFrFz, YdnNskXNFrFz);
+  if (document.getElementById("kmsYojQYHpvs")) {
+    show_questions(questionskmsYojQYHpvs, kmsYojQYHpvs);
   } else {
     setTimeout(try_show, 200);
   }
@@ -5016,7 +5119,7 @@ function try_show() {
 </div>
 </section>
 <section id="broadcasting">
-<h4>Broadcasting (שידור)<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h4>
+<h3>Broadcasting (שידור)<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h3>
 <p>Broadcasting הוא מנגנון שמאפשר ל־NumPy לבצע פעולות אריתמטיות בין מערכים בצורות שונות, ע״י שימוש חוזר במערך קטן יותר מול מערך גדול יותר.</p>
 <p>לדוגמה, הוספת וקטור קבוע לכל שורה במטריצה:</p>
 <div class="cell docutils container">
@@ -5070,9 +5173,8 @@ function try_show() {
 </div>
 </div>
 <p>למה זה עובד? כי NumPy “מרחיבה” את v לצורה (4,3) באופן לוגי (ללא הקצאת זיכרון מיותרת).</p>
-</section>
-<section id="id7">
-<h4>כללי ה־broadcasting:<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<section id="id8">
+<h4>כללי ה־broadcasting:<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <p>כדי שהפעולה תצליח, חייבים להתקיים הכללים הבאים:</p>
 <ol class="arabic simple">
 <li><p>השוואת דרגות (rank) המערכים</p></li>
@@ -5155,9 +5257,7 @@ function try_show() {
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 4  5]
  [ 8 10]
  [12 15]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2 4 6]
+[[2 4 6]
  [5 7 9]]
 [[ 5  6  7]
  [ 9 10 11]]
@@ -5172,8 +5272,8 @@ function try_show() {
 <p>בדרך כלל broadcasting הופך את הקוד לקצר ומהיר יותר — מומלץ להשתמש בו כשאפשר.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="XKCtTkjYxmqA" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#XKCtTkjYxmqA {
+<div class="output text_html"><div id="LDiUVOpzhVak" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#LDiUVOpzhVak {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -5390,7 +5490,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsXKCtTkjYxmqA=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsLDiUVOpzhVak=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -6453,8 +6553,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("XKCtTkjYxmqA")) {
-    show_questions(questionsXKCtTkjYxmqA, XKCtTkjYxmqA);
+  if (document.getElementById("LDiUVOpzhVak")) {
+    show_questions(questionsLDiUVOpzhVak, LDiUVOpzhVak);
   } else {
     setTimeout(try_show, 200);
   }
@@ -6541,20 +6641,25 @@ function try_show() {
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">NumPy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-s-arrays">Numpy’s Arrays (מערכים)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array indexing (אינדוקס במערכים)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">חיתוך (Slicing) של מערך</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">קשר בין מערך ותת־מערך</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array indexing (אינדוקס במערכים)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">Slicing (פריסה):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">חיתוך (Slicing) של מערך</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">קשר בין מערך ותת־מערך</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-1-rank-2">אינדוקס של שורות: Rank 1 לעומת Rank 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">אינדוקס של עמודות: Rank 1 לעומת Rank 2</a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-array-indexing">Integer array indexing (אינדוקס במערך באמצעות מספרים שלמים):</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">טריק נפוץ: לבחור/לעדכן איבר אחד מכל שורה באמצעות אינדקסי.</a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-array-indexing">Boolean array indexing (אינדוקס בוליאני):</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#datatypes">Datatypes (טיפוסי נתונים)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-math">Array math (פעולות מתמטיות על מערכים)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting (שידור)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">כללי ה־broadcasting:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datatypes">Datatypes (טיפוסי נתונים)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-math">Array math (פעולות מתמטיות על מערכים)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting (שידור)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">כללי ה־broadcasting:</a></li>
 </ul>
 </li>
 </ul>
