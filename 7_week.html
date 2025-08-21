@@ -502,17 +502,17 @@ document.write(`
 <h1>שבוע 7 - Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
 <section id="id1">
 <h2>ספריות בפייתון<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p><strong>ספרייה (Library)</strong> היא אוסף מודולים של קוד שנכתב מראש כדי לבצע משימות נפוצות: חישוב מספרי, עיבוד נתונים, גרפיקה, תקשורת, למידת מכונה ועוד. במקום להמציא את הגלגל בכל פרויקט, משתמשים בספריות אמינות שנבדקו על־ידי קהילה רחבה.</p>
+<p><strong>ספרייה (Library)</strong> היא אוסף מודולים של קוד שנכתב מראש כדי לבצע משימות נפוצות: חישוב מספרי, עיבוד נתונים, גרפיקה, תקשורת, למידת מכונה ועוד. במקום להמציא את הגלגל בכל פרויקט, משתמשים בספריות אמינות שנבדקו על־ידי משתמשים רבים.</p>
 <ul class="simple">
 <li><p><strong>התקנה</strong>: מוסיפים את הספרייה לסביבה שלכם באמצעות מנהל חבילות (כגון pip) כך שהקוד שלה יהיה זמין לפרויקט.</p></li>
 <li><p><strong>טעינה</strong>: בתוך הקוד “מייבאים” את הספרייה או חלקים ממנה באמצעות פקודת ה־import, ולאחר מכן קוראים לפונקציות ולמחלקות שהיא מספקת.</p></li>
-<li><p><strong>עבודה יומיומית</strong>: משלבים את הקריאות לספרייה יחד עם הקוד שלכם, לפי התיעוד הרשמי ודוגמאות שימוש. ברוב המקרים, העבודה דומה לקריאה לכל פונקציה אחרת בפייתון—רק שהמימוש מגיע מבחוץ.</p></li>
+<li><p><strong>שימוש</strong>: משלבים את הקריאות לספרייה יחד עם הקוד שלכם, לפי התיעוד הרשמי ודוגמאות שימוש. ברוב המקרים, העבודה דומה לקריאה לכל פונקציה אחרת בפייתון—רק שהמימוש מגיע מבחוץ.</p></li>
 </ul>
 <section id="id2">
 <h3>עקרונות עבודה מומלצים<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>לייבא רק מה שצריך</strong>: שומר על קוד קריא ומעורפל פחות.</p></li>
-<li><p><strong>שליטה בגרסאות</strong>: לנהל קובץ תלותים (למשל requirements) כדי להבטיח תוצאות עקביות בין סביבות.</p></li>
+<li><p><strong>שליטה בגרסאות</strong>: לנהל קובץ תלויות (למשל requirements) כדי להבטיח תוצאות עקביות בין סביבות.</p></li>
 <li><p><strong>סביבות וירטואליות</strong>: מניעת תלות בין פרויקטים שונים והתנגשויות בין חלקי קוד שונים.</p></li>
 <li><p><strong>הסתמכות על תיעוד</strong>: לקרוא דפי תיעוד וקווי הנחיה רשמיים—זה מקצר עקומת למידה ומונע תקלות.</p></li>
 </ul>
@@ -550,13 +550,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>   <span class="c1"># Create a rank 1 array</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>            <span class="c1"># Prints &quot;&lt;class &#39;numpy.ndarray&#39;&gt;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>            <span class="c1"># Prints &quot;&lt;class &#39;numpy.ndarray&#39;&gt;&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -566,7 +560,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>בודקים את סוג המשתנה ‘a’. רואים שהוא מסוג ‘numpy.ndarray’ — זוהי המחלקה המרכזית של NumPy לייצוג מערכים.</p>
+<p>בודקים את סוג המשתנה <code class="docutils literal notranslate"><span class="pre">a</span></code>. רואים שהוא מסוג <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> — זוהי המחלקה המרכזית של NumPy לייצוג מערכים.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># Prints &quot;1 2 3&quot;</span>
@@ -580,7 +574,7 @@ document.write(`
 </div>
 </div>
 <p>גישה לאיברים במערך מתבצעת בעזרת אינדקסים בסוגריים מרובעים.
-האינדקס מתחיל מ־0 (כמו בפייתון רגילה), ולכן ‘a[0]’ הוא האיבר הראשון (1), ‘a[1]’ הוא השני (2), וכן הלאה.</p>
+האינדקס מתחיל מ־0 (כמו בפייתון רגילה), ולכן <code class="docutils literal notranslate"><span class="pre">a[0]</span></code> הוא האיבר הראשון (1), <code class="docutils literal notranslate"><span class="pre">a[1]</span></code> הוא השני (2), וכן הלאה.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>                  <span class="c1"># Change an element of the array</span>
@@ -595,7 +589,7 @@ document.write(`
 </div>
 </div>
 <p>מערך של NumPy בר־שינוי (mutable).
-כאן מחליפים את הערך של האיבר הראשון מ־1 ל־5, והמערך כולו הופך להיות ‘[5, 2, 3]’.</p>
+כאן מחליפים את הערך של האיבר הראשון מ־1 ל־5, והמערך כולו הופך להיות <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>    <span class="c1"># Create a rank 2 array</span>
@@ -604,7 +598,7 @@ document.write(`
 </div>
 </div>
 <p>כאן יוצרים מערך דו־ממדי (Rank 2), מתוך רשימה מקוננת.
-הרשימה הראשונה ‘[1,2,3]’ הופכת לשורה ראשונה, והרשימה ‘[4,5,6]’ הופכת לשורה שנייה.
+הרשימה הראשונה <code class="docutils literal notranslate"><span class="pre">[1,2,3]</span></code> הופכת לשורה ראשונה, והרשימה <code class="docutils literal notranslate"><span class="pre">[4,5,6]</span></code> הופכת לשורה שנייה.
 כלומר b מייצג טבלה (מטריצה) עם 2 שורות ו־3 עמודות.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -618,7 +612,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>כעת הצורה (‘shape’) היא ‘(2,3)’, כלומר שתי שורות ושלושה עמודות.</p>
+<p>כעת הצורה (<code class="docutils literal notranslate"><span class="pre">shape</span></code>) היא <code class="docutils literal notranslate"><span class="pre">(2,3)</span></code>, כלומר שתי שורות ושלושה עמודות.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># Prints &quot;1 2 4&quot;</span>
@@ -633,9 +627,9 @@ document.write(`
 </div>
 <p>גישה לאיברים במערך דו־ממדי נעשית ע״י ציון שורה ועמודה:</p>
 <ul class="simple">
-<li><p>‘b[0,0]’ הוא התא בשורה הראשונה, עמודה ראשונה → הערך 1.</p></li>
-<li><p>‘b[0,1]’ הוא התא בשורה הראשונה, עמודה שנייה → הערך 2.</p></li>
-<li><p>‘b[1,0]’ הוא התא בשורה השנייה, עמודה ראשונה → הערך 4.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b[0,0]</span></code> הוא התא בשורה הראשונה, עמודה ראשונה → הערך 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b[0,1]</span></code> הוא התא בשורה הראשונה, עמודה שנייה → הערך 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b[1,0]</span></code> הוא התא בשורה השנייה, עמודה ראשונה → הערך 4.</p></li>
 </ul>
 <p>NumPy מספקת גם פונקציות רבות ליצירת מערכים</p>
 <ul class="simple">
@@ -675,16 +669,16 @@ document.write(`
  [7 7]]
 [[1. 0.]
  [0. 1.]]
-[[0.49174    0.84249848]
- [0.33674149 0.01037931]]
+[[0.10446178 0.89943175]
+ [0.02688111 0.31887094]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="octVPeRGFlBp" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#octVPeRGFlBp {
+<div class="output text_html"><div id="uAOEwQEPBibA" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#uAOEwQEPBibA {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -901,7 +895,7 @@ document.write(`
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsoctVPeRGFlBp=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
+</style></div><script type="application/javascript">var questionsuAOEwQEPBibA=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -1964,8 +1958,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("octVPeRGFlBp")) {
-    show_questions(questionsoctVPeRGFlBp, octVPeRGFlBp);
+  if (document.getElementById("uAOEwQEPBibA")) {
+    show_questions(questionsuAOEwQEPBibA, uAOEwQEPBibA);
   } else {
     setTimeout(try_show, 200);
   }
@@ -2034,8 +2028,8 @@ function try_show() {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="QPdpiaUCOwiv" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#QPdpiaUCOwiv {
+<div class="output text_html"><div id="BvzuOZayfkzr" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#BvzuOZayfkzr {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -2252,7 +2246,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsQPdpiaUCOwiv=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05ea\u05d7\u05d6\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsBvzuOZayfkzr=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05ea\u05d7\u05d6\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -3315,8 +3309,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("QPdpiaUCOwiv")) {
-    show_questions(questionsQPdpiaUCOwiv, QPdpiaUCOwiv);
+  if (document.getElementById("BvzuOZayfkzr")) {
+    show_questions(questionsBvzuOZayfkzr, BvzuOZayfkzr);
   } else {
     setTimeout(try_show, 200);
   }
@@ -3733,8 +3727,8 @@ float32
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="tBRtNWsTSvEs" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#tBRtNWsTSvEs {
+<div class="output text_html"><div id="bWCNjAiTgpca" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#bWCNjAiTgpca {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -3951,7 +3945,7 @@ float32
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionstBRtNWsTSvEs=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsbWCNjAiTgpca=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -5014,8 +5008,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("tBRtNWsTSvEs")) {
-    show_questions(questionstBRtNWsTSvEs, tBRtNWsTSvEs);
+  if (document.getElementById("bWCNjAiTgpca")) {
+    show_questions(questionsbWCNjAiTgpca, bWCNjAiTgpca);
   } else {
     setTimeout(try_show, 200);
   }
@@ -5270,8 +5264,8 @@ function try_show() {
 <p>בדרך כלל broadcasting הופך את הקוד לקצר ומהיר יותר — מומלץ להשתמש בו כשאפשר.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="FOixXFfVuSlP" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#FOixXFfVuSlP {
+<div class="output text_html"><div id="YzTycctjSGOD" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#YzTycctjSGOD {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -5488,7 +5482,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsFOixXFfVuSlP=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsYzTycctjSGOD=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -6551,8 +6545,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("FOixXFfVuSlP")) {
-    show_questions(questionsFOixXFfVuSlP, FOixXFfVuSlP);
+  if (document.getElementById("YzTycctjSGOD")) {
+    show_questions(questionsYzTycctjSGOD, YzTycctjSGOD);
   } else {
     setTimeout(try_show, 200);
   }
