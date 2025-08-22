@@ -725,16 +725,18 @@ AB3:
 <section id="np-linalg-solve">
 <h2>פתרון מערכות לינאריות: <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code><a class="headerlink" href="#np-linalg-solve" title="Link to this heading">#</a></h2>
 <p>נניח שיש לנו מערכת של משוואות לינאריות (כלומר משוואות שבהן המשתנים מופיעים בחזקה ראשונה בלבד), לדוגמה:</p>
-<p><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{cases}
 2x + y = 5 \\
 x - y = 1
 \end{cases}
-\)</span></p>
+\end{split}\]</div>
 <p>אפשר לכתוב זאת בצורה מטריציונית קומפקטית:</p>
-<p><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[
 A x = b
-\)</span></p>
+\]</div>
 <p>כאשר:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(A\)</span> היא מטריצה שמכילה את המקדמים של המשוואות,</p></li>
@@ -745,13 +747,13 @@ A x = b
 <h3>שתי דרכים לפתרון<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>לחשב במפורש את <span class="math notranslate nohighlight">\(A^{-1}\)</span> (המטריצה ההפוכה של <span class="math notranslate nohighlight">\(A\)</span>), ואז להציב:
-<span class="math notranslate nohighlight">\(
+$<span class="math notranslate nohighlight">\(
 x = A^{-1} b
-\)</span></p></li>
+\)</span>$</p></li>
 <li><p>להשתמש ישירות באלגוריתם נומרי שמחשב את <span class="math notranslate nohighlight">\(x\)</span> בלי למצוא את <span class="math notranslate nohighlight">\(A^{-1}\)</span>:
-<span class="math notranslate nohighlight">\(
+$<span class="math notranslate nohighlight">\(
 x = \texttt{np.linalg.solve}(A, b)
-\)</span></p></li>
+\)</span>$</p></li>
 </ol>
 </section>
 <section id="a-1">
@@ -785,9 +787,10 @@ x = \texttt{np.linalg.solve}(A, b)
 <h3>מספר התניה (Condition Number)<a class="headerlink" href="#condition-number" title="Link to this heading">#</a></h3>
 <p>לפעמים המערכת “רגישה” לשינויים קטנים.<br />
 כדי למדוד זאת משתמשים ב־<strong>מספר ההתניה</strong> של <span class="math notranslate nohighlight">\(A\)</span>, שמוגדר כך:</p>
-<p><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[
 \kappa(A) = \|A\| \cdot \|A^{-1}\|
-\)</span></p>
+\]</div>
 <p>אם <span class="math notranslate nohighlight">\(\kappa(A)\)</span> קטן, המערכת יציבה — שגיאות קטנות בנתונים לא משפיעות הרבה על התוצאה.<br />
 אם <span class="math notranslate nohighlight">\(\kappa(A)\)</span> גדול, המערכת לא יציבה — טעות קטנה במדידות או בחישובים עלולה לגרום לשינוי גדול מאוד בפתרון.</p>
 <p>ב־NumPy אפשר לחשב את זה בעזרת:</p>
