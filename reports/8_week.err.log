@@ -51,7 +51,7 @@ U.shape, s.shape, Vt.shape, float(s[0]), float(s[-1])
 
 [31m---------------------------------------------------------------------------[39m
 [31mTypeError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[14][39m[32m, line 20[39m
+[36mCell[39m[36m [39m[32mIn[17][39m[32m, line 20[39m
 [32m     18[39m [38;5;66;03m# SVD[39;00m
 [32m     19[39m U, s, Vt = np.linalg.svd(img_gray, full_matrices=[38;5;28;01mFalse[39;00m)
 [32m---> [39m[32m20[39m U.shape, s.shape, Vt.shape, [38;5;28;43mfloat[39;49m[43m([49m[43ms[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m, [38;5;28mfloat[39m(s[-[32m1[39m])

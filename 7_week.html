@@ -195,7 +195,6 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">שבוע 7 - Numpy</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="8_week.html">שבוע 8 - Numpy מתקדם</a></li>
 </ul>
 
@@ -459,7 +458,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 7 - Numpy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ספריות בפייתון</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">עקרונות עבודה מומלצים</a></li>
 </ul>
@@ -486,22 +484,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">דוגמאות נוספות:</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-product-broadcasting">כפל חיצוני (Outer Product) באמצעות Broadcasting</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#row-wise">הוספת וקטור לכל שורה (Row-wise)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#column-wise">הוספת וקטור לכל עמודה (Column-wise)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-broadcasting">כפל בסקלר (Scalar) באמצעות Broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">דוגמאות נוספות של Broadcasting שימושי</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-broadcasting-with-an-added-row-axis">Explicit broadcasting with an added row axis:</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#column-wise">הוספת וקטור לכל עמודה (Column-wise)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-broadcasting">כפל בסקלר (Scalar) באמצעות Broadcasting</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">דוגמאות נוספות של Broadcasting שימושי</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -645,6 +635,8 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">b[0,1]</span></code> הוא התא בשורה הראשונה, עמודה שנייה → הערך 2.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b[1,0]</span></code> הוא התא בשורה השנייה, עמודה ראשונה → הערך 4.</p></li>
 </ul>
+<p>ניתן להגדיר מערכים גם ממימדים גבוהים יותר:
+<img alt="Alt text" src="https://predictivehacks.com/wp-content/uploads/2020/08/numpy_arrays.png" /></p>
 <p>NumPy מספקת גם פונקציות רבות ליצירת מערכים</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">zeros(shape)</span></code></strong> – מחזירה מערך חדש בגודל המבוקש, שכל איבריו הם אפסים. שימושי לאתחול חישובים או שמירת מקום לנתונים עתידיים.</p></li>
@@ -683,16 +675,16 @@ document.write(`
  [7 7]]
 [[1. 0.]
  [0. 1.]]
-[[0.67542465 0.67622758]
- [0.02720123 0.21881653]]
+[[0.30458904 0.9241349 ]
+ [0.39621332 0.48390603]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="YfrCBvDzkiZM" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#YfrCBvDzkiZM {
+<div class="output text_html"><div id="HNHXbczojBfZ" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#HNHXbczojBfZ {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -909,7 +901,7 @@ document.write(`
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsYfrCBvDzkiZM=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
+</style></div><script type="application/javascript">var questionsHNHXbczojBfZ=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d4 \u05d1\u05beNumPy \u05ea\u05d9\u05e6\u05d5\u05e8 \u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d1\u05d2\u05d5\u05d3\u05dc 3x3 \u05e9\u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d1\u05d4 \u05d4\u05dd 7?", "type": "many_choice", "answers": [{"answer": "np.array([[7]*3]*3)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.full((3,3), 7)", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "np.ones((3,3)) * 7", "correct": false, "feedback": "\u05e0\u05db\u05d5\u05df, \u05d0\u05d1\u05dc \u05dc\u05d0 \u05e8\u05e7"}, {"answer": "\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -1972,8 +1964,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("YfrCBvDzkiZM")) {
-    show_questions(questionsYfrCBvDzkiZM, YfrCBvDzkiZM);
+  if (document.getElementById("HNHXbczojBfZ")) {
+    show_questions(questionsHNHXbczojBfZ, HNHXbczojBfZ);
   } else {
     setTimeout(try_show, 200);
   }
@@ -2041,8 +2033,8 @@ function try_show() {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="EPHAjzNCDtvA" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#EPHAjzNCDtvA {
+<div class="output text_html"><div id="UOPaPtGpunUN" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#UOPaPtGpunUN {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -2259,7 +2251,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsEPHAjzNCDtvA=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05dc\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d5\u05ea \u05d9\u05d7\u05d6\u05d9\u05e8\u05d5 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05db\u05ea\u05d9\u05d1\u05d4 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9\u05ea"}]}];
+</style></div><script type="application/javascript">var questionsUOPaPtGpunUN=[{"question": "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df: a = np.array([1, 3, 5, 7, 9]) \u05d0\u05d9\u05dc\u05d5 \u05e4\u05e7\u05d5\u05d3\u05d5\u05ea \u05d9\u05d7\u05d6\u05d9\u05e8\u05d5 \u05d0\u05ea \u05db\u05dc \u05d4\u05d0\u05d9\u05d1\u05e8\u05d9\u05dd \u05d4\u05d2\u05d3\u05d5\u05dc\u05d9\u05dd \u05de\u05be4?", "type": "many_choice", "answers": [{"answer": "a[a > 4]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df"}, {"answer": "a[4:]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05d6\u05d5 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05de\u05e2\u05e8\u05da \u05d4\u05d7\u05dc \u05de\u05d4\u05d0\u05d9\u05e0\u05d3\u05e7\u05e1 \u05d44"}, {"answer": "a[a >= 5]", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df"}, {"answer": "a[> 4]", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df, \u05db\u05ea\u05d9\u05d1\u05d4 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9\u05ea"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -3322,8 +3314,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("EPHAjzNCDtvA")) {
-    show_questions(questionsEPHAjzNCDtvA, EPHAjzNCDtvA);
+  if (document.getElementById("UOPaPtGpunUN")) {
+    show_questions(questionsUOPaPtGpunUN, UOPaPtGpunUN);
   } else {
     setTimeout(try_show, 200);
   }
@@ -3726,8 +3718,8 @@ float32
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="IniBRVVYOxOI" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#IniBRVVYOxOI {
+<div class="output text_html"><div id="tGBwPTUhqmYj" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#tGBwPTUhqmYj {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -3944,7 +3936,7 @@ float32
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsIniBRVVYOxOI=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionstGBwPTUhqmYj=[{"question": "\u05de\u05d4 \u05d4\u05d4\u05d1\u05d3\u05dc \u05d1\u05d9\u05df x * y \u05dc\u05bex.dot(y) \u05d1\u05beNumPy \u05db\u05d0\u05e9\u05e8 x \u05d5\u05bey \u05d4\u05df \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea?", "type": "many_choice", "answers": [{"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea \u05d5\u05bedot \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "* \u05e2\u05d5\u05e9\u05d4 \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8 \u05d5\u05bedot \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05de\u05d8\u05e8\u05d9\u05e6\u05d5\u05ea", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05e9\u05ea\u05d9\u05d4\u05df \u05e2\u05d5\u05e9\u05d5\u05ea \u05db\u05e4\u05dc \u05d0\u05d9\u05d1\u05e8\u05be\u05d0\u05d9\u05d1\u05e8", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -5007,8 +4999,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("IniBRVVYOxOI")) {
-    show_questions(questionsIniBRVVYOxOI, IniBRVVYOxOI);
+  if (document.getElementById("tGBwPTUhqmYj")) {
+    show_questions(questionstGBwPTUhqmYj, tGBwPTUhqmYj);
   } else {
     setTimeout(try_show, 200);
   }
@@ -5076,9 +5068,7 @@ function try_show() {
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[19 22]
  [43 50]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[19 22]
+[[19 22]
  [43 50]]
 </pre></div>
 </div>
@@ -5160,9 +5150,6 @@ function try_show() {
  [ 5  5  7]
  [ 8  8 10]
  [11 11 13]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -5280,20 +5267,32 @@ function try_show() {
 <section id="row-wise">
 <h4>הוספת וקטור לכל שורה (Row-wise)<a class="headerlink" href="#row-wise" title="Link to this heading">#</a></h4>
 <p>כאשר ממד הווקטור מתאים למספר העמודות במטריצה, ניתן להוסיף אותו לכל שורה באמצעות Broadcasting.</p>
-<p>x = np.array([[1, 2, 3],
-[4, 5, 6]])              # shape (2,3)</p>
-<p>row_added = x + v                      # (2,3) + (3,) -&gt; (2,3)
-print(row_added)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>              <span class="c1"># shape (2,3)</span>
+
+<span class="n">row_added</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">v</span>                      <span class="c1"># (2,3) + (3,) -&gt; (2,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row_added</span><span class="p">)</span>
+
+<span class="c1"># Explicit broadcasting with an added row axis:</span>
+<span class="n">row_added2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>            <span class="c1"># (2,3) + (1,3) -&gt; (2,3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row_added2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2 4 6]
+ [5 7 9]]
+[[2 4 6]
+ [5 7 9]]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-</section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="explicit-broadcasting-with-an-added-row-axis">
-<h1>Explicit broadcasting with an added row axis:<a class="headerlink" href="#explicit-broadcasting-with-an-added-row-axis" title="Link to this heading">#</a></h1>
-<p>row_added2 = x + v[None, :]            # (2,3) + (1,3) -&gt; (2,3)
-print(row_added2)</p>
 <section id="column-wise">
-<h2>הוספת וקטור לכל עמודה (Column-wise)<a class="headerlink" href="#column-wise" title="Link to this heading">#</a></h2>
+<h4>הוספת וקטור לכל עמודה (Column-wise)<a class="headerlink" href="#column-wise" title="Link to this heading">#</a></h4>
 <p>ניתן להוסיף וקטור באורך מספר השורות לכל עמודה. אפשר לעשות זאת ע”י טרנספוזיציה או ע”י שינוי צורה מפורש של הווקטור לעמודה.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5308,21 +5307,17 @@ print(row_added2)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">46</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Using transpose trick</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">col_added</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>                <span class="c1"># (3,2)-&gt;(3,2), then back to (2,3)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">col_added</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># More direct and readable:</span>
-
-<span class="ne">ValueError</span>: operands could not be broadcast together with shapes (3,4) (2,) 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 5  6  7]
+ [ 9 10 11]]
+[[ 5  6  7]
+ [ 9 10 11]]
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 <section id="scalar-broadcasting">
-<h3>כפל בסקלר (Scalar) באמצעות Broadcasting<a class="headerlink" href="#scalar-broadcasting" title="Link to this heading">#</a></h3>
+<h4>כפל בסקלר (Scalar) באמצעות Broadcasting<a class="headerlink" href="#scalar-broadcasting" title="Link to this heading">#</a></h4>
 <p>סקלר מתנהג כמו מערך ריק ממדים ומתרחב לצורת המטריצה.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5338,11 +5333,20 @@ print(row_added2)</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2  4  6]
+ [ 8 10 12]]
+[[0.5 1.  1.5]
+ [2.  2.5 3. ]]
+[[4 5 6]
+ [7 8 9]]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-</section>
 <section id="id10">
-<h2>דוגמאות נוספות של Broadcasting שימושי<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h4>דוגמאות נוספות של Broadcasting שימושי<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>הכפלת כל עמודה במשקל שונה (למשל לנרמול/סקיילינג פיצ’רים).</p></li>
 <li><p>החסרת ממוצע עמודות (Centering) — פעולת הכנה נפוצה לניתוח נתונים.</p></li>
@@ -5374,12 +5378,26 @@ print(row_added2)</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  1.  20. 300.]
+ [  4.  50. 600.]]
+[[-1.5 -1.5 -1.5]
+ [ 1.5  1.5  1.5]]
+[[0.26726124 0.53452248 0.80178373]
+ [0.45584231 0.56980288 0.68376346]]
+[[ -6  10   4]
+ [  0   0   0]
+ [  3  -5  -2]
+ [-12  20   8]]
+</pre></div>
+</div>
+</div>
 </div>
 <p>בדרך כלל broadcasting הופך את הקוד לקצר ומהיר יותר — מומלץ להשתמש בו כשאפשר.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="IKLIbuTLhrUf" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#IKLIbuTLhrUf {
+<div class="output text_html"><div id="XFKvylLWzNwz" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#XFKvylLWzNwz {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -5596,7 +5614,7 @@ print(row_added2)</p>
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsIKLIbuTLhrUf=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
+</style></div><script type="application/javascript">var questionsXFKvylLWzNwz=[{"question": "\u05de\u05d4 \u05d9\u05d3\u05e4\u05d9\u05e1 \u05e7\u05d8\u05e2 \u05d4\u05e7\u05d5\u05d3 \u05d4\u05d1\u05d0?<br><br><code>a = np.ones((2, 1, 5))</code><br><br><code>b = np.ones((1, 4, 5))</code><br><br><code>print((a+b).shape)</code>", "type": "many_choice", "answers": [{"answer": "(2, 4, 5)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df!"}, {"answer": "(2, 1, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "(1, 4, 5)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}, {"answer": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05e6\u05e2 broadcasting", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df"}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -6659,8 +6677,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("IKLIbuTLhrUf")) {
-    show_questions(questionsIKLIbuTLhrUf, IKLIbuTLhrUf);
+  if (document.getElementById("XFKvylLWzNwz")) {
+    show_questions(questionsXFKvylLWzNwz, XFKvylLWzNwz);
   } else {
     setTimeout(try_show, 200);
   }
@@ -6672,6 +6690,8 @@ function try_show() {
 }
 </script></div>
 </div>
+</section>
+</section>
 </section>
 </section>
 
@@ -6739,7 +6759,6 @@ function try_show() {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 7 - Numpy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ספריות בפייתון</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">עקרונות עבודה מומלצים</a></li>
 </ul>
@@ -6766,22 +6785,14 @@ function try_show() {
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">דוגמאות נוספות:</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-product-broadcasting">כפל חיצוני (Outer Product) באמצעות Broadcasting</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#row-wise">הוספת וקטור לכל שורה (Row-wise)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#column-wise">הוספת וקטור לכל עמודה (Column-wise)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-broadcasting">כפל בסקלר (Scalar) באמצעות Broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">דוגמאות נוספות של Broadcasting שימושי</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-broadcasting-with-an-added-row-axis">Explicit broadcasting with an added row axis:</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#column-wise">הוספת וקטור לכל עמודה (Column-wise)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-broadcasting">כפל בסקלר (Scalar) באמצעות Broadcasting</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">דוגמאות נוספות של Broadcasting שימושי</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
