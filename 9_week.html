@@ -1,0 +1,1921 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>שבוע 9 - Matplotlib &amp; SciPy &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/rtl.css?v=dc79e408" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '9_week';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/tau.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/tau.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    ברוכים הבאים לקורס מחשבים לפיסיקאים
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0_intro.html">מנהלות</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_week.html">שבוע 1 - היכרות עם פייתון ומחברות ג’ופיטר</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_week.html">שבוע 2 - פונקציות ותנאים</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_week.html">שבוע 3 - רשימות וטווחים</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="4_week.html">שבוע 4 - לולאות</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5_week.html">שבוע 5 - השמות ופונקציות חלק ב</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_week.html">שבוע 6 - מבני נתונים וקבצים</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="7_week.html">שבוע 7 - Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_week.html">שבוע 8 - Numpy מתקדם</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/TauInnov/computers-for-physics/master?urlpath=lab/tree/9_week.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/TauInnov/computers-for-physics/blob/master/9_week.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/TauInnov/computers-for-physics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/TauInnov/computers-for-physics/issues/new?title=Issue%20on%20page%20%2F9_week.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/9_week.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>שבוע 9 - Matplotlib & SciPy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 9 - Matplotlib &amp; SciPy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-1-3">חלק א’ — Matplotlib (≈ 1/3)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. אנטומיית תרשימים</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">תצוגה, גודל, ופריסות</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2. סוגי גרפים שכיחים בפיזיקה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colormaps">3. התאמות מתקדמות: סולמות, טיקים, מקרא, סימונים, צירים תאומים, colormaps, ושמירה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">שאלות רב־ברירה — חלק א’ (Matplotlib)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-2-3">חלק ב’ — SciPy (≈ 2/3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-numpy">1. מה זה SciPy + תזכורת קצרה ל-NumPy + קבועים פיזיקליים</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">4. אינטרפולציה והחלקה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">5. עיבוד אותות ו-FFT</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">6. אלגברה ליניארית מדעית</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">7. סטטיסטיקה בסיסית למדידות</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capstone">דוגמאות מסכמות (Capstone)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-t-l">דוגמה 1 — מטוטלת: הערכת <span class="math notranslate nohighlight">\(g\)</span> מהתלות <span class="math notranslate nohighlight">\(T(L)\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">שאלות רב־ברירה (דוגמה 1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">שאלות רב־ברירה (דוגמה 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">נספח קצר — טיפים לשמירת תרשימים</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="matplotlib-scipy">
+<h1>שבוע 9 - Matplotlib &amp; SciPy<a class="headerlink" href="#matplotlib-scipy" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="markdown">
+<h1>%% [markdown]<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-1-3">
+<h1>חלק א’ — Matplotlib (≈ 1/3)<a class="headerlink" href="#matplotlib-1-3" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>1. אנטומיית תרשימים<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p><strong>מושגים מרכזיים:</strong></p>
+<ul class="simple">
+<li><p><strong>Figure</strong> — מכלול התרשים (הדף).</p></li>
+<li><p><strong>Axes</strong> — מערכת צירים אחת (או יותר) בתוך ה־Figure.</p></li>
+<li><p><strong>Axis</strong> — ציר <span class="math notranslate nohighlight">\(x\)</span> או <span class="math notranslate nohighlight">\(y\)</span> בתוך ה־Axes.</p></li>
+</ul>
+<p>יש שתי דרכים עיקריות לעבוד:</p>
+<ol class="arabic simple">
+<li><p><strong>סגנון Pyplot</strong> (מהיר): <code class="docutils literal notranslate"><span class="pre">plt.plot(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code></p></li>
+<li><p><strong>מודל אובייקטי (מומלץ לפרויקטים)</strong>: יצירת <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code> ואז שימוש ב־<code class="docutils literal notranslate"><span class="pre">ax.plot(...)</span></code> וכן הלאה.</p></li>
+</ol>
+<p>נוסיף כותרות, תוויות, ונטמיע נוסחאות עם <span class="math notranslate nohighlight">\( \LaTeX \)</span> בכותרת/צירים.
+ראשית, נייבא את הספרייה ונאתחל פרמטרים</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core imports used across the notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># For SciPy sections:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">optimize</span><span class="p">,</span> <span class="n">interpolate</span><span class="p">,</span> <span class="n">fft</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">linalg</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">constants</span>
+
+<span class="c1"># Global plotting defaults (feel free to tweak)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">),</span>
+    <span class="s2">&quot;figure.dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+    <span class="s2">&quot;axes.grid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">11</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>כעת ניצור גרף פשוט</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Quickstart: object-oriented API</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;גל סינוס: $y=\sin(x)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$ (rad)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/570715923bd4d3cf10056aafcc8f172d5c312b03264fa7d32bf5d52f248efbcd.png" src="_images/570715923bd4d3cf10056aafcc8f172d5c312b03264fa7d32bf5d52f248efbcd.png" />
+</div>
+</div>
+<section id="id2">
+<h3>תצוגה, גודל, ופריסות<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>גודל ו-DPI</strong>: אפשר לקבוע יחס גובה/רוחב וחדות.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">tight_layout()</span></code> / <code class="docutils literal notranslate"><span class="pre">constrained_layout=True</span></code></strong>: דחיסה חכמה של רכיבי התרשים.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">savefig</span></code></strong>: שמירת תרשימים ל־PNG/SVG/PDF באיכות הגשה.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Figure size, dpi, layout, and saving</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;גל קוסינוס: $y=\cos(x)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$ (rad)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to save a publication-quality figure:</span>
+<span class="c1"># fig.savefig(&quot;cosine_plot.pdf&quot;)  # vector format (great for print)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8a1a187bc3aee01c8fc994bc68b4b8e090ef2eeb325f3ca25c6ea6e4dae53db4.png" src="_images/8a1a187bc3aee01c8fc994bc68b4b8e090ef2eeb325f3ca25c6ea6e4dae53db4.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>%% [markdown]<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<section id="id4">
+<h2>2. סוגי גרפים שכיחים בפיזיקה<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>נראה מספר סוגים שימושיים:</p>
+<ul class="simple">
+<li><p><strong>קווי</strong>: <code class="docutils literal notranslate"><span class="pre">plot</span></code> להשוואת מערכי נתונים;</p></li>
+<li><p><strong>פיזור</strong>: <code class="docutils literal notranslate"><span class="pre">scatter</span></code> לקשר בין שתי מדידות;</p></li>
+<li><p><strong>היסטוגרמה</strong>: <code class="docutils literal notranslate"><span class="pre">hist</span></code> לבדיקת התפלגות;</p></li>
+<li><p><strong>מפה/תמונה</strong>: <code class="docutils literal notranslate"><span class="pre">imshow</span></code>/<code class="docutils literal notranslate"><span class="pre">matshow</span></code> להצגת שדה (למשל טמפרטורה על רשת);</p></li>
+<li><p><strong>שגיאות</strong>: <code class="docutils literal notranslate"><span class="pre">errorbar</span></code> למידע ניסויי עם אי־ודאות.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Lines vs scatter vs hist vs imshow vs errorbar — compact demo</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">1.0</span>
+<span class="n">y_noisy</span> <span class="o">=</span> <span class="n">y_true</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Line</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_noisy</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;noisy&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Line&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Scatter</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_noisy</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Scatter&quot;</span><span class="p">)</span>
+
+<span class="c1"># Histogram</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Histogram&quot;</span><span class="p">)</span>
+
+<span class="c1"># Imshow (heatmap-like)</span>
+<span class="n">grid_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">grid_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">grid_x</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">grid_x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">grid_x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">grid_y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">grid_y</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+                     <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Imshow (Gaussian field)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># Errorbar</span>
+<span class="n">yerr</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_noisy</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Errorbar&quot;</span><span class="p">)</span>
+
+<span class="c1"># Empty slot for future (e.g., bar or boxplot)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;Use this slot for extra plot&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e7264b3a0bb00a2b360b095683e59c595f40b24a0df938f3bbc64722bd30eb61.png" src="_images/e7264b3a0bb00a2b360b095683e59c595f40b24a0df938f3bbc64722bd30eb61.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>%% [markdown]<a class="headerlink" href="#id5" title="Link to this heading">#</a></h1>
+<section id="colormaps">
+<h2>3. התאמות מתקדמות: סולמות, טיקים, מקרא, סימונים, צירים תאומים, colormaps, ושמירה<a class="headerlink" href="#colormaps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>סולמות לוגריתמיים</strong>: <code class="docutils literal notranslate"><span class="pre">ax.set_xscale('log')</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_yscale('log')</span></code> — שימושי לתופעות המוצגות על פני סדרי גודל.</p></li>
+<li><p><strong>טיקים ותוויות</strong>: שליטה בתצוגת מספרים (מדעי/אקספוננציאלי), והוספת יחידות.</p></li>
+<li><p><strong>מקרא ו־annotations</strong>: הוספת הסברים וחצים לנקודות חשובות.</p></li>
+<li><p><strong>ציר תאום</strong>: <code class="docutils literal notranslate"><span class="pre">ax.twinx()</span></code> להצגת שתי יחידות שונות על אותו גרף.</p></li>
+<li><p><strong>Colormaps</strong>: בחירה מודעת למידע מדעי (למשל <code class="docutils literal notranslate"><span class="pre">viridis</span></code>, <code class="docutils literal notranslate"><span class="pre">inferno</span></code>).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Log scales, annotations, twin axis</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$y=\frac</span><span class="si">{1}</span><span class="s2">{1+x^2}$&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$ (log scale)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Annotation</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;knee ~ x=1&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
+             <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;axes fraction&quot;</span><span class="p">,</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">))</span>
+
+<span class="c1"># Twin axis (for demonstration)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\pi y$ (twin)&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/44c6ea46d8a8889aa92fde01e42d45a87c7471cafd457c36b90249fbdb502a2f.png" src="_images/44c6ea46d8a8889aa92fde01e42d45a87c7471cafd457c36b90249fbdb502a2f.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>%% [markdown]<a class="headerlink" href="#id6" title="Link to this heading">#</a></h1>
+<section id="matplotlib">
+<h2>שאלות רב־ברירה — חלק א’ (Matplotlib)<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>אם ברצוננו להציג נתונים על פני שלושה סדרי גודל בציר <span class="math notranslate nohighlight">\(x\)</span>, הבחירה הטובה היא:<br />
+A. <code class="docutils literal notranslate"><span class="pre">ax.set_xscale('linear')</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">ax.set_xscale('log')</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">ax.set_yscale('log')</span></code><br />
+D. להשאיר ברירת מחדל</p></li>
+<li><p>מה יוצר אובייקט צירים חדש לשיטה המומלצת?<br />
+A. <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.axes()</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">plt.plot(...)</span></code></p></li>
+<li><p>להצגת שדה דו־ממדי (כמו טמפרטורה על רשת), מה מתאים?<br />
+A. <code class="docutils literal notranslate"><span class="pre">plot</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">scatter</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">hist</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">imshow</span></code></p></li>
+</ol>
+</section>
+<section id="id7">
+<h2>איור (סקיצה)<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>מקמו כאן תמונה/איור סכמטי שמסביר את ההבדל בין Figure, Axes, Axis (אפשר לצייר ידנית ולהדביק).</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
+<h1>%% [markdown]<a class="headerlink" href="#id8" title="Link to this heading">#</a></h1>
+<section id="scipy-2-3">
+<h2>חלק ב’ — SciPy (≈ 2/3)<a class="headerlink" href="#scipy-2-3" title="Link to this heading">#</a></h2>
+</section>
+<section id="scipy-numpy">
+<h2>1. מה זה SciPy + תזכורת קצרה ל-NumPy + קבועים פיזיקליים<a class="headerlink" href="#scipy-numpy" title="Link to this heading">#</a></h2>
+<p><strong>SciPy</strong> מוסיפה לאקוסיסטם של NumPy כלים נומריים מתקדמים: אינטגרציה, פתרון ODEs, אופטימיזציה, אינטרפולציה, FFT, עיבוד אותות, אלגברה ליניארית, סטטיסטיקה ועוד.<br />
+<strong>קבועים פיזיקליים</strong> זמינים ב־<code class="docutils literal notranslate"><span class="pre">scipy.constants</span></code>: למשל <span class="math notranslate nohighlight">\(c, h, k_B, G\)</span> וכד’.</p>
+<p>נזכיר וקטוריזציה ו־broadcasting: פעולות מתמטיות על מערכי NumPy ללא לולאות פייתון איטיות (ברוב המקרים).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Constants and quick NumPy recap</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">c</span>        <span class="c1"># speed of light (m/s)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">h</span>        <span class="c1"># Planck constant (J s)</span>
+<span class="n">kB</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">Boltzmann</span>  <span class="c1"># Boltzmann (J/K)</span>
+
+<span class="c1"># Vectorized operations example</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># y = (x+1)^2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Some constants:&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="n">h</span><span class="p">,</span> <span class="s2">&quot;kB&quot;</span><span class="p">:</span> <span class="n">kB</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: [0.   0.25 0.5  0.75 1.  ]
+y: [1.     1.5625 2.25   3.0625 4.    ]
+Some constants: {&#39;c&#39;: 299792458.0, &#39;h&#39;: 6.62607015e-34, &#39;kB&#39;: 1.380649e-23}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id9">
+<h1>%% [markdown]<a class="headerlink" href="#id9" title="Link to this heading">#</a></h1>
+<section id="id10">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>היכן נמצא <span class="math notranslate nohighlight">\(k_B\)</span>?<br />
+A. <code class="docutils literal notranslate"><span class="pre">numpy.constants.kB</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">scipy.constants.Boltzmann</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">scipy.constants.k</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">math.constants.kB</span></code></p></li>
+<li><p>מהי וקטוריזציה?<br />
+A. חישוב רק עבור וקטורים מאורך 3<br />
+B. שימוש ב־for כפול בלולאה<br />
+C. ביצוע פעולות על מערכים שלמים ללא לולאות פייתון<br />
+D. שימוש ב־<code class="docutils literal notranslate"><span class="pre">vector</span></code> ממודול <code class="docutils literal notranslate"><span class="pre">collections</span></code></p></li>
+</ol>
+</section>
+<section id="id11">
+<h2>איור (סקיצה)<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>תרשים סכמטי של זרימת נתונים: מדידה → NumPy (עיבוד) → SciPy (ניתוח) → Matplotlib (הצגה).</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id12">
+<h1>%% [markdown]<a class="headerlink" href="#id12" title="Link to this heading">#</a></h1>
+<section id="odes">
+<h2>2. אינטגרציה וגזירה נומרית + ODEs<a class="headerlink" href="#odes" title="Link to this heading">#</a></h2>
+<p><strong>אינטגרציה חד־ממדית:</strong> <code class="docutils literal notranslate"><span class="pre">integrate.quad</span></code> עבור <span class="math notranslate nohighlight">\(\int_a^b f(x)\,dx\)</span>.<br />
+<strong>טרפזים/מצטבר:</strong> <code class="docutils literal notranslate"><span class="pre">numpy.trapz</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy.integrate.cumtrapz</span></code> כדגמים פשוטים.<br />
+<strong>משוואות דיפרנציאליות רגילות (ODE):</strong><br />
+נפתור בעיה כללית <span class="math notranslate nohighlight">\( \dot{\mathbf{y}} = f(t,\mathbf{y}) \)</span> עם <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>, ונראה דוגמת מתנד הרמוני <span class="math notranslate nohighlight">\( \ddot{x} + \omega^2 x = 0 \)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Numeric integration: quad vs trapz</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Gaussian</span>
+
+<span class="n">I_quad</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>  <span class="c1"># integral from 0 to infinity</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">I_trapz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">xs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quad integral ~&quot;</span><span class="p">,</span> <span class="n">I_quad</span><span class="p">,</span> <span class="s2">&quot;estimated error ~&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;trapz integral ~&quot;</span><span class="p">,</span> <span class="n">I_trapz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>quad integral ~ 0.8862269254527579 estimated error ~ 7.10131839047246e-09
+trapz integral ~ 0.8862269117883661
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8417/2073085679.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  I_trapz = np.trapz(f(xs), xs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># ODE: simple harmonic oscillator x&#39;&#39; + w^2 x = 0</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>  <span class="c1"># rad/s</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sho</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="c1"># y = [x, v]</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dxdt</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="n">dvdt</span> <span class="o">=</span> <span class="o">-</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dxdt</span><span class="p">,</span> <span class="n">dvdt</span><span class="p">]</span>
+
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>        <span class="c1"># seconds</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>          <span class="c1"># initial displacement 1, zero velocity</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">sho</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">t_span</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">sol</span><span class="p">(</span><span class="n">t</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;מתנד הרמוני: $x&#39;&#39;+\omega^2 x=0$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ed597a76b0c31553a00141d663df49ad20c206005d9d5d09ba217145709c6695.png" src="_images/ed597a76b0c31553a00141d663df49ad20c206005d9d5d09ba217145709c6695.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id13">
+<h1>%% [markdown]<a class="headerlink" href="#id13" title="Link to this heading">#</a></h1>
+<section id="id14">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>איזו פונקציה תחשב <span class="math notranslate nohighlight">\(\int_0^\infty e^{-x^2}\,dx\)</span> בדיוק נומרי טוב?<br />
+A. <code class="docutils literal notranslate"><span class="pre">np.sum</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">integrate.quad</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">np.mean</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code></p></li>
+<li><p>עבור <span class="math notranslate nohighlight">\(x''+\omega^2 x=0\)</span>, מה נשתמש בו ל־ODE?<br />
+A. <code class="docutils literal notranslate"><span class="pre">optimize.minimize</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">interpolate.interp1d</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">integrate.solve_ivp</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code></p></li>
+</ol>
+</section>
+<section id="id15">
+<h2>איור (סקיצה)<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>שרטטו סכמת וקטור מצב <span class="math notranslate nohighlight">\(\mathbf{y}=[x,v]\)</span> והקשר בין נגזרות לזמן.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id16">
+<h1>%% [markdown]<a class="headerlink" href="#id16" title="Link to this heading">#</a></h1>
+<section id="id17">
+<h2>3. אופטימיזציה, שורשים, והתאמת עקומות<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p><strong>שורשים:</strong> <code class="docutils literal notranslate"><span class="pre">optimize.root_scalar</span></code> לאיתור <span class="math notranslate nohighlight">\(x\)</span> כך ש־<span class="math notranslate nohighlight">\(f(x)=0\)</span>.<br />
+<strong>מינימום:</strong> <code class="docutils literal notranslate"><span class="pre">minimize_scalar</span></code> (חד־ממדי), <code class="docutils literal notranslate"><span class="pre">minimize</span></code> (רב־ממדי).<br />
+<strong>התאמת עקומות ניסוי:</strong> <code class="docutils literal notranslate"><span class="pre">optimize.curve_fit</span></code> — התאמה לא־ליניארית לנתונים <span class="math notranslate nohighlight">\((x,y)\)</span> והפקת טבלת covariance להערכת אי־ודאות.</p>
+<p>נציג התאמה לקו <span class="math notranslate nohighlight">\(y=ax+b\)</span> ונדגים הוצאת שגיאות על <span class="math notranslate nohighlight">\(a,b\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Root finding example: solve x*cos(x) = 0 near x ~ pi/2</span>
+<span class="n">g</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">root_scalar</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;root near (0.1,2.0):&quot;</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+
+<span class="c1"># Curve fitting example: y = a*x + b</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">a_true</span><span class="p">,</span> <span class="n">b_true</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a_true</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b_true</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">linear_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">linear_model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span> <span class="o">=</span> <span class="n">popt</span>
+<span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated a=</span><span class="si">{</span><span class="n">a_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fit&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Linear fit with curve_fit&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root near (0.1,2.0): 1.5707963267948963
+Estimated a=2.139 ± 0.050, b=0.459 ± 0.288
+</pre></div>
+</div>
+<img alt="_images/c2ac4aedd0b753493e4a7fdae33f79e5e331923fda0fd0c62f2181fa536e0a30.png" src="_images/c2ac4aedd0b753493e4a7fdae33f79e5e331923fda0fd0c62f2181fa536e0a30.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id18">
+<h1>%% [markdown]<a class="headerlink" href="#id18" title="Link to this heading">#</a></h1>
+<section id="id19">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>מה מחזירה <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> בנוסף לפרמטרים?<br />
+A. מטריצת ג’ייקוביאן<br />
+B. טבלת covariance של הפרמטרים<br />
+C. גרף שיוריים<br />
+D. שום דבר נוסף</p></li>
+<li><p>למציאת <span class="math notranslate nohighlight">\(x\)</span> כך ש־<span class="math notranslate nohighlight">\(f(x)=0\)</span> במרווח ידוע, נעדיף:<br />
+A. <code class="docutils literal notranslate"><span class="pre">root_scalar</span></code> עם <code class="docutils literal notranslate"><span class="pre">bracket=(a,b)</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">minimize</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">interp1d</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">rfft</span></code></p></li>
+</ol>
+</section>
+<section id="id20">
+<h2>איור (סקיצה)<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>סכימה של שיוריים <span class="math notranslate nohighlight">\(r_i=y_i - \hat{y}_i\)</span> והמשמעות שלהם בבדיקת איכות התאמה.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id21">
+<h1>%% [markdown]<a class="headerlink" href="#id21" title="Link to this heading">#</a></h1>
+<section id="id22">
+<h2>4. אינטרפולציה והחלקה<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<p><strong>אינטרפולציה חד־ממדית:</strong> <code class="docutils literal notranslate"><span class="pre">interpolate.interp1d(x,</span> <span class="pre">y,</span> <span class="pre">kind='linear'|'cubic'|...)</span></code> — קירוב ערכים בין נקודות מדידה.<br />
+<strong>Spline</strong>: <code class="docutils literal notranslate"><span class="pre">UnivariateSpline</span></code> מאפשר החלקה (smoothing) באמצעות פרמטר <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Interpolation demo</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">f_lin</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">f_cub</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">)</span>
+
+<span class="n">xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;samples&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf</span><span class="p">,</span> <span class="n">f_lin</span><span class="p">(</span><span class="n">xf</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf</span><span class="p">,</span> <span class="n">f_cub</span><span class="p">(</span><span class="n">xf</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Interpolation: linear vs cubic&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/78fd09773dde268d85f23cdf0caa1c83a192d85daae00c2e71931f40df9fdd1c.png" src="_images/78fd09773dde268d85f23cdf0caa1c83a192d85daae00c2e71931f40df9fdd1c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Spline smoothing demo</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="n">spline</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">UnivariateSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>  <span class="c1"># smoothing parameter</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;noisy samples&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf</span><span class="p">,</span> <span class="n">spline</span><span class="p">(</span><span class="n">xf</span><span class="p">),</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;smoothed spline&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Smoothing with UnivariateSpline&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dabb686ac3c5dff7a464a1131ef3ac0c91e150373c4526647579c93b8b2fce8e.png" src="_images/dabb686ac3c5dff7a464a1131ef3ac0c91e150373c4526647579c93b8b2fce8e.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id23">
+<h1>%% [markdown]<a class="headerlink" href="#id23" title="Link to this heading">#</a></h1>
+<section id="id24">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>איזה פרמטר ב־<code class="docutils literal notranslate"><span class="pre">UnivariateSpline</span></code> שולט על החלקה?<br />
+A. <code class="docutils literal notranslate"><span class="pre">k</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">s</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">kind</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">bounds_error</span></code></p></li>
+<li><p>באינטרפולציה קובית, <code class="docutils literal notranslate"><span class="pre">kind=</span></code> צריך להיות:<br />
+A. <code class="docutils literal notranslate"><span class="pre">&quot;cubic&quot;</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">&quot;quadratic&quot;</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">&quot;spline&quot;</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">&quot;poly3&quot;</span></code></p></li>
+</ol>
+</section>
+<section id="id25">
+<h2>איור (סקיצה)<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>סכימה של דגימות בדידות, אינטרפולציה ליניארית לעומת קובית, והחלקת spline.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id26">
+<h1>%% [markdown]<a class="headerlink" href="#id26" title="Link to this heading">#</a></h1>
+<section id="fft">
+<h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#fft" title="Link to this heading">#</a></h2>
+<p><strong>FFT חד־צדדי:</strong> <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code> לאותים ממשיים; תדירויות ב־<code class="docutils literal notranslate"><span class="pre">fft.rfftfreq(N,</span> <span class="pre">d=1/fs)</span></code>.<br />
+<strong>נייקוויסט:</strong> <span class="math notranslate nohighlight">\(f_N = \tfrac{f_s}{2}\)</span>.<br />
+<strong>החלקה בסיסית:</strong> <code class="docutils literal notranslate"><span class="pre">signal.savgol_filter</span></code>.<br />
+<strong>איתור פסגות:</strong> <code class="docutils literal notranslate"><span class="pre">signal.find_peaks</span></code>.</p>
+<p>ננתח אות סינוס מרובע תדרים ועם רעש, נזהה פסגות תדר.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id27">
+<h1>%% [markdown]<a class="headerlink" href="#id27" title="Link to this heading">#</a></h1>
+<section id="id28">
+<h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#id28" title="Link to this heading">#</a></h2>
+<p><strong>FFT חד־צדדי:</strong> <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code> לאותים ממשיים; תדירויות ב־<code class="docutils literal notranslate"><span class="pre">fft.rfftfreq(N,</span> <span class="pre">d=1/fs)</span></code>.<br />
+<strong>נייקוויסט:</strong> <span class="math notranslate nohighlight">\(f_N = \tfrac{f_s}{2}\)</span>.<br />
+<strong>החלקה בסיסית:</strong> <code class="docutils literal notranslate"><span class="pre">signal.savgol_filter</span></code>.<br />
+<strong>איתור פסגות:</strong> <code class="docutils literal notranslate"><span class="pre">signal.find_peaks</span></code>.</p>
+<p>ננתח אות סינוס מרובע תדרים ועם רעש, נזהה פסגות תדר.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Signal + FFT + peak finding</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mf">500.0</span>  <span class="c1"># Hz</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">2.0</span>     <span class="c1"># seconds</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mf">0.7</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">50</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">120</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="c1"># FFT</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+<span class="n">ff</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">amp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yf</span><span class="p">)</span><span class="o">/</span><span class="n">t</span><span class="o">.</span><span class="n">size</span>
+
+<span class="c1"># Smooth time signal (optional)</span>
+<span class="n">sig_smooth</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">savgol_filter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">polyorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Peak detection on spectrum</span>
+<span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">amp</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span><span class="o">*</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sig_smooth</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;smoothed&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Time signal&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;spectrum&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="n">peaks</span><span class="p">],</span> <span class="n">amp</span><span class="p">[</span><span class="n">peaks</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;peaks&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;f (Hz)&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Amplitude spectrum&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0449d256031b1aab2f55e45d9417120d9e81a796be5a29ea3f371a6f57fe148c.png" src="_images/0449d256031b1aab2f55e45d9417120d9e81a796be5a29ea3f371a6f57fe148c.png" />
+<img alt="_images/21f503228d85cdc51062a070bf9895ce3242016fc5eff376762d80cd6727f4a9.png" src="_images/21f503228d85cdc51062a070bf9895ce3242016fc5eff376762d80cd6727f4a9.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id29">
+<h1>%% [markdown]<a class="headerlink" href="#id29" title="Link to this heading">#</a></h1>
+<section id="id30">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id30" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>תדירות נייקוויסט היא:<br />
+A. <span class="math notranslate nohighlight">\(f_s\)</span><br />
+B. <span class="math notranslate nohighlight">\(2f_s\)</span><br />
+C. <span class="math notranslate nohighlight">\(f_s/2\)</span><br />
+D. <span class="math notranslate nohighlight">\(1/f_s\)</span></p></li>
+<li><p>איזו פונקציה מתאימה לאיתור פסגות בספקטרום?<br />
+A. <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">signal.find_peaks</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">integrate.quad</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code></p></li>
+</ol>
+</section>
+<section id="id31">
+<h2>איור (סקיצה)<a class="headerlink" href="#id31" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>גרף סכמטי של דגימה בזמן וייצוגה בתחום התדר (FFT).</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id32">
+<h1>%% [markdown]<a class="headerlink" href="#id32" title="Link to this heading">#</a></h1>
+<section id="id33">
+<h2>6. אלגברה ליניארית מדעית<a class="headerlink" href="#id33" title="Link to this heading">#</a></h2>
+<p>נפתור <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span>, ונחשב ערכים עצמיים/וקטורים עצמיים:</p>
+<ul class="simple">
+<li><p>פתרון מערכת: <code class="docutils literal notranslate"><span class="pre">linalg.solve(A,</span> <span class="pre">b)</span></code></p></li>
+<li><p>ערכים עצמיים: <code class="docutils literal notranslate"><span class="pre">linalg.eig(A)</span></code> (כללי), <code class="docutils literal notranslate"><span class="pre">linalg.eigh(A)</span></code> (סימטרי/הרמי)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Linear system + eigenvalues/eigenvectors</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>     <span class="c1"># eigenvalues &amp; eigenvectors</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution x:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigenvalues:&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="c1"># V columns are eigenvectors</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution x: [2. 3.]
+Eigenvalues: [3.61803399+0.j 1.38196601+0.j]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id34">
+<h1>%% [markdown]<a class="headerlink" href="#id34" title="Link to this heading">#</a></h1>
+<section id="id35">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id35" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>עבור מטריצה סימטרית ממשית, נעדיף:<br />
+A. <code class="docutils literal notranslate"><span class="pre">eig</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">eigh</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">svd</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">solve</span></code></p></li>
+<li><p>פתרון <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> נעשה עם:<br />
+A. <code class="docutils literal notranslate"><span class="pre">linalg.solve</span></code><br />
+B. <code class="docutils literal notranslate"><span class="pre">optimize.minimize</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">stats.ttest_ind</span></code></p></li>
+</ol>
+</section>
+<section id="id36">
+<h2>איור (סקיצה)<a class="headerlink" href="#id36" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>המחשת כיווני וקטורים עצמיים והמתיחות לאורך כיוונים אלו.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id37">
+<h1>%% [markdown]<a class="headerlink" href="#id37" title="Link to this heading">#</a></h1>
+<section id="id38">
+<h2>7. סטטיסטיקה בסיסית למדידות<a class="headerlink" href="#id38" title="Link to this heading">#</a></h2>
+<p>נדגים שימוש בתפלגות נורמלית, אומדן פרמטרים, והתאמת התפלגות לנתונים:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stats.norm</span></code> עבור PDF/CDF ודגימה אקראית.</p></li>
+<li><p>אומדן <span class="math notranslate nohighlight">\(\mu,\sigma\)</span> מנתונים, והשוואה לרגרסיה/התאמה.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Basic stats with normal distribution</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">mu_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="n">sigma_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># PDF vs histogram</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_hat</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma_hat</span><span class="p">,</span> <span class="n">mu_hat</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma_hat</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">mu_hat</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma_hat</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Normal($\mu$=</span><span class="si">{</span><span class="n">mu_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, $\sigma$=</span><span class="si">{</span><span class="n">sigma_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Histogram vs Normal PDF&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/baccf7963bf8b350dda69dfaca0043d401abb75116f160ebc475fc1ee77a24d8.png" src="_images/baccf7963bf8b350dda69dfaca0043d401abb75116f160ebc475fc1ee77a24d8.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id39">
+<h1>%% [markdown]<a class="headerlink" href="#id39" title="Link to this heading">#</a></h1>
+<section id="id40">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id40" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>מה ההבדל בין <code class="docutils literal notranslate"><span class="pre">np.std(...,</span> <span class="pre">ddof=0)</span></code> ו-<code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>?<br />
+A. אין הבדל<br />
+B. <code class="docutils literal notranslate"><span class="pre">ddof=1</span></code> נותן אומדן חסר־הטיה לסטיית תקן במדגם<br />
+C. <code class="docutils literal notranslate"><span class="pre">ddof=0</span></code> גדול יותר תמיד<br />
+D. שניהם מחזירים שונות ולא סטיית תקן</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stats.norm.pdf(x,</span> <span class="pre">loc,</span> <span class="pre">scale)</span></code> מחזירה:<br />
+A. פונקציית התפלגות מצטברת<br />
+B. צפיפות הסתברות נקודתית<br />
+C. דגימות אקראיות<br />
+D. סטיית תקן</p></li>
+</ol>
+</section>
+<section id="id41">
+<h2>איור (סקיצה)<a class="headerlink" href="#id41" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>המחשה של <span class="math notranslate nohighlight">\(68\)</span>–<span class="math notranslate nohighlight">\(95\)</span>–<span class="math notranslate nohighlight">\(99.7\%\)</span> סביב <span class="math notranslate nohighlight">\(\mu \pm \sigma, 2\sigma, 3\sigma\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id42">
+<h1>%% [markdown]<a class="headerlink" href="#id42" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="capstone">
+<h1>דוגמאות מסכמות (Capstone)<a class="headerlink" href="#capstone" title="Link to this heading">#</a></h1>
+<section id="g-t-l">
+<h2>דוגמה 1 — מטוטלת: הערכת <span class="math notranslate nohighlight">\(g\)</span> מהתלות <span class="math notranslate nohighlight">\(T(L)\)</span><a class="headerlink" href="#g-t-l" title="Link to this heading">#</a></h2>
+<p><strong>רקע:</strong> עבור זוויות קטנות, תקופת מטוטלת מאורך <span class="math notranslate nohighlight">\(L\)</span> היא בקירוב <span class="math notranslate nohighlight">\( T(L) \approx 2\pi\sqrt{\tfrac{L}{g}} \)</span>.<br />
+<strong>מטרה:</strong> בהתבסס על מדידות <span class="math notranslate nohighlight">\((L_i, T_i)\)</span> עם אי־ודאות, נאמוד את <span class="math notranslate nohighlight">\(g\)</span> בעזרת התאמה לא־ליניארית, נציג פסי שגיאה, ונבחן שיוריים.</p>
+<p>שלבים:</p>
+<ol class="arabic simple">
+<li><p>יצירת/טעינת נתוני ניסוי עם רעש.</p></li>
+<li><p>התאמה עם <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> למודל <span class="math notranslate nohighlight">\(T(L)=a\sqrt{L}\)</span> כאשר <span class="math notranslate nohighlight">\(a\approx 2\pi/\sqrt{g}\)</span> או ישירות פרמטר <span class="math notranslate nohighlight">\(g\)</span>.</p></li>
+<li><p>פסי שגיאה, שיוריים, וטווחי ביטחון.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Pendulum: estimate g from T(L)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">g_true</span> <span class="o">=</span> <span class="mf">9.81</span>
+
+<span class="c1"># Synthetic measurements</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>          <span class="c1"># meters</span>
+<span class="n">T_true</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="n">g_true</span><span class="p">)</span>
+<span class="n">sigma_T</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>       <span class="c1"># simple nonuniform uncertainty</span>
+<span class="n">T_meas</span> <span class="o">=</span> <span class="n">T_true</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma_T</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">T_model</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">T_model</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">T_meas</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma_T</span><span class="p">,</span> <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="mf">9.5</span><span class="p">])</span>
+<span class="n">g_hat</span> <span class="o">=</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">g_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Residuals</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">T_meas</span> <span class="o">-</span> <span class="n">T_model</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">g_hat</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">T_meas</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sigma_T</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;measurements&quot;</span><span class="p">)</span>
+<span class="n">L_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">L</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_f</span><span class="p">,</span> <span class="n">T_model</span><span class="p">(</span><span class="n">L_f</span><span class="p">,</span> <span class="n">g_hat</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;fit: $g=</span><span class="si">{</span><span class="n">g_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">\pm</span><span class="si">{</span><span class="n">g_err</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">\ \mathrm</span><span class="se">{{</span><span class="s2">m/s^2</span><span class="se">}}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;L (m)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;T (s)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Pendulum period vs length&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;L (m)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Residual (s)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Residuals&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/960ad7210ecdbda1cabe61a8d8dfdaaaabb362cd15c1b49eacd40b536102b1a6.png" src="_images/960ad7210ecdbda1cabe61a8d8dfdaaaabb362cd15c1b49eacd40b536102b1a6.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id43">
+<h1>%% [markdown]<a class="headerlink" href="#id43" title="Link to this heading">#</a></h1>
+<section id="id44">
+<h2>שאלות רב־ברירה (דוגמה 1)<a class="headerlink" href="#id44" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>אם <span class="math notranslate nohighlight">\(T=a\sqrt{L}\)</span>, אז <span class="math notranslate nohighlight">\(a\)</span> קשור ל־<span class="math notranslate nohighlight">\(g\)</span> כך ש:<br />
+A. <span class="math notranslate nohighlight">\(a = \dfrac{1}{2\pi}\sqrt{g}\)</span><br />
+B. <span class="math notranslate nohighlight">\(a = 2\pi\sqrt{g}\)</span><br />
+C. <span class="math notranslate nohighlight">\(a = \dfrac{2\pi}{\sqrt{g}}\)</span><br />
+D. <span class="math notranslate nohighlight">\(a = g\)</span></p></li>
+<li><p>מה תפקיד וקטור <code class="docutils literal notranslate"><span class="pre">sigma</span></code> ב־<code class="docutils literal notranslate"><span class="pre">curve_fit</span></code>?<br />
+A. לקבוע צבעים בגרף<br />
+B. להגדיר משקלות להתאמה בהתאם לאי־ודאות<br />
+C. להאיץ את החישוב<br />
+D. להחליף את הפונקציה למודל</p></li>
+</ol>
+</section>
+<section id="id45">
+<h2>איור (סקיצה)<a class="headerlink" href="#id45" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>סכמת ניסוי מטוטלת: נקודת תלייה, חוט באורך <span class="math notranslate nohighlight">\(L\)</span>, סטייה קטנה, מדידת תקופה.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id46">
+<h1>%% [markdown]<a class="headerlink" href="#id46" title="Link to this heading">#</a></h1>
+<section id="id47">
+<h2>דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית<a class="headerlink" href="#id47" title="Link to this heading">#</a></h2>
+<p><strong>רקע:</strong> כוח גרר ריבועי: <span class="math notranslate nohighlight">\( \mathbf{F}_d = -\tfrac{1}{2}\rho C_d A v \mathbf{v} \)</span>.<br />
+שקול ל־ODE דו־ממדי עבור <span class="math notranslate nohighlight">\((x,y)\)</span> עם מהירויות <span class="math notranslate nohighlight">\((v_x,v_y)\)</span>:<br />
+[
+\begin{aligned}
+\dot{x}&amp;=v_x,\quad \dot{y}=v_y,\
+\dot{v}_x&amp;=-\frac{\rho C_d A}{2m},v,v_x,\quad
+\dot{v}_y=-g-\frac{\rho C_d A}{2m},v,v_y,
+\end{aligned}
+]
+כאשר <span class="math notranslate nohighlight">\(v=\sqrt{v_x^2+v_y^2}\)</span>.</p>
+<p><strong>מטרה:</strong> לפתור את ה־ODE עד פגיעה בקרקע (אירוע אפס ב־<span class="math notranslate nohighlight">\(y\)</span>), ולמצוא ע”י <code class="docutils literal notranslate"><span class="pre">minimize_scalar</span></code> את הזווית <span class="math notranslate nohighlight">\(\theta\)</span> שממקסמת את הטווח האופקי.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Projectile with quadratic drag: optimal launch angle</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">1.225</span>     <span class="c1"># air density (kg/m^3)</span>
+<span class="n">CdA</span> <span class="o">=</span> <span class="mf">0.05</span>      <span class="c1"># drag coefficient * area (m^2)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.145</span>       <span class="c1"># mass (kg) ~ baseball</span>
+<span class="n">v0</span> <span class="o">=</span> <span class="mf">40.0</span>       <span class="c1"># m/s</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">flight</span><span class="p">(</span><span class="n">theta_deg</span><span class="p">):</span>
+    <span class="c1"># ODE system with quadratic drag</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">theta_deg</span><span class="p">)</span>
+    <span class="n">vx0</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">vy0</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ode</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="c1"># y=[x, y, vx, vy]</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">CdA</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">vx</span>
+        <span class="n">ay</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">CdA</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">vy</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">hit_ground</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># event when y=0</span>
+    <span class="n">hit_ground</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">hit_ground</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">ode</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vx0</span><span class="p">,</span> <span class="n">vy0</span><span class="p">],</span>
+                              <span class="n">events</span><span class="o">=</span><span class="n">hit_ground</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">range_for_angle</span><span class="p">(</span><span class="n">theta_deg</span><span class="p">):</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">flight</span><span class="p">(</span><span class="n">theta_deg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Optimize angle to maximize range (negative for minimize_scalar)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">th</span><span class="p">:</span> <span class="o">-</span><span class="n">range_for_angle</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize_scalar</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">85</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;bounded&quot;</span><span class="p">)</span>
+<span class="n">theta_opt</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
+<span class="n">R_opt</span> <span class="o">=</span> <span class="n">range_for_angle</span><span class="p">(</span><span class="n">theta_opt</span><span class="p">)</span>
+
+<span class="c1"># Plot a few trajectories around optimum</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta_opt</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">theta_opt</span><span class="p">,</span> <span class="n">theta_opt</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">th</span> <span class="ow">in</span> <span class="n">angles</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">flight</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\theta=</span><span class="si">{</span><span class="n">th</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">^\circ$&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Trajectories with quadratic drag (optimal θ ≈ </span><span class="si">{</span><span class="n">theta_opt</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°, range ≈ </span><span class="si">{</span><span class="n">R_opt</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Range vs angle curve</span>
+<span class="n">ths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">ranges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">range_for_angle</span><span class="p">(</span><span class="n">th</span><span class="p">)</span> <span class="k">for</span> <span class="n">th</span> <span class="ow">in</span> <span class="n">ths</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">ranges</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">theta_opt</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta$ (deg)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Range (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Range vs launch angle (with drag)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b4a9429e9d5b61ba3cc8b290703bd7f8b3c452fc2eb3d6ab3a9425cce77d0f0b.png" src="_images/b4a9429e9d5b61ba3cc8b290703bd7f8b3c452fc2eb3d6ab3a9425cce77d0f0b.png" />
+<img alt="_images/6b4ef5355e42de329b820c113d39b257d1f3be31d675d7605a699878109c87b7.png" src="_images/6b4ef5355e42de329b820c113d39b257d1f3be31d675d7605a699878109c87b7.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id48">
+<h1>%% [markdown]<a class="headerlink" href="#id48" title="Link to this heading">#</a></h1>
+<section id="id49">
+<h2>שאלות רב־ברירה (דוגמה 2)<a class="headerlink" href="#id49" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>לשם עצירת ה־ODE בעת פגיעה בקרקע (<span class="math notranslate nohighlight">\(y=0\)</span>), השתמשנו ב־<br />
+A. <code class="docutils literal notranslate"><span class="pre">events</span></code> עם פונקציה שמחזירה <span class="math notranslate nohighlight">\(y\)</span><br />
+B. <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code><br />
+C. <code class="docutils literal notranslate"><span class="pre">root_scalar</span></code><br />
+D. <code class="docutils literal notranslate"><span class="pre">stats.norm</span></code></p></li>
+<li><p>ללא גרר, הזווית המיטבית היא:<br />
+A. <span class="math notranslate nohighlight">\(90^\circ\)</span><br />
+B. <span class="math notranslate nohighlight">\(0^\circ\)</span><br />
+C. <span class="math notranslate nohighlight">\(45^\circ\)</span><br />
+D. תלוי ב־<span class="math notranslate nohighlight">\(v_0\)</span> בלבד</p></li>
+</ol>
+</section>
+<section id="id50">
+<h2>איור (סקיצה)<a class="headerlink" href="#id50" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>שרטטו כוחות על הקליע: משקל כלפי מטה וגרר ביחס ישר למהירות ובכיוון מנוגד.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id51">
+<h1>%% [markdown]<a class="headerlink" href="#id51" title="Link to this heading">#</a></h1>
+<section id="omega-n-zeta">
+<h2>דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span><a class="headerlink" href="#omega-n-zeta" title="Link to this heading">#</a></h2>
+<p><strong>רקע:</strong> משוואה: <span class="math notranslate nohighlight">\(x'' + 2\zeta\omega_n x' + \omega_n^2 x = 0\)</span><br />
+במקרה מרוסן קל (<span class="math notranslate nohighlight">\(0&lt;\zeta&lt;1\)</span>): <span class="math notranslate nohighlight">\(x(t) = A e^{-\zeta\omega_n t}\cos(\omega_d t+\phi)\)</span>, עם <span class="math notranslate nohighlight">\( \omega_d = \omega_n\sqrt{1-\zeta^2} \)</span> ו־<span class="math notranslate nohighlight">\( Q=\dfrac{1}{2\zeta} \)</span>.</p>
+<p><strong>מטרה:</strong></p>
+<ol class="arabic simple">
+<li><p>ליצור סיגנל מרוסן עם רעש.</p></li>
+<li><p>לזהות <span class="math notranslate nohighlight">\(\omega_d\)</span> מבדיקת FFT/פסגה.</p></li>
+<li><p>להתאים את המודל המלא עם <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> כדי לאמוד <span class="math notranslate nohighlight">\(A,\zeta,\omega_n,\phi\)</span>.</p></li>
+<li><p>להציג שיוריים ולהעריך <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1"># Damped oscillator: identify ωn and ζ</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">zeta_true</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">wn_true</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">5.0</span>  <span class="c1"># natural rad/s ~ 5 Hz</span>
+<span class="n">A_true</span><span class="p">,</span> <span class="n">phi_true</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.2</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mf">200.0</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">6.0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+
+<span class="c1"># Generate damped signal with noise</span>
+<span class="n">wd_true</span> <span class="o">=</span> <span class="n">wn_true</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">zeta_true</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x_clean</span> <span class="o">=</span> <span class="n">A_true</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">zeta_true</span><span class="o">*</span><span class="n">wn_true</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">wd_true</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">phi_true</span><span class="p">)</span>
+<span class="n">x_noisy</span> <span class="o">=</span> <span class="n">x_clean</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="c1"># FFT to estimate wd (peak)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x_noisy</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">amp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="o">/</span><span class="n">t</span><span class="o">.</span><span class="n">size</span>
+<span class="n">pk</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">amp</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span><span class="o">*</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">f_peak</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">pk</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">amp</span><span class="p">[</span><span class="n">pk</span><span class="p">])]]</span> <span class="k">if</span> <span class="n">pk</span><span class="o">.</span><span class="n">size</span> <span class="k">else</span> <span class="n">f</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">amp</span><span class="p">)]</span>
+<span class="n">wd_est</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f_peak</span>
+
+<span class="c1"># Nonlinear fit: x(t)=A*exp(-ζ*wn*t)*cos(wd*t+φ) with wd = wn*sqrt(1-ζ^2)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">damped_model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">zeta</span><span class="p">,</span> <span class="n">wn</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+    <span class="n">wd</span> <span class="o">=</span> <span class="n">wn</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">1e-12</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">zeta</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">zeta</span><span class="o">*</span><span class="n">wn</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">wd</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+
+<span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">wd_est</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>  <span class="c1"># rough initial guesses</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">damped_model</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x_noisy</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">maxfev</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
+<span class="n">A_hat</span><span class="p">,</span> <span class="n">zeta_hat</span><span class="p">,</span> <span class="n">wn_hat</span><span class="p">,</span> <span class="n">phi_hat</span> <span class="o">=</span> <span class="n">popt</span>
+<span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span>
+<span class="n">Q_hat</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">zeta_hat</span><span class="p">)</span> <span class="k">if</span> <span class="n">zeta_hat</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+<span class="c1"># Plot results</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_noisy</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;noisy&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">damped_model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">),</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fit&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Damped oscillator fit: $\zeta=</span><span class="si">{</span><span class="n">zeta_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">\pm</span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,\ \omega_n=</span><span class="si">{</span><span class="n">wn_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">\pm</span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;x(t)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">x_noisy</span> <span class="o">-</span> <span class="n">damped_model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Residuals&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;residual&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Spectrum view with detected peak</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;spectrum&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">f_peak</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;peak ~ </span><span class="si">{</span><span class="n">f_peak</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;f (Hz)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Amplitude spectrum and dominant peak&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated parameters:</span><span class="se">\n</span><span class="s2"> A=</span><span class="si">{</span><span class="n">A_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, zeta=</span><span class="si">{</span><span class="n">zeta_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, wn=</span><span class="si">{</span><span class="n">wn_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, phi=</span><span class="si">{</span><span class="n">phi_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Q ~ </span><span class="si">{</span><span class="n">Q_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fa4ff7147f9c94514ab88d500cf10686814692c64e0f884a9320c465e262d5c5.png" src="_images/fa4ff7147f9c94514ab88d500cf10686814692c64e0f884a9320c465e262d5c5.png" />
+<img alt="_images/a26b7a8b8f1b9fa6fbbcbc4d03d48b692d3b88ffcee6032ba3cad9eb1a413e2c.png" src="_images/a26b7a8b8f1b9fa6fbbcbc4d03d48b692d3b88ffcee6032ba3cad9eb1a413e2c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated parameters:
+ A=1.011±0.012, zeta=0.0502±0.0008, wn=31.445±0.026, phi=0.185±0.012
+Estimated Q ~ 9.96
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id52">
+<h1>%% [markdown]<a class="headerlink" href="#id52" title="Link to this heading">#</a></h1>
+<section id="id53">
+<h2>שאלות רב־ברירה (דוגמה 3)<a class="headerlink" href="#id53" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>הקשר בין <span class="math notranslate nohighlight">\(\omega_d\)</span> ו־<span class="math notranslate nohighlight">\(\omega_n\)</span> הוא:<br />
+A. <span class="math notranslate nohighlight">\(\omega_d = \omega_n\)</span><br />
+B. <span class="math notranslate nohighlight">\(\omega_d = \omega_n\sqrt{1-\zeta^2}\)</span><br />
+C. <span class="math notranslate nohighlight">\(\omega_d = \zeta\omega_n\)</span><br />
+D. <span class="math notranslate nohighlight">\(\omega_d = \dfrac{\omega_n}{\zeta}\)</span></p></li>
+<li><p>גורם האיכות <span class="math notranslate nohighlight">\(Q\)</span> למרוסן קל:<br />
+A. <span class="math notranslate nohighlight">\(Q=2\zeta\)</span><br />
+B. <span class="math notranslate nohighlight">\(Q=\zeta^2\)</span><br />
+C. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{2\zeta}\)</span><br />
+D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p></li>
+</ol>
+</section>
+<section id="id54">
+<h2>איור (סקיצה)<a class="headerlink" href="#id54" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>סכמת מעטפת דעיכה <span class="math notranslate nohighlight">\(A e^{-\zeta\omega_n t}\)</span> והאוסילציה הפנימית בקצב <span class="math notranslate nohighlight">\(\omega_d\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id55">
+<h1>%% [markdown]<a class="headerlink" href="#id55" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id56">
+<h1>נספח קצר — טיפים לשמירת תרשימים<a class="headerlink" href="#id56" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>לשימוש במאמרים/דוחות: עדיף <strong>SVG/PDF</strong> (וקטורי) עבור תרשימי קו/טקסט.</p></li>
+<li><p>לגדלים מדויקים: <code class="docutils literal notranslate"><span class="pre">fig.set_size_inches(width_inches,</span> <span class="pre">height_inches)</span></code> או <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(figsize=(w,h))</span></code>.</p></li>
+<li><p>לשילוב ב-Word/Google Docs: PNG ב־300–600 DPI.</p></li>
+<li><p>הוסיפו יחידות ותיאור ברור לצירים, מקרא, וכותרת עניינית.</p></li>
+</ul>
+<blockquote>
+<div><p>כאן המקום לצרף רשימת תשובות לשאלות, אם תרצו, או להשאירן ללמידה עצמית.</p>
+</div></blockquote>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "TauInnov/computers-for-physics",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 9 - Matplotlib &amp; SciPy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-1-3">חלק א’ — Matplotlib (≈ 1/3)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. אנטומיית תרשימים</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">תצוגה, גודל, ופריסות</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2. סוגי גרפים שכיחים בפיזיקה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colormaps">3. התאמות מתקדמות: סולמות, טיקים, מקרא, סימונים, צירים תאומים, colormaps, ושמירה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">שאלות רב־ברירה — חלק א’ (Matplotlib)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-2-3">חלק ב’ — SciPy (≈ 2/3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-numpy">1. מה זה SciPy + תזכורת קצרה ל-NumPy + קבועים פיזיקליים</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">4. אינטרפולציה והחלקה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">5. עיבוד אותות ו-FFT</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">6. אלגברה ליניארית מדעית</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">7. סטטיסטיקה בסיסית למדידות</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capstone">דוגמאות מסכמות (Capstone)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-t-l">דוגמה 1 — מטוטלת: הערכת <span class="math notranslate nohighlight">\(g\)</span> מהתלות <span class="math notranslate nohighlight">\(T(L)\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">שאלות רב־ברירה (דוגמה 1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">שאלות רב־ברירה (דוגמה 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">נספח קצר — טיפים לשמירת תרשימים</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
