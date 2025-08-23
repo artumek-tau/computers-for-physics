@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/rtl.css?v=dc79e408" />
@@ -198,7 +198,6 @@
 <li class="toctree-l1"><a class="reference internal" href="7_week.html">שבוע 7 - Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8_week.html">שבוע 8 - Numpy מתקדם</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">שבוע 9 - Matplotlib &amp; SciPy</a></li>
-
 
 
 
@@ -484,12 +483,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 9 - Matplotlib &amp; SciPy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">חלק א’ — Matplotlib</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 9 - Matplotlib &amp; SciPy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">חלק א’ — Matplotlib</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. אנטומיית תרשימים</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">דוגמה: שימוש במודל האובייקטי של matplotlib</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpi">דוגמה: גודל תרשים, DPI, פריסה ושמירה</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">דוגמה מקיפה: סוגי גרפים ב־matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">שימוש במודל האובייקטי של matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpi">גודל תרשים, DPI, פריסה ושמירה</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">סוגי גרפים ב־matplotlib</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot">Line plot</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
@@ -499,13 +498,25 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colormaps">התאמות מתקדמות: סולמות, טיקים, מקרא, סימונים, צירים תאומים, colormaps, ושמירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">התאמות מתקדמות</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">דוגמה מסכמת</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1) יצירת נתונים</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colormap">2) הכנה ל־Colormap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x">3) ציור הלוח העליון + סולם לוגריתמי בציר <span class="math notranslate nohighlight">\(x\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">4) הוספת Annotation לנקודת חצי־זמן</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-c">5) ציר תאום ליחידות חלופיות (K ↔ °C)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colorbar">6) הוספת Colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#y">7) לוח תחתון עם <span class="math notranslate nohighlight">\(y\)</span> לוגריתמי</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8) הרכבה, הצגה ושמירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">9) קריאה להרצה</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy">חלק ב’ — SciPy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">תזכורת קצרה ל-NumPy + קבועים פיזיקליים</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1) חישוב אנרגיית פוטון מאורך גל</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1) חישוב אנרגיית פוטון מאורך גל</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-b-t">2) סקאלת אנרגיה תרמית <span class="math notranslate nohighlight">\(k_B T\)</span> ומתיחות תרמית במתח</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">3) דוגמת Broadcasting: אנרגיה פוטנציאלית כבידתית</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4) חוק וין: אורך גל שיא של גוף שחור</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4) חוק וין: אורך גל שיא של גוף שחור</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-approx-dfrac-1-sqrt-varepsilon-0-mu-0">5) בדיקת־שפיות: <span class="math notranslate nohighlight">\(c \approx \dfrac{1}{\sqrt{\varepsilon_0 \mu_0}}\)</span></a></li>
@@ -514,21 +525,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">איור (סקיצה)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">%% [markdown]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -537,7 +539,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">4. אינטרפולציה והחלקה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -546,20 +548,20 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">4. אינטרפולציה והחלקה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">%% [markdown]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">5. עיבוד אותות ו-FFT</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">איור (סקיצה)</a></li>
-</ul>
-</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">6. אלגברה ליניארית מדעית</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -568,7 +570,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">7. סטטיסטיקה בסיסית למדידות</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">6. אלגברה ליניארית מדעית</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -576,36 +578,45 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">7. סטטיסטיקה בסיסית למדידות</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">%% [markdown]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capstone">דוגמאות מסכמות (Capstone)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-t-l">דוגמה 1 — מטוטלת: הערכת <span class="math notranslate nohighlight">\(g\)</span> מהתלות <span class="math notranslate nohighlight">\(T(L)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">שאלות רב־ברירה (דוגמה 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
-</ul>
-</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">שאלות רב־ברירה (דוגמה 1)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">איור (סקיצה)</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">%% [markdown]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">שאלות רב־ברירה (דוגמה 3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">שאלות רב־ברירה (דוגמה 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">%% [markdown]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">נספח קצר — טיפים לשמירת תרשימים</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id57">נספח קצר — טיפים לשמירת תרשימים</a></li>
 </ul>
 
             </nav>
@@ -620,13 +631,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matplotlib-scipy">
 <h1>שבוע 9 - Matplotlib &amp; SciPy<a class="headerlink" href="#matplotlib-scipy" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
-<h1>חלק א’ — Matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h1>
+<section id="matplotlib">
+<h2>חלק א’ — Matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h2>
 <p>זוהי ספרייה פופולרית להצגת גרפים וויזואליזציות בפייתון.<br />
 היא מאפשרת ליצור תרשימים דו־ממדיים כמו גרפים קוויים, עמודות, פיזור (scatter), תרשימי חום (heatmaps) ועוד.<br />
 עבור פיזיקאים ומתמטיקאים, היא כלי חיוני להצגת נתונים, תוצאות ניסוי וסימולציות בצורה ברורה.<br />
 המודול הנפוץ ביותר לשימוש הוא <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> שמספק פקודות פשוטות לשרטוט מהיר.</p>
+</section>
 <section id="id1">
 <h2>1. אנטומיית תרשימים<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p><strong>מושגים מרכזיים:</strong></p>
@@ -637,8 +648,8 @@ document.write(`
 </ul>
 <p>יש שתי דרכים עיקריות לעבוד:</p>
 <ol class="arabic simple">
-<li><p><strong>סגנון Pyplot</strong> (מהיר): <code class="docutils literal notranslate"><span class="pre">plt.plot(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code></p></li>
-<li><p><strong>מודל אובייקטי (מומלץ לפרויקטים)</strong>: יצירת <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code> ואז שימוש ב־<code class="docutils literal notranslate"><span class="pre">ax.plot(...)</span></code> וכן הלאה.</p></li>
+<li><p><strong>סגנון Pyplot</strong> (מהיר): <code class="docutils literal notranslate"><span class="pre">(...)plt.plot</span></code>, <code class="docutils literal notranslate"><span class="pre">()plt.show</span></code></p></li>
+<li><p><strong>מודל אובייקטי (מומלץ לפרויקטים)</strong>: יצירת <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">()plt.subplots</span></code> ואז שימוש ב־<code class="docutils literal notranslate"><span class="pre">(...)ax.plot</span></code> וכן הלאה.</p></li>
 </ol>
 <p>נוסיף כותרות, תוויות, ונטמיע נוסחאות עם <span class="math notranslate nohighlight">\( \LaTeX \)</span> בכותרת/צירים. ראשית, נייבא את הספרייה ונאתחל פרמטרים</p>
 <div class="cell docutils container">
@@ -662,14 +673,14 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h3>דוגמה: שימוש במודל האובייקטי של matplotlib<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>שימוש במודל האובייקטי של matplotlib<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>בדוגמה זו נשתמש ב־API האובייקטי של matplotlib ליצירת גרף פשוט:</p>
 <ul class="simple">
 <li><p>נבנה מערך ערכים <span class="math notranslate nohighlight">\(x\)</span> בתחום <span class="math notranslate nohighlight">\([0, 2\pi]\)</span>.</p></li>
 <li><p>נחשב את <span class="math notranslate nohighlight">\(y = \sin(x)\)</span>.</p></li>
 <li><p>נשרטט את הגרף של פונקציית הסינוס עם כותרת, שמות לצירים ו־Legend.</p></li>
 </ul>
-<p>ה־API האובייקטי (<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code>) מאפשר שליטה נוחה על כל מרכיבי התרשים,
+<p>ה־API האובייקטי (<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">()plt.subplots</span></code>) מאפשר שליטה נוחה על כל מרכיבי התרשים,
 ולכן מומלץ לשימוש בפרויקטים מסודרים.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -693,13 +704,13 @@ document.write(`
 </div>
 </section>
 <section id="dpi">
-<h3>דוגמה: גודל תרשים, DPI, פריסה ושמירה<a class="headerlink" href="#dpi" title="Link to this heading">#</a></h3>
+<h3>גודל תרשים, DPI, פריסה ושמירה<a class="headerlink" href="#dpi" title="Link to this heading">#</a></h3>
 <p>בתרשים זה נמחיש כיצד לשלוט בפרמטרים חשובים של Figure:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">figsize</span></code> — קובע את גודל התרשים באינצ’ים.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dpi</span></code> — רזולוציית התצוגה (נקודות לאינץ’).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">constrained_layout=True</span></code> — מאפשר התאמה אוטומטית של פריסת האלמנטים (כותרות, תוויות) כך שלא ייחתכו.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fig.savefig(...)</span></code> — שמירת התרשים כקובץ (למשל PDF איכותי להדפסה, או PNG למסך).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(...)fig.savefig</span></code> — שמירת התרשים כקובץ (למשל PDF איכותי להדפסה, או PNG למסך).</p></li>
 </ul>
 <p>בדוגמה נצייר את פונקציית הקוסינוס, נוסיף כותרת, שמות לצירים ו־Legend, ונראה כיצד ניתן לשמור את הגרף באיכות המתאימה לפרסום.</p>
 <div class="cell docutils container">
@@ -724,32 +735,42 @@ document.write(`
 </div>
 </section>
 <section id="id3">
-<h3>דוגמה מקיפה: סוגי גרפים ב־matplotlib<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>סוגי גרפים ב־matplotlib<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>בקטע הבא נמחיש כמה סוגי גרפים נפוצים: קו (line), פיזור (scatter), היסטוגרמה (hist), הדמיה עם imshow (כמו heatmap), וגרף עם שגיאות (errorbar).</p>
 <section id="line-plot">
 <h4>Line plot<a class="headerlink" href="#line-plot" title="Link to this heading">#</a></h4>
 <p>גרף קווים – משמש להצגת פונקציה רציפה או קו מגמה.<br />
-בדוגמה: קו ישר “אמיתי” ונקודות עם רעש.</p>
+בדוגמה: קו ישר “אמיתי” ונקודות עם רעש.<br />
+<strong>קריאה לפונקציה:</strong> <code class="docutils literal notranslate"><span class="pre">ax.plot(x,</span> <span class="pre">y,</span> <span class="pre">...)</span></code><br />
+הפונקציה מחברת את הנקודות לפי סדרן, ומאפשרת להוסיף סגנון קו, צבע, ותווית.</p>
 </section>
 <section id="scatter-plot">
 <h4>Scatter plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h4>
 <p>תרשים פיזור – מציג נקודות בודדות (ללא חיבור בקווים).<br />
-טוב להצגת נתונים ניסיוניים.</p>
+טוב להצגת נתונים ניסיוניים.<br />
+<strong>קריאה לפונקציה:</strong> <code class="docutils literal notranslate"><span class="pre">ax.scatter(x,</span> <span class="pre">y,</span> <span class="pre">...)</span></code><br />
+ניתן לשנות צבע, גודל וסגנון של כל נקודה, ואף לקודד מידע נוסף בעזרת צבעים וגדלים.</p>
 </section>
 <section id="histogram">
 <h4>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h4>
 <p>היסטוגרמה – מציגה התפלגות של נתונים.<br />
-כאן: דגימה מהתפלגות נורמלית.</p>
+כאן: דגימה מהתפלגות נורמלית.<br />
+<strong>קריאה לפונקציה:</strong> <code class="docutils literal notranslate"><span class="pre">ax.hist(data,</span> <span class="pre">bins=...,</span> <span class="pre">...)</span></code><br />
+ניתן לבחור מספר תאים (bins), צפיפות (<code class="docutils literal notranslate"><span class="pre">density=True</span></code>), צבע, ושקיפות.</p>
 </section>
 <section id="imshow">
 <h4>Imshow<a class="headerlink" href="#imshow" title="Link to this heading">#</a></h4>
 <p>הצגת מטריצה כ”תמונה” או heatmap.<br />
-כאן: שדה גאוסי דו־ממדי.</p>
+כאן: שדה גאוסי דו־ממדי.<br />
+<strong>קריאה לפונקציה:</strong> <code class="docutils literal notranslate"><span class="pre">ax.imshow(Z,</span> <span class="pre">extent=[...],</span> <span class="pre">origin='lower',</span> <span class="pre">aspect='auto')</span></code><br />
+הפונקציה מציירת מערך דו־ממדי כגרפיקת פיקסלים. אפשר להוסיף סרגל צבעים עם <code class="docutils literal notranslate"><span class="pre">fig.colorbar(...)</span></code>.</p>
 </section>
 <section id="errorbar">
 <h4>Errorbar<a class="headerlink" href="#errorbar" title="Link to this heading">#</a></h4>
 <p>גרף עם פסי שגיאה – מתאים להצגת מדידות עם אי־ודאות.<br />
-כאן: פסי שגיאה אקראיים סביב הנקודות.</p>
+כאן: פסי שגיאה אקראיים סביב הנקודות.<br />
+<strong>קריאה לפונקציה:</strong> <code class="docutils literal notranslate"><span class="pre">ax.errorbar(x,</span> <span class="pre">y,</span> <span class="pre">yerr=...,</span> <span class="pre">fmt='o')</span></code><br />
+ניתן להציג שגיאות בציר <span class="math notranslate nohighlight">\(y\)</span> (או <span class="math notranslate nohighlight">\(x\)</span>), להגדיר סגנון נקודות/קווים, ולהתאים צבעים.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data generation</span>
@@ -805,46 +826,242 @@ document.write(`
 </section>
 </section>
 </section>
-<section id="colormaps">
-<h2>התאמות מתקדמות: סולמות, טיקים, מקרא, סימונים, צירים תאומים, colormaps, ושמירה<a class="headerlink" href="#colormaps" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>התאמות מתקדמות<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>מעבר ליכולות הבסיסיות של Matplotlib, קיימות פונקציות מתקדמות שמאפשרות להציג נתונים בצורה מדעית מדויקת וברורה יותר. שימוש נכון בהן חשוב במיוחד בפיזיקה, שבה לעיתים קרובות נדרשים להציג תופעות המתפרשות על פני <strong>סדרי גודל רבים</strong> או לשלב <strong>יחידות שונות</strong> על אותו תרשים.</p>
 <ul class="simple">
-<li><p><strong>סולמות לוגריתמיים</strong>: <code class="docutils literal notranslate"><span class="pre">ax.set_xscale('log')</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_yscale('log')</span></code> — שימושי לתופעות המוצגות על פני סדרי גודל.</p></li>
-<li><p><strong>טיקים ותוויות</strong>: שליטה בתצוגת מספרים (מדעי/אקספוננציאלי), והוספת יחידות.</p></li>
-<li><p><strong>מקרא ו־annotations</strong>: הוספת הסברים וחצים לנקודות חשובות.</p></li>
-<li><p><strong>ציר תאום</strong>: <code class="docutils literal notranslate"><span class="pre">ax.twinx()</span></code> להצגת שתי יחידות שונות על אותו גרף.</p></li>
-<li><p><strong>Colormaps</strong>: בחירה מודעת למידע מדעי (למשל <code class="docutils literal notranslate"><span class="pre">viridis</span></code>, <code class="docutils literal notranslate"><span class="pre">inferno</span></code>).</p></li>
+<li><p><strong>סולמות לוגריתמיים</strong>: <code class="docutils literal notranslate"><span class="pre">ax.set_xscale('log')</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_yscale('log')</span></code> — מאפשרים להציג נתונים המשתנים באקספוננט או על פני כמה סדרי גודל, כמו דעיכה רדיואקטיבית או ספקטרום תדרים. שימוש נכון בסולם לוגריתמי יכול להפוך עקומה לא ליניארית לקו ישר, ולחשוף קשרים חבויים.</p></li>
+<li><p><strong>טיקים ותוויות</strong>: מאפשרים שליטה מלאה באופן הצגת המספרים בצירים (מדעי, אקספוננציאלי או רגיל), וכן הוספת <strong>יחידות פיזיקליות</strong> לכותרות הצירים. התאמות אלו מבטיחות שהגרף יהיה קריא ונכון גם לקהל מדעי.</p></li>
+<li><p><strong>מקרא ו־annotations</strong>: הוספת מקרא (legend) חיונית כשיש כמה עקומות באותו גרף. בעזרת <code class="docutils literal notranslate"><span class="pre">ax.annotate</span></code> ניתן גם להדגיש נקודות קריטיות בנתונים (כמו מקסימום, חצי־חיים או תדר תהודה), ולהסביר אותן באמצעות חצים וטקסט.</p></li>
+<li><p><strong>ציר תאום</strong>: <code class="docutils literal notranslate"><span class="pre">ax.twinx()</span></code> או <code class="docutils literal notranslate"><span class="pre">ax.twiny()</span></code> מאפשרים להציג שתי סקאלות יחידות שונות באותו תרשים (למשל טמפרטורה ב־K וב־°C, או תדר לעומת אורך גל), מבלי לבלבל את הקורא.</p></li>
+<li><p><strong>Colormaps</strong>: שימוש במפות צבעים מדעיות (כמו <code class="docutils literal notranslate"><span class="pre">viridis</span></code> או <code class="docutils literal notranslate"><span class="pre">inferno</span></code>) מאפשר קידוד של פרמטר נוסף באמצעות צבע. זה חשוב במיוחד להצגת סדרות של ניסויים או סימולציות, תוך שמירה על נגישות גם לעיוורי צבעים.</p></li>
 </ul>
+<p>ביחד, התאמות אלו מאפשרות לא רק ליצור גרף יפה יותר, אלא להעביר מסר פיזיקלי ברור ומדויק, ולחסוך לקורא את הצורך בניחושים או חישובים נוספים.</p>
+</section>
+<section id="id5">
+<h2>דוגמה מסכמת<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>נשתמש בעקומות דעיכה אקספוננציאליות (למשל קירור ניוטוני/פריקה של RC) כדי להדגים <strong>שימושי Matplotlib מתקדמים</strong>:<br />
+סולמות לוגריתמיים, טיקים ותוויות עם יחידות, מקרא ו־annotations, <strong>ציר תאום</strong> ליחידות חלופיות, <strong>Colormap</strong> עם Colorbar, ושמירה לקובץ.</p>
+<p>ראשית, נייבא את הספריות והפונקציות בהן נשתמש:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core imports for all functions</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarMappable</span><span class="p">,</span> <span class="n">get_cmap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id6">
+<h3>1) יצירת נתונים<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>מייצרת פרמטרים ורשת זמן לוגריתמית: <span class="math notranslate nohighlight">\(t\in[10^{-2},10^{3}]\)</span> שניות, וכמה קבועי זמן <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
-<span class="c1"># Log scales, annotations, twin axis</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create parameters and a log-spaced time grid.&quot;&quot;&quot;</span>
+    <span class="n">T_amb</span> <span class="o">=</span> <span class="mf">293.15</span>                 <span class="c1"># K (ambient, ~20°C)</span>
+    <span class="n">T0</span>    <span class="o">=</span> <span class="mf">373.15</span>                 <span class="c1"># K (initial, ~100°C)</span>
+    <span class="n">taus</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">])</span>  <span class="c1"># s (span decades)</span>
+    <span class="n">t</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>          <span class="c1"># log grid for x-scale</span>
+    <span class="k">return</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">taus</span><span class="p">,</span> <span class="n">t</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$y=\frac</span><span class="si">{1}</span><span class="s2">{1+x^2}$&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$ (log scale)&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
-
-<span class="c1"># Annotation</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;knee ~ x=1&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
-             <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;axes fraction&quot;</span><span class="p">,</span>
-             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">))</span>
-
-<span class="c1"># Twin axis (for demonstration)</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\pi y$ (twin)&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">model_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exponential decay model: T(t)=T_amb + (T0-T_amb)*exp(-t/tau).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="p">(</span><span class="n">T0</span> <span class="o">-</span> <span class="n">T_amb</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="colormap">
+<h2>2) הכנה ל־Colormap<a class="headerlink" href="#colormap" title="Link to this heading">#</a></h2>
+<p>מחזירה <code class="docutils literal notranslate"><span class="pre">Normalize</span></code> ו־<code class="docutils literal notranslate"><span class="pre">Colormap</span></code> כדי לקודד צבע לפי <span class="math notranslate nohighlight">\(\tau\)</span> ולהציג Colorbar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prepare_colormap</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">cmap_name</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a Normalize and Colormap for consistent color coding by tau.&quot;&quot;&quot;</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">taus</span><span class="p">)),</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">taus</span><span class="p">)))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="x">
+<h2>3) ציור הלוח העליון + סולם לוגריתמי בציר <span class="math notranslate nohighlight">\(x\)</span><a class="headerlink" href="#x" title="Link to this heading">#</a></h2>
+<p>מצייר את <span class="math notranslate nohighlight">\(T(t)\)</span> לכמה <span class="math notranslate nohighlight">\(\tau\)</span>ים, מפעיל <code class="docutils literal notranslate"><span class="pre">ax.set_xscale('log')</span></code>, מגדיר טיקים בסגנון מדעי עם יחידות, ומוסיף מקרא.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_top_panel</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot T(t) curves with log x-scale, scientific ticks, and legend.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">:</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">model_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">tau</span><span class="p">)),</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\tau=</span><span class="si">{</span><span class="n">tau</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">\,\mathrm</span><span class="se">{{</span><span class="s2">s</span><span class="se">}}</span><span class="s2">$&quot;</span><span class="p">)</span>  <span class="c1"># plot() with label for legend</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>                  <span class="c1"># &lt;- log scale on x</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$ (s)&quot;</span><span class="p">)</span>             <span class="c1"># &lt;- axis label with units</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$T$ (K)&quot;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;sci&quot;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">useMathText</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># scientific y</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># tidy ticks</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>                            <span class="c1"># grid for both</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cooling curves&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>                             <span class="c1"># legend</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Matplotlib advanced features on exponential cooling&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="annotation">
+<h2>4) הוספת Annotation לנקודת חצי־זמן<a class="headerlink" href="#annotation" title="Link to this heading">#</a></h2>
+<p>מסמנת את <span class="math notranslate nohighlight">\(t_{1/2}=\tau\ln 2\)</span> עבור <span class="math notranslate nohighlight">\(\tau=2\,\)</span>s באמצעות <code class="docutils literal notranslate"><span class="pre">ax.annotate(...)</span></code> וחץ.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">tau_sel</span><span class="o">=</span><span class="mf">2.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add an annotation for the half-time point t_half = tau*ln(2).&quot;&quot;&quot;</span>
+    <span class="n">t_half</span> <span class="o">=</span> <span class="n">tau_sel</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">T_half</span> <span class="o">=</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">T0</span> <span class="o">-</span> <span class="n">T_amb</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_half</span><span class="p">,</span> <span class="n">T_half</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;crimson&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>   <span class="c1"># marker at the point</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">t_half</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;crimson&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>  <span class="c1"># helper line</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;half-time&quot;</span><span class="p">,</span>                               <span class="c1"># annotate() with arrow</span>
+                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">t_half</span><span class="p">,</span> <span class="n">T_half</span><span class="p">),</span>
+                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">T_half</span> <span class="o">+</span> <span class="mi">8</span><span class="p">),</span>
+                <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="k-c">
+<h2>5) ציר תאום ליחידות חלופיות (K ↔ °C)<a class="headerlink" href="#k-c" title="Link to this heading">#</a></h2>
+<p>משתמשים ב־<code class="docutils literal notranslate"><span class="pre">ax.twinx()</span></code> כדי להציג באותו גרף גם <span class="math notranslate nohighlight">\(^\circ\)</span>C.<br />
+הטריק: מיישרים את תחומי <span class="math notranslate nohighlight">\(y\)</span> ואת הטיקים כדי למנוע חפיפה.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_twin_axis_celsius</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a right y-axis in °C aligned with the left y-axis in K.&quot;&quot;&quot;</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>                          <span class="c1"># create a twin y-axis</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$T$ (°C)&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Align y-limits so ticks match line-by-line</span>
+    <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y0</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">)</span>    <span class="c1"># same visual positions</span>
+    
+    <span class="c1"># Copy left ticks and show converted labels on the right</span>
+    <span class="n">left_ticks</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">left_ticks</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">)</span>       <span class="c1"># place ticks at matching heights</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="o">-</span><span class="mf">273.15</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">left_ticks</span><span class="p">])</span>
+    
+    <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>                            <span class="c1"># keep grid only on left</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;in&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="colorbar">
+<h2>6) הוספת Colorbar<a class="headerlink" href="#colorbar" title="Link to this heading">#</a></h2>
+<p>בקוים אין Colorbar אוטומטי, לכן יוצרים <code class="docutils literal notranslate"><span class="pre">ScalarMappable</span></code> עם אותו <code class="docutils literal notranslate"><span class="pre">norm</span></code> ו־<code class="docutils literal notranslate"><span class="pre">cmap</span></code> ומחברים ל־<code class="docutils literal notranslate"><span class="pre">fig.colorbar(...)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_colorbar</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attach a colorbar that explains the color coding of τ.&quot;&quot;&quot;</span>
+    <span class="n">sm</span> <span class="o">=</span> <span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>  <span class="c1"># create mappable without image</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>                           <span class="c1"># dummy array to enable colorbar</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>   <span class="c1"># colorbar attached to this axes</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;time constant $\tau$ (s)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="y">
+<h2>7) לוח תחתון עם <span class="math notranslate nohighlight">\(y\)</span> לוגריתמי<a class="headerlink" href="#y" title="Link to this heading">#</a></h2>
+<p>מדגימה <code class="docutils literal notranslate"><span class="pre">ax.set_yscale('log')</span></code> על <span class="math notranslate nohighlight">\(\Delta T(t)=T(t)-T_{\rm amb}\)</span> יחד עם <span class="math notranslate nohighlight">\(x\)</span> לוגריתמי (כלומר log–log).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_bottom_loglog</span><span class="p">(</span><span class="n">ax_logy</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot ΔT on log-log scales to demonstrate set_yscale(&#39;log&#39;).&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">:</span>
+        <span class="n">dT</span> <span class="o">=</span> <span class="n">model_T</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">)</span> <span class="o">-</span> <span class="n">T_amb</span>
+        <span class="n">ax_logy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dT</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">tau</span><span class="p">)))</span>        <span class="c1"># plot ΔT curves</span>
+    
+    <span class="n">ax_logy</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>                             <span class="c1"># log x</span>
+    <span class="n">ax_logy</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>                             <span class="c1"># log y</span>
+    <span class="n">ax_logy</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$ (s)&quot;</span><span class="p">)</span>
+    <span class="n">ax_logy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta T$ (K)&quot;</span><span class="p">)</span>
+    <span class="n">ax_logy</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>  <span class="c1"># grid</span>
+    <span class="n">ax_logy</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax_logy</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ΔT on log–log axes (using set_yscale(&#39;log&#39;))&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>8) הרכבה, הצגה ושמירה<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>מייצרת את התרשים המלא, קוראת לכל הפונקציות הקודמות, ובאופן אופציונלי שומרת ל־PDF/PNG באמצעות <code class="docutils literal notranslate"><span class="pre">fig.savefig(...)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_matplotlib_advanced_demo</span><span class="p">(</span><span class="n">savepath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build the figure, call all plot helpers, and optionally save to file.&quot;&quot;&quot;</span>
+    <span class="c1"># Data &amp; color mapping</span>
+    <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">taus</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">make_data</span><span class="p">()</span>
+    <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">prepare_colormap</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Figure with two axes</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ax_logy</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.4</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Top panel: advanced customizations</span>
+    <span class="n">plot_top_panel</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+    <span class="n">add_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">tau_sel</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">add_twin_axis_celsius</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">add_colorbar</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+    
+    <span class="c1"># Bottom panel: log–log ΔT</span>
+    <span class="n">plot_bottom_loglog</span><span class="p">(</span><span class="n">ax_logy</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+    
+    <span class="c1"># Optional save (vector if .pdf/.svg; raster if .png)</span>
+    <span class="k">if</span> <span class="n">savepath</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">savepath</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h2>9) קריאה להרצה<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>להריץ את הדמו ולהציג את התוצאה. ניתן להעביר <code class="docutils literal notranslate"><span class="pre">savepath=&quot;advanced_matplotlib_demo.pdf&quot;</span></code> לשמירה.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_matplotlib_advanced_demo</span><span class="p">()</span>  <span class="c1"># or run_matplotlib_advanced_demo(&quot;advanced_matplotlib_demo.pdf&quot;)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44c6ea46d8a8889aa92fde01e42d45a87c7471cafd457c36b90249fbdb502a2f.png" src="_images/44c6ea46d8a8889aa92fde01e42d45a87c7471cafd457c36b90249fbdb502a2f.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8262/1296569676.py:5: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
+  cmap = get_cmap(cmap_name)
+</pre></div>
+</div>
+<img alt="_images/3d5aca5c2efb781035a6e5f88d48f3ed8412be90542a776f23bc67586a476e8b.png" src="_images/3d5aca5c2efb781035a6e5f88d48f3ed8412be90542a776f23bc67586a476e8b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -882,7 +1099,7 @@ document.write(`
 <span class="sd">    ]</span>
 <span class="sd">  },</span>
 <span class="sd">  {</span>
-<span class="sd">    &quot;question&quot;: &quot;מה יוצר אובייקט צירים חדש לשיטה המומלצת?&quot;,</span>
+<span class="sd">    &quot;question&quot;: &quot;מה יוצר אובייקט צירים חדש בשיטה המומלצת?&quot;,</span>
 <span class="sd">    &quot;type&quot;: &quot;many_choice&quot;,</span>
 <span class="sd">    &quot;answers&quot;: [</span>
 <span class="sd">      {</span>
@@ -941,8 +1158,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="FdFCEmCSouKD" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#FdFCEmCSouKD {
+<div class="output text_html"><div id="zKXIMeVjMoOo" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#zKXIMeVjMoOo {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -1159,7 +1376,7 @@ document.write(`
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionsFdFCEmCSouKD=[{"question": "\u05d0\u05dd \u05d1\u05e8\u05e6\u05d5\u05e0\u05e0\u05d5 \u05dc\u05d4\u05e6\u05d9\u05d2 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e9\u05dc\u05d5\u05e9\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05d1\u05e6\u05d9\u05e8 x, \u05d4\u05d1\u05d7\u05d9\u05e8\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d4\u05d9\u05d0:", "type": "many_choice", "answers": [{"answer": "<code>ax.set_xscale('linear')</code>", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9 \u05dc\u05d0 \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e4\u05e8\u05d9\u05e1\u05d4 \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05e8\u05d1\u05d9\u05dd."}, {"answer": "<code>ax.set_xscale('log')</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05e1\u05d5\u05dc\u05dd \u05dc\u05d5\u05d2\u05e8\u05d9\u05ea\u05de\u05d9 \u05d1\u05e6\u05d9\u05e8 x \u05de\u05e6\u05d9\u05d2 \u05d4\u05d9\u05d8\u05d1 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05db\u05de\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc."}, {"answer": "<code>ax.set_yscale('log')</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05de\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e1\u05d5\u05dc\u05dd \u05e6\u05d9\u05e8 \u05d4-y, \u05dc\u05d0 \u05d0\u05ea \u05e6\u05d9\u05e8 \u05d4-x."}, {"answer": "\u05dc\u05d4\u05e9\u05d0\u05d9\u05e8 \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc", "correct": false, "feedback": "\u05d1\u05e8\u05d9\u05e8\u05ea \u05d4\u05de\u05d7\u05d3\u05dc \u05d4\u05d9\u05d0 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9, \u05e9\u05d0\u05d9\u05e0\u05d5 \u05de\u05ea\u05d0\u05d9\u05dd \u05db\u05d0\u05df."}]}, {"question": "\u05de\u05d4 \u05d9\u05d5\u05e6\u05e8 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8 \u05e6\u05d9\u05e8\u05d9\u05dd \u05d7\u05d3\u05e9 \u05dc\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea?", "type": "many_choice", "answers": [{"answer": "<code>fig = plt.figure()</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05d9\u05d5\u05e6\u05e8 Figure \u05d1\u05dc\u05d1\u05d3, \u05dc\u05dc\u05d0 Axes \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc."}, {"answer": "<code>ax = plt.axes()</code>", "correct": false, "feedback": "\u05d0\u05de\u05e0\u05dd \u05d9\u05d5\u05e6\u05e8 Axes, \u05d0\u05da \u05d4\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea \u05d5\u05d4\u05e0\u05e4\u05d5\u05e6\u05d4 \u05d4\u05d9\u05d0 <code>plt.subplots()</code>."}, {"answer": "<code>fig, ax = plt.subplots()</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05d6\u05d5 \u05d4\u05d3\u05e8\u05da \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea: \u05de\u05e7\u05d1\u05dc\u05d9\u05dd \u05d2\u05dd Figure \u05d5\u05d2\u05dd Axes \u05de\u05d5\u05db\u05e0\u05d9\u05dd \u05dc\u05e9\u05d9\u05de\u05d5\u05e9."}, {"answer": "<code>plt.plot(...)</code>", "correct": false, "feedback": "\u05d6\u05d5 \u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05e1\u05d2\u05e0\u05d5\u05df pyplot; \u05dc\u05d0 \u05d9\u05d5\u05e6\u05e8\u05ea \u05d1\u05de\u05e4\u05d5\u05e8\u05e9 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9 Figure \u05d5-Axes \u05dc\u05e2\u05d1\u05d5\u05d3\u05d4 \u05de\u05d1\u05d5\u05e1\u05e1\u05ea-\u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9\u05dd."}]}, {"question": "\u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9 (\u05db\u05de\u05d5 \u05d8\u05de\u05e4\u05e8\u05d8\u05d5\u05e8\u05d4 \u05e2\u05dc \u05e8\u05e9\u05ea), \u05de\u05d4 \u05de\u05ea\u05d0\u05d9\u05dd?", "type": "many_choice", "answers": [{"answer": "<code>plot</code>", "correct": false, "feedback": "plot \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e2\u05e7\u05d5\u05de\u05d5\u05ea/\u05e7\u05d5\u05d5\u05d9\u05dd, \u05dc\u05d0 \u05dc\u05e9\u05d3\u05d5\u05ea \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d9\u05dd."}, {"answer": "<code>scatter</code>", "correct": false, "feedback": "scatter \u05de\u05e6\u05d9\u05d2 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05d1\u05d3\u05d9\u05d3\u05d5\u05ea; \u05dc\u05e9\u05d3\u05d4 \u05e8\u05e6\u05d9\u05e3 \u05e2\u05d3\u05d9\u05e4\u05d4 \u05d4\u05d3\u05de\u05d9\u05d4 \u05e8\u05e1\u05d8\u05e8\u05d9\u05ea."}, {"answer": "<code>hist</code>", "correct": false, "feedback": "hist \u05de\u05e6\u05d9\u05d2 \u05d4\u05ea\u05e4\u05dc\u05d2\u05d5\u05ea \u05d7\u05d3\u05be\u05de\u05de\u05d3\u05d9\u05ea (\u05d4\u05d9\u05e1\u05d8\u05d5\u05d2\u05e8\u05de\u05d4), \u05dc\u05d0 \u05de\u05e4\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05ea."}, {"answer": "<code>imshow</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! imshow (\u05d0\u05d5 matshow) \u05de\u05ea\u05d0\u05d9\u05de\u05d9\u05dd \u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d5\u05ea/\u05de\u05e4\u05d5\u05ea \u05d7\u05d5\u05dd \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d5\u05ea."}]}];
+</style></div><script type="application/javascript">var questionszKXIMeVjMoOo=[{"question": "\u05d0\u05dd \u05d1\u05e8\u05e6\u05d5\u05e0\u05e0\u05d5 \u05dc\u05d4\u05e6\u05d9\u05d2 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e9\u05dc\u05d5\u05e9\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05d1\u05e6\u05d9\u05e8 x, \u05d4\u05d1\u05d7\u05d9\u05e8\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d4\u05d9\u05d0:", "type": "many_choice", "answers": [{"answer": "<code>ax.set_xscale('linear')</code>", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9 \u05dc\u05d0 \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e4\u05e8\u05d9\u05e1\u05d4 \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05e8\u05d1\u05d9\u05dd."}, {"answer": "<code>ax.set_xscale('log')</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05e1\u05d5\u05dc\u05dd \u05dc\u05d5\u05d2\u05e8\u05d9\u05ea\u05de\u05d9 \u05d1\u05e6\u05d9\u05e8 x \u05de\u05e6\u05d9\u05d2 \u05d4\u05d9\u05d8\u05d1 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05db\u05de\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc."}, {"answer": "<code>ax.set_yscale('log')</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05de\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e1\u05d5\u05dc\u05dd \u05e6\u05d9\u05e8 \u05d4-y, \u05dc\u05d0 \u05d0\u05ea \u05e6\u05d9\u05e8 \u05d4-x."}, {"answer": "\u05dc\u05d4\u05e9\u05d0\u05d9\u05e8 \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc", "correct": false, "feedback": "\u05d1\u05e8\u05d9\u05e8\u05ea \u05d4\u05de\u05d7\u05d3\u05dc \u05d4\u05d9\u05d0 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9, \u05e9\u05d0\u05d9\u05e0\u05d5 \u05de\u05ea\u05d0\u05d9\u05dd \u05db\u05d0\u05df."}]}, {"question": "\u05de\u05d4 \u05d9\u05d5\u05e6\u05e8 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8 \u05e6\u05d9\u05e8\u05d9\u05dd \u05d7\u05d3\u05e9 \u05d1\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea?", "type": "many_choice", "answers": [{"answer": "<code>fig = plt.figure()</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05d9\u05d5\u05e6\u05e8 Figure \u05d1\u05dc\u05d1\u05d3, \u05dc\u05dc\u05d0 Axes \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc."}, {"answer": "<code>ax = plt.axes()</code>", "correct": false, "feedback": "\u05d0\u05de\u05e0\u05dd \u05d9\u05d5\u05e6\u05e8 Axes, \u05d0\u05da \u05d4\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea \u05d5\u05d4\u05e0\u05e4\u05d5\u05e6\u05d4 \u05d4\u05d9\u05d0 <code>plt.subplots()</code>."}, {"answer": "<code>fig, ax = plt.subplots()</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05d6\u05d5 \u05d4\u05d3\u05e8\u05da \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea: \u05de\u05e7\u05d1\u05dc\u05d9\u05dd \u05d2\u05dd Figure \u05d5\u05d2\u05dd Axes \u05de\u05d5\u05db\u05e0\u05d9\u05dd \u05dc\u05e9\u05d9\u05de\u05d5\u05e9."}, {"answer": "<code>plt.plot(...)</code>", "correct": false, "feedback": "\u05d6\u05d5 \u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05e1\u05d2\u05e0\u05d5\u05df pyplot; \u05dc\u05d0 \u05d9\u05d5\u05e6\u05e8\u05ea \u05d1\u05de\u05e4\u05d5\u05e8\u05e9 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9 Figure \u05d5-Axes \u05dc\u05e2\u05d1\u05d5\u05d3\u05d4 \u05de\u05d1\u05d5\u05e1\u05e1\u05ea-\u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9\u05dd."}]}, {"question": "\u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9 (\u05db\u05de\u05d5 \u05d8\u05de\u05e4\u05e8\u05d8\u05d5\u05e8\u05d4 \u05e2\u05dc \u05e8\u05e9\u05ea), \u05de\u05d4 \u05de\u05ea\u05d0\u05d9\u05dd?", "type": "many_choice", "answers": [{"answer": "<code>plot</code>", "correct": false, "feedback": "plot \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e2\u05e7\u05d5\u05de\u05d5\u05ea/\u05e7\u05d5\u05d5\u05d9\u05dd, \u05dc\u05d0 \u05dc\u05e9\u05d3\u05d5\u05ea \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d9\u05dd."}, {"answer": "<code>scatter</code>", "correct": false, "feedback": "scatter \u05de\u05e6\u05d9\u05d2 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05d1\u05d3\u05d9\u05d3\u05d5\u05ea; \u05dc\u05e9\u05d3\u05d4 \u05e8\u05e6\u05d9\u05e3 \u05e2\u05d3\u05d9\u05e4\u05d4 \u05d4\u05d3\u05de\u05d9\u05d4 \u05e8\u05e1\u05d8\u05e8\u05d9\u05ea."}, {"answer": "<code>hist</code>", "correct": false, "feedback": "hist \u05de\u05e6\u05d9\u05d2 \u05d4\u05ea\u05e4\u05dc\u05d2\u05d5\u05ea \u05d7\u05d3\u05be\u05de\u05de\u05d3\u05d9\u05ea (\u05d4\u05d9\u05e1\u05d8\u05d5\u05d2\u05e8\u05de\u05d4), \u05dc\u05d0 \u05de\u05e4\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05ea."}, {"answer": "<code>imshow</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! imshow (\u05d0\u05d5 matshow) \u05de\u05ea\u05d0\u05d9\u05de\u05d9\u05dd \u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d5\u05ea/\u05de\u05e4\u05d5\u05ea \u05d7\u05d5\u05dd \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d5\u05ea."}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -2222,8 +2439,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("FdFCEmCSouKD")) {
-    show_questions(questionsFdFCEmCSouKD, FdFCEmCSouKD);
+  if (document.getElementById("zKXIMeVjMoOo")) {
+    show_questions(questionszKXIMeVjMoOo, zKXIMeVjMoOo);
   } else {
     setTimeout(try_show, 200);
   }
@@ -2323,8 +2540,8 @@ function try_show() {
 </div>
 </div>
 <p>נדגים שימוש באמצעות מספר דוגמאות broadcasting ווקטוריזציה:</p>
-<section id="id4">
-<h4>1) חישוב אנרגיית פוטון מאורך גל<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<section id="id9">
+<h4>1) חישוב אנרגיית פוטון מאורך גל<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <p>אנרגיית פוטון ניתנת על־ידי <span class="math notranslate nohighlight">\(E=\dfrac{hc}{\lambda}\)</span>. בדוגמה יצרנו וקטור של אורכי גל אופייניים בתחום הנראה (ננומטר), המרנו למטרים, וחישבנו את <span class="math notranslate nohighlight">\(E\)</span> לכל ערך — בבת אחת — באמצעות וקטוריזציה של NumPy (כלומר בלי לולאות מפורשות). לבסוף המרות יחידות: מג’ול ל־eV בעזרת <span class="math notranslate nohighlight">\(1\ \mathrm{eV}\)</span> במונחי ג’ול מתוך <code class="docutils literal notranslate"><span class="pre">scipy.constants</span></code>. כך מקבלים אינטואיציה: ככל שהאורך גל קצר יותר (<span class="math notranslate nohighlight">\(\lambda\)</span> קטן), האנרגיה גדולה יותר.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2402,8 +2619,8 @@ function try_show() {
 </div>
 </div>
 </section>
-<section id="id5">
-<h4>4) חוק וין: אורך גל שיא של גוף שחור<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<section id="id10">
+<h4>4) חוק וין: אורך גל שיא של גוף שחור<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>חוק וין קובע <span class="math notranslate nohighlight">\( \lambda_{\max} = \dfrac{b}{T} \)</span> עם קבוע <span class="math notranslate nohighlight">\(b\)</span> שנשלף מ־<code class="docutils literal notranslate"><span class="pre">physical_constants</span></code>. חישבנו את <span class="math notranslate nohighlight">\(\lambda_{\max}\)</span> עבור כמה טמפרטורות (חדר, נורה להט, שמש) והמרנו לננומטר לקבלת תחושת סדרי גודל. הדוגמה מראה כיצד לשלב קבועים סטנדרטיים עם חישובים וקטוריים — ובמקביל לחזק אינטואיציה: ככל שטמפרטורה גבוהה יותר, שיא הקרינה מוסת לכיוון אורכי גל קצרים יותר.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2451,13 +2668,1309 @@ function try_show() {
 </div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="fnebLhqfCNNE" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#fnebLhqfCNNE {
+   --jq-multiple-choice-bg: #6f78ffff;
+   --jq-mc-button-bg: #fafafa;
+   --jq-mc-button-border: #e0e0e0e0;
+   --jq-mc-button-inset-shadow: #555555;
+   --jq-many-choice-bg: #f75c03ff;
+   --jq-numeric-bg: #392061ff;
+   --jq-numeric-input-bg: #c0c0c0;
+   --jq-numeric-input-label: #101010;
+   --jq-numeric-input-shadow: #999999;
+   --jq-string-bg: #4c1a57;
+   --jq-incorrect-color: #c80202;
+   --jq-correct-color: #009113;
+   --jq-text-color: #fafafa;
+}
+
+.Quiz {
+    max-width: 600px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+/*    margin-bottom: 15px;*/
+/*    padding-bottom: 4px;*/
+    padding-top: 4px;
+    line-height: 1.1;
+    font-size: 16pt;
+    border-radius: inherit;
+}
+
+.QuizCode {
+    font-size: 14pt;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.QuizCode>pre {
+    padding: 4px;
+}
+
+.Quiz code {
+    background-color: lightgray;
+    color: black;
+}
+
+.Quiz .QuizCode code {
+    background-color: inherit;
+    color: inherit;
+}
+
+
+.Quiz .MCButton code {
+    background-color: inherit;
+    color: inherit;
+}
+
+.MCButton .QuizCode {
+    text-align: left;
+}
+
+
+
+
+.Answer {
+    border-radius: inherit;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px 0;
+}
+
+@media only screen and (max-width:480px) {
+    .Answer {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.Feedback {
+    font-size: 16pt;
+    text-align: center;
+/*    min-height: 2em;*/
+}
+
+.Input {
+    align: left;
+    font-size: 20pt;
+}
+
+.Input-text {
+    display: block;
+    margin: 10px;
+    color: inherit;
+    width: unset;
+    min-width: 140px;
+    max-width: 93%;
+    field-sizing: content;
+    background-color: var(--jq-numeric-input-bg);
+    color: var(--jq-text-color);
+    padding: 5px;
+    padding-left: 10px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: inherit;
+    line-height: 20pt;
+    border: none;
+    border-radius: 0.2rem;
+    transition: box-shadow 0.1s);
+}
+
+.Input-text:focus {
+    /*outline: none;*/
+    background-color: var(--jq-numeric-input-bg);
+    box-shadow: 0.6rem 0.8rem 1.4rem -0.5rem var(--jq-numeric-input-shadow);
+}
+
+.MCButton {
+    background: var(--jq-mc-button-bg);
+    border: 1px solid var(--jq-mc-button-border);
+    border-radius: inherit;
+    color: #333333;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MCButton p {
+    color: inherit;
+}
+
+.MultipleChoiceQn {
+    padding: 10px;
+    background: var(--jq-multiple-choice-bg);
+    color: var(--jq-text-color);
+    border-radius: inherit;
+}
+
+.ManyChoiceQn {
+    padding: 10px;
+    background: var(--jq-many-choice-bg);
+    color: var(--jq-text-color);
+    border-radius: inherit;
+}
+
+.NumericQn {
+    background: var(--jq-numeric-bg);
+    border-radius: inherit;
+    color: var(--jq-text-color);
+    padding: 10px;
+}
+
+.NumericQn p {
+    color: inherit;
+}
+
+.StringQn {
+    background: var(--jq-string-bg);
+    border-radius: inherit;
+    color: var(--jq-text-color);
+    padding: 10px;
+}
+
+.StringQn p {
+    color: inherit;
+}
+
+
+.InpLabel {
+    color: var(--jq-numeric-input-label);
+    float: left;
+    font-size: 15pt;
+    line-height: 34px;
+    margin-right: 10px;
+}
+
+.incorrect {
+    color: var(--jq-incorrect-color);
+}
+
+.correct {
+    color: var(--jq-correct-color);
+}
+
+.correctButton {
+    /*
+    background: var(--jq-correct-color);
+   */
+    animation: correct-anim 0.6s ease;
+    animation-fill-mode: forwards;
+    box-shadow: inset 0 0 5px var(--jq-mc-button-inset-shadow);
+    color: var(--jq-text-color);
+    /*outline: none;*/
+}
+
+.incorrectButton {
+    animation: incorrect-anim 0.8s ease;
+    animation-fill-mode: forwards;
+    box-shadow: inset 0 0 5px var(--jq-mc-button-inset-shadow);
+    color: var(--jq-text-color);
+    /*outline: none;*/
+}
+
+@keyframes incorrect-anim {
+    100% {
+        background-color: var(--jq-incorrect-color);
+    }
+}
+
+@keyframes correct-anim {
+    100% {
+        background-color: var(--jq-correct-color);
+    }
+}
+</style></div><script type="application/javascript">var questionsfnebLhqfCNNE=[{"question": "\u05e0\u05ea\u05d5\u05df \u05d4\u05e7\u05d5\u05d3:<br><br>c = constants.c  # \u05de\u05d4\u05d9\u05e8\u05d5\u05ea \u05d4\u05d0\u05d5\u05e8 (m/s)<br>h = constants.h  # \u05e7\u05d1\u05d5\u05e2 \u05e4\u05dc\u05d0\u05e0\u05e7 (J\u00b7s)<br>kB = constants.Boltzmann # \u05e7\u05d1\u05d5\u05e2 \u05d1\u05d5\u05dc\u05e6\u05de\u05df (J/K)<br><br>\u05de\u05d4 \u05e0\u05db\u05d5\u05df \u05dc\u05d2\u05d1\u05d9 \u05d4\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-scIpy.constants?", "type": "many_choice", "answers": [{"answer": "\u05de\u05d0\u05e4\u05e9\u05e8 \u05d2\u05d9\u05e9\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05dc\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd \u05de\u05d5\u05db\u05e8\u05d9\u05dd \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea SI", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! scipy.constants \u05db\u05d5\u05dc\u05dc \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd \u05de\u05e7\u05d5\u05d1\u05dc\u05d9\u05dd \u05db\u05de\u05d5 c, h, kB \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05e1\u05d8\u05e0\u05d3\u05e8\u05d8\u05d9\u05d5\u05ea."}, {"answer": "\u05e0\u05d3\u05e8\u05e9 \u05dc\u05d4\u05de\u05d9\u05e8 \u05ea\u05de\u05d9\u05d3 \u05d0\u05ea \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05dc\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05dc\u05d0\u05beSI (\u05db\u05de\u05d5 eV)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05d5\u05d2\u05d3\u05e8\u05d9\u05dd \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea SI \u05db\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc. \u05d4\u05de\u05e8\u05d4 \u05e0\u05d3\u05e8\u05e9\u05ea \u05e8\u05e7 \u05d0\u05dd \u05e8\u05d5\u05e6\u05d9\u05dd \u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05d0\u05d7\u05e8\u05d5\u05ea."}, {"answer": "\u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05d9\u05d5\u05e6\u05e8\u05d9\u05dd \u05d0\u05e7\u05e8\u05d0\u05d9\u05ea \u05d1\u05db\u05dc \u05e8\u05d9\u05e6\u05d4 \u05d5\u05dc\u05db\u05df \u05d0\u05d9\u05e0\u05dd \u05de\u05ea\u05d0\u05d9\u05de\u05d9\u05dd \u05dc\u05e9\u05d9\u05de\u05d5\u05e9 \u05de\u05d3\u05e2\u05d9", "correct": false, "feedback": "\u05de\u05de\u05e9 \u05dc\u05d0 \u2014 \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e2\u05e8\u05db\u05d9\u05dd \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05dc\u05e4\u05d9 CODATA, \u05dc\u05d0 \u05d0\u05e7\u05e8\u05d0\u05d9\u05d9\u05dd."}, {"answer": "\u05d4\u05d2\u05d9\u05e9\u05d4 \u05dc\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05ea\u05d1\u05e6\u05e2\u05ea \u05d3\u05e8\u05da numpy \u05d5\u05dc\u05d0 \u05d3\u05e8\u05da scipy", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 numpy \u05dc\u05d0 \u05de\u05e1\u05e4\u05e7 \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd, \u05e8\u05e7 scipy.constants \u05e2\u05d5\u05e9\u05d4 \u05d6\u05d0\u05ea."}]}];
+
+if (typeof Question === 'undefined') {
+// Make a random ID
+function makeid(length) {
+    var result = [];
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+    }
+    return result.join('');
+}
+// Convert LaTeX delimiters and markdown links to HTML
+function jaxify(string) {
+    let mystring = string;
+    let count = 0, count2 = 0;
+    let loc = mystring.search(/([^\\]|^)(\$)/);
+    let loc2 = mystring.search(/([^\\]|^)(\$\$)/);
+    while (loc >= 0 || loc2 >= 0) {
+        if (loc2 >= 0) {
+            mystring = mystring.replace(/([^\\]|^)(\$\$)/, count2 % 2 ? '$1\\]' : '$1\\[');
+            count2++;
+        } else {
+            mystring = mystring.replace(/([^\\]|^)(\$)/, count % 2 ? '$1\\)' : '$1\\(');
+            count++;
+        }
+        loc = mystring.search(/([^\\]|^)(\$)/);
+        loc2 = mystring.search(/([^\\]|^)(\$\$)/);
+    }
+    // Replace markdown links
+    mystring = mystring.replace(/<http(.*?)>/g, '<a href="http$1" target="_blank" class="Link">http$1</a>');
+    mystring = mystring.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="Link">$1</a>');
+    return mystring;
+}
+
+// Base class for question types
+class Question {
+    static registry = {};
+    static register(type, cls) {
+        Question.registry[type] = cls;
+    }
+    static create(qa, id, index, options, rootDiv) {
+        const Cls = Question.registry[qa.type];
+        if (!Cls) {
+            console.error(`No question class registered for type "${qa.type}"`);
+            return;
+        }
+        const q = new Cls(qa, id, index, options, rootDiv);
+        q.render();
+    }
+
+    constructor(qa, id, index, options, rootDiv) {
+        this.qa = qa;
+        this.id = id;
+        this.index = index;
+        this.options = options;
+        this.rootDiv = rootDiv;
+        // wrapper
+        this.wrapper = document.createElement('div');
+        this.wrapper.id = `quizWrap${id}`;
+        this.wrapper.className = 'Quiz';
+        this.wrapper.dataset.qnum = index;
+        this.wrapper.style.maxWidth = `${options.maxWidth}px`;
+        rootDiv.appendChild(this.wrapper);
+        // question container
+        this.outerqDiv = document.createElement('div');
+        this.outerqDiv.id = `OuterquizQn${id}${index}`;
+        this.wrapper.appendChild(this.outerqDiv);
+        // question text
+        this.qDiv = document.createElement('div');
+        this.qDiv.id = `quizQn${id}${index}`;
+        if (qa.question) {
+            this.qDiv.innerHTML = jaxify(qa.question);
+            this.outerqDiv.appendChild(this.qDiv);
+        }
+        // code block
+        if (qa.code) {
+            const codeDiv = document.createElement('div');
+            codeDiv.id = `code${id}${index}`;
+            codeDiv.className = 'QuizCode';
+            const pre = document.createElement('pre');
+            const codeEl = document.createElement('code');
+            codeEl.innerHTML = qa.code;
+            pre.appendChild(codeEl);
+            codeDiv.appendChild(pre);
+            this.outerqDiv.appendChild(codeDiv);
+        }
+        // answer container
+        this.aDiv = document.createElement('div');
+        this.aDiv.id = `quizAns${id}${index}`;
+        this.aDiv.className = 'Answer';
+        this.wrapper.appendChild(this.aDiv);
+        // feedback container (append after answers)
+        this.fbDiv = document.createElement('div');
+        this.fbDiv.id = `fb${id}`;
+        this.fbDiv.className = 'Feedback';
+        this.fbDiv.dataset.answeredcorrect = 0;
+    }
+
+    render() {
+        throw new Error('render() not implemented');
+    }
+
+    preserveResponse(val) {
+        if (!this.options.preserveResponses) return;
+        const resp = document.getElementById(`responses${this.rootDiv.id}`);
+        if (!resp) return;
+        const arr = JSON.parse(resp.dataset.responses);
+        arr[this.index] = val;
+        resp.dataset.responses = JSON.stringify(arr);
+        printResponses(resp);
+    }
+
+    typeset(container) {
+        if (typeof MathJax !== 'undefined') {
+            const v = MathJax.version;
+            if (v[0] === '2') {
+                MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+            } else {
+                MathJax.typeset([container]);
+            }
+        }
+    }
+}
+
+// Choose a random subset of an array. Can also be used to shuffle the array
+function getRandomSubarray(arr, size) {
+    var shuffled = arr.slice(0), i = arr.length, temp, index;
+    while (i--) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, size);
+}
+
+function printResponses(responsesContainer) {
+    var responses=JSON.parse(responsesContainer.dataset.responses);
+    var stringResponses='<B>IMPORTANT!</B>To preserve this answer sequence for submission, when you have finalized your answers: <ol> <li> Copy the text in this cell below "Answer String"</li> <li> Double click on the cell directly below the Answer String, labeled "Replace Me"</li> <li> Select the whole "Replace Me" text</li> <li> Paste in your answer string and press shift-Enter.</li><li>Save the notebook using the save icon or File->Save Notebook menu item</li></ul><br><br><br><b>Answer String:</b><br> ';
+    console.log(responses);
+    responses.forEach((response, index) => {
+        if (response) {
+            console.log(index + ': ' + response);
+            stringResponses+= index + ': ' + response +"<BR>";
+        }
+    });
+    responsesContainer.innerHTML=stringResponses;
+}
+/* Callback function to determine whether a selected multiple-choice
+   button corresponded to a correct answer and to provide feedback
+   based on the answer */
+function check_mc() {
+    var id = this.id.split('-')[0];
+    //var response = this.id.split('-')[1];
+    //console.log(response);
+    //console.log("In check_mc(), id="+id);
+    //console.log(event.srcElement.id)           
+    //console.log(event.srcElement.dataset.correct)   
+    //console.log(event.srcElement.dataset.feedback)
+
+    var label = event.srcElement;
+    //console.log(label, label.nodeName);
+    var depth = 0;
+    while ((label.nodeName != "LABEL") && (depth < 20)) {
+        label = label.parentElement;
+        console.log(depth, label);
+        depth++;
+    }
+
+
+
+    var answers = label.parentElement.children;
+    //console.log(answers);
+
+    // Split behavior based on multiple choice vs many choice:
+    var fb = document.getElementById("fb" + id);
+
+
+
+    /* Multiple choice (1 answer). Allow for 0 correct
+       answers as an edge case */
+    if (fb.dataset.numcorrect <= 1) {
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            //console.log(responsesContainer);
+            var response = label.firstChild.innerText;
+            if (label.querySelector(".QuizCode")){
+                response+= label.querySelector(".QuizCode").firstChild.innerText;
+            }
+            console.log(response);
+            //console.log(document.getElementById("quizWrap"+id));
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            console.log(responses);
+            responses[qnum]= response;
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End code to preserve responses
+
+        for (var i = 0; i < answers.length; i++) {
+            var child = answers[i];
+            //console.log(child);
+            child.className = "MCButton";
+        }
+
+
+
+        if (label.dataset.correct == "true") {
+            // console.log("Correct action");
+            if ("feedback" in label.dataset) {
+                fb.innerHTML = jaxify(label.dataset.feedback);
+            } else {
+                fb.innerHTML = "Correct!";
+            }
+            label.classList.add("correctButton");
+
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+
+        } else {
+            if ("feedback" in label.dataset) {
+                fb.innerHTML = jaxify(label.dataset.feedback);
+            } else {
+                fb.innerHTML = "Incorrect -- try again.";
+            }
+            //console.log("Error action");
+            label.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+    }
+    else { /* Many choice (more than 1 correct answer) */
+        var reset = false;
+        var feedback;
+         if (label.dataset.correct == "true") {
+            if ("feedback" in label.dataset) {
+                feedback = jaxify(label.dataset.feedback);
+            } else {
+                feedback = "Correct!";
+            }
+            if (label.dataset.answered <= 0) {
+                if (fb.dataset.answeredcorrect < 0) {
+                    fb.dataset.answeredcorrect = 1;
+                    reset = true;
+                } else {
+                    fb.dataset.answeredcorrect++;
+                }
+                if (reset) {
+                    for (var i = 0; i < answers.length; i++) {
+                        var child = answers[i];
+                        child.className = "MCButton";
+                        child.dataset.answered = 0;
+                    }
+                }
+                label.classList.add("correctButton");
+                label.dataset.answered = 1;
+                fb.className = "Feedback";
+                fb.classList.add("correct");
+
+            }
+        } else {
+            if ("feedback" in label.dataset) {
+                feedback = jaxify(label.dataset.feedback);
+            } else {
+                feedback = "Incorrect -- try again.";
+            }
+            if (fb.dataset.answeredcorrect > 0) {
+                fb.dataset.answeredcorrect = -1;
+                reset = true;
+            } else {
+                fb.dataset.answeredcorrect--;
+            }
+
+            if (reset) {
+                for (var i = 0; i < answers.length; i++) {
+                    var child = answers[i];
+                    child.className = "MCButton";
+                    child.dataset.answered = 0;
+                }
+            }
+            label.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            //console.log(responsesContainer);
+            var response = label.firstChild.innerText;
+            if (label.querySelector(".QuizCode")){
+                response+= label.querySelector(".QuizCode").firstChild.innerText;
+            }
+            console.log(response);
+            //console.log(document.getElementById("quizWrap"+id));
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            if (label.dataset.correct == "true") {
+                if (typeof(responses[qnum]) == "object"){
+                    if (!responses[qnum].includes(response))
+                        responses[qnum].push(response);
+                } else{
+                    responses[qnum]= [ response ];
+                }
+            } else {
+                responses[qnum]= response;
+            }
+            console.log(responses);
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End save responses stuff
+
+
+
+        var numcorrect = fb.dataset.numcorrect;
+        var answeredcorrect = fb.dataset.answeredcorrect;
+        if (answeredcorrect >= 0) {
+            fb.innerHTML = feedback + " [" + answeredcorrect + "/" + numcorrect + "]";
+        } else {
+            fb.innerHTML = feedback + " [" + 0 + "/" + numcorrect + "]";
+        }
+
+
+    }
+
+    if (typeof MathJax != 'undefined') {
+        var version = MathJax.version;
+        console.log('MathJax version', version);
+        if (version[0] == "2") {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        } else if (version[0] == "3") {
+            MathJax.typeset([fb]);
+        }
+    } else {
+        console.log('MathJax not detected');
+    }
+
+}
+
+
+/* Function to produce the HTML buttons for a multiple choice/
+   many choice question  and to update the CSS tags based on
+   the question type */
+function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
+
+    var shuffled;
+    if (shuffle_answers == true) {
+        //console.log(shuffle_answers+" read as true");
+        shuffled = getRandomSubarray(qa.answers, qa.answers.length);
+    } else {
+        //console.log(shuffle_answers+" read as false");
+        shuffled = qa.answers;
+    }
+
+
+    var num_correct = 0;
+
+    shuffled.forEach((item, index, ans_array) => {
+        //console.log(answer);
+
+        // Make input element
+        var inp = document.createElement("input");
+        inp.type = "radio";
+        inp.id = "quizo" + id + index;
+        inp.style = "display:none;";
+        aDiv.append(inp);
+
+        //Make label for input element
+        var lab = document.createElement("label");
+        lab.className = "MCButton";
+        lab.id = id + '-' + index;
+        lab.onclick = check_mc;
+        var aSpan = document.createElement('span');
+        aSpan.classsName = "";
+        //qDiv.id="quizQn"+id+index;
+        if ("answer" in item) {
+            aSpan.innerHTML = jaxify(item.answer);
+            //aSpan.innerHTML=item.answer;
+        }
+        lab.append(aSpan);
+
+        // Create div for code inside question
+        var codeSpan;
+        if ("code" in item) {
+            codeSpan = document.createElement('span');
+            codeSpan.id = "code" + id + index;
+            codeSpan.className = "QuizCode";
+            var codePre = document.createElement('pre');
+            codeSpan.append(codePre);
+            var codeCode = document.createElement('code');
+            codePre.append(codeCode);
+            codeCode.innerHTML = item.code;
+            lab.append(codeSpan);
+            //console.log(codeSpan);
+        }
+
+        //lab.textContent=item.answer;
+
+        // Set the data attributes for the answer
+        lab.setAttribute('data-correct', item.correct);
+        if (item.correct) {
+            num_correct++;
+        }
+        if ("feedback" in item) {
+            lab.setAttribute('data-feedback', item.feedback);
+        }
+        lab.setAttribute('data-answered', 0);
+
+        aDiv.append(lab);
+
+    });
+
+    if (num_correct > 1) {
+        outerqDiv.className = "ManyChoiceQn";
+    } else {
+        outerqDiv.className = "MultipleChoiceQn";
+    }
+
+    return num_correct;
+
+}
+// Object-oriented wrapper for MC/MANY choice
+class MCQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) { super(qa, id, idx, opts, rootDiv); }
+    render() {
+        //console.log("options.shuffleAnswers " + this.options.shuffleAnswers);
+        const numCorrect = make_mc(
+            this.qa,
+            this.options.shuffleAnswers,
+            this.outerqDiv,
+            this.qDiv,
+            this.aDiv,
+            this.id
+        );
+        if ('answer_cols' in this.qa) {
+            this.aDiv.style.gridTemplateColumns =
+                'repeat(' + this.qa.answer_cols + ', 1fr)';
+        }
+        this.fbDiv.dataset.numcorrect = numCorrect;
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('multiple_choice', MCQuestion);
+Question.register('many_choice', MCQuestion);
+function check_numeric(ths, event) {
+
+    if (event.keyCode === 13) {
+        ths.blur();
+
+        var id = ths.id.split('-')[0];
+
+        var submission = ths.value;
+        if (submission.indexOf('/') != -1) {
+            var sub_parts = submission.split('/');
+            //console.log(sub_parts);
+            submission = sub_parts[0] / sub_parts[1];
+        }
+        //console.log("Reader entered", submission);
+
+        if ("precision" in ths.dataset) {
+            var precision = ths.dataset.precision;
+            submission = Number(Number(submission).toPrecision(precision));
+        }
+
+
+        //console.log("In check_numeric(), id="+id);
+        //console.log(event.srcElement.id)           
+        //console.log(event.srcElement.dataset.feedback)
+
+        var fb = document.getElementById("fb" + id);
+        fb.style.display = "none";
+        fb.innerHTML = "Incorrect -- try again.";
+
+        var answers = JSON.parse(ths.dataset.answers);
+        //console.log(answers);
+
+        var defaultFB = "Incorrect. Try again.";
+        var correct;
+        var done = false;
+        answers.every(answer => {
+            //console.log(answer.type);
+
+            correct = false;
+            // if (answer.type=="value"){
+            if ('value' in answer) {
+                var value;
+                if ("precision" in ths.dataset) {
+                    value = answer.value.toPrecision(ths.dataset.precision);
+                } else {
+                    value = answer.value;
+                }
+                if (submission == value) {
+                    if ("feedback" in answer) {
+                        fb.innerHTML = jaxify(answer.feedback);
+                    } else {
+                        fb.innerHTML = jaxify("Correct");
+                    }
+                    correct = answer.correct;
+                    //console.log(answer.correct);
+                    done = true;
+                }
+
+                // } else if (answer.type=="range") {
+            } else if ('range' in answer) {
+                console.log(answer.range);
+                console.log(submission, submission >=answer.range[0], submission < answer.range[1])
+                if ((submission >= answer.range[0]) && (submission < answer.range[1])) {
+                    fb.innerHTML = jaxify(answer.feedback);
+                    correct = answer.correct;
+                    console.log(answer.correct);
+                    done = true;
+                }
+            } else if (answer.type == "default") {
+                if ("feedback" in answer) {
+                    defaultFB = answer.feedback;
+                } 
+            }
+            if (done) {
+                return false; // Break out of loop if this has been marked correct
+            } else {
+                return true; // Keep looking for case that includes this as a correct answer
+            }
+        });
+        console.log("done:", done);
+
+        if ((!done) && (defaultFB != "")) {
+            fb.innerHTML = jaxify(defaultFB);
+            //console.log("Default feedback", defaultFB);
+        }
+
+        fb.style.display = "block";
+        if (correct) {
+            ths.className = "Input-text";
+            ths.classList.add("correctButton");
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+        } else {
+            ths.className = "Input-text";
+            ths.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            console.log(submission);
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            //console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            console.log(responses);
+            if (submission == ths.value){
+                responses[qnum]= submission;
+            } else {
+                responses[qnum]= ths.value + "(" + submission +")";
+            }
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End code to preserve responses
+
+        if (typeof MathJax != 'undefined') {
+            var version = MathJax.version;
+            console.log('MathJax version', version);
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([fb]);
+            }
+        } else {
+            console.log('MathJax not detected');
+        }
+        // After correct answer, if next JupyterQuiz question exists and has a text input, scroll by current question height
+        if (correct) {
+            // find the current question wrapper
+            var wrapper = ths.closest('.Quiz');
+            if (wrapper) {
+                var nextWrapper = wrapper.nextElementSibling;
+                if (nextWrapper && nextWrapper.classList.contains('Quiz')) {
+                    var nextInput = nextWrapper.querySelector('input.Input-text');
+                    if (nextInput) {
+                        var height = wrapper.getBoundingClientRect().height;
+                        console.log(height);
+                        nextInput.focus();
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+}
+// Object-oriented wrapper for numeric questions
+class NumericQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) {
+        super(qa, id, idx, opts, rootDiv);
+    }
+    render() {
+        make_numeric(this.qa, this.outerqDiv, this.qDiv, this.aDiv, this.id);
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('numeric', NumericQuestion);
+
+function isValid(el, charC) {
+    //console.log("Input char: ", charC);
+    if (charC == 46) {
+        if (el.value.indexOf('.') === -1) {
+            return true;
+        } else if (el.value.indexOf('/') != -1) {
+            var parts = el.value.split('/');
+            if (parts[1].indexOf('.') === -1) {
+                return true;
+            }
+        }
+        else {
+            return false;
+        }
+    } else if (charC == 47) {
+        if (el.value.indexOf('/') === -1) {
+            if ((el.value != "") && (el.value != ".")) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else if (charC == 45) {
+        var edex = el.value.indexOf('e');
+        if (edex == -1) {
+            edex = el.value.indexOf('E');
+        }
+
+        if (el.value == "") {
+            return true;
+        } else if (edex == (el.value.length - 1)) { // If just after e or E
+            return true;
+        } else {
+            return false;
+        }
+    } else if (charC == 101) { // "e"
+        if ((el.value.indexOf('e') === -1) && (el.value.indexOf('E') === -1) && (el.value.indexOf('/') == -1)) {
+            // Prev symbol must be digit or decimal point:
+            if (el.value.slice(-1).search(/\d/) >= 0) {
+                return true;
+            } else if (el.value.slice(-1).search(/\./) >= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else {
+        if (charC > 31 && (charC < 48 || charC > 57))
+            return false;
+    }
+    return true;
+}
+
+function numeric_keypress(evnt) {
+    var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+
+    if (charC == 13) {
+        check_numeric(this, evnt);
+    } else {
+        return isValid(this, charC);
+    }
+}
+
+
+
+
+
+function make_numeric(qa, outerqDiv, qDiv, aDiv, id) {
+
+
+
+    //console.log(answer);
+
+
+    outerqDiv.className = "NumericQn";
+    aDiv.style.display = 'block';
+
+    var lab = document.createElement("label");
+    lab.className = "InpLabel";
+    lab.innerHTML = "Type numeric answer here:";
+    aDiv.append(lab);
+
+    var inp = document.createElement("input");
+    inp.type = "text";
+    //inp.id="input-"+id;
+    inp.id = id + "-0";
+    inp.className = "Input-text";
+    inp.setAttribute('data-answers', JSON.stringify(qa.answers));
+    if ("precision" in qa) {
+        inp.setAttribute('data-precision', qa.precision);
+    }
+    aDiv.append(inp);
+    //console.log(inp);
+
+    //inp.addEventListener("keypress", check_numeric);
+    //inp.addEventListener("keypress", numeric_keypress);
+    /*
+    inp.addEventListener("keypress", function(event) {
+        return numeric_keypress(this, event);
+    }
+                        );
+                        */
+    //inp.onkeypress="return numeric_keypress(this, event)";
+    inp.onkeypress = numeric_keypress;
+    inp.onpaste = event => false;
+
+    inp.addEventListener("focus", function (event) {
+        this.value = "";
+        return false;
+    }
+    );
+
+
+}
+// Override show_questions to use object-oriented Question API
+function show_questions(json, container) {
+    // Accept container element or element ID
+    if (typeof container === 'string') {
+        container = document.getElementById(container);
+    }
+    if (!container) {
+        console.error('show_questions: invalid container', container);
+        return;
+    }
+
+    const shuffleQuestions = container.dataset.shufflequestions === 'True';
+    const shuffleAnswers = container.dataset.shuffleanswers === 'True';
+    const preserveResponses = container.dataset.preserveresponses === 'true';
+    const maxWidth = parseInt(container.dataset.maxwidth, 10) || 0;
+    let numQuestions = parseInt(container.dataset.numquestions, 10) || json.length;
+    if (numQuestions > json.length) numQuestions = json.length;
+
+    let questions = json;
+    if (shuffleQuestions || numQuestions < json.length) {
+        questions = getRandomSubarray(json, numQuestions);
+    }
+
+    questions.forEach((qa, index) => {
+        const id = makeid(8);
+        const options = {
+            shuffleAnswers: shuffleAnswers,
+            preserveResponses: preserveResponses,
+            maxWidth: maxWidth
+        };
+        Question.create(qa, id, index, options, container);
+    });
+
+    if (preserveResponses) {
+        const respDiv = document.createElement('div');
+        respDiv.id = 'responses' + container.id;
+        respDiv.className = 'JCResponses';
+        respDiv.dataset.responses = JSON.stringify([]);
+        respDiv.innerHTML = '<b>Select your answers and then follow the directions that will appear here.</b>';
+        container.appendChild(respDiv);
+    }
+
+    // Trigger MathJax typesetting if available
+    if (typeof MathJax != 'undefined') {
+        console.log("MathJax version", MathJax.version);
+        var version = MathJax.version;
+        setTimeout(function(){
+            var version = MathJax.version;
+            console.log('After sleep, MathJax version', version);
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                if (MathJax.hasOwnProperty('typeset') ) {
+                    MathJax.typeset([container]);
+                } else {
+                    console.log('WARNING: Trying to force load MathJax 3');
+                    window.MathJax = {
+                        tex: {
+                            inlineMath: [['$', '$'], ['\\(', '\\)']]
+                        },
+                        svg: {
+                            fontCache: 'global'
+                        }
+                    };
+
+                    (function () {
+                        var script = document.createElement('script');
+                        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+                        script.async = true;
+                        document.head.appendChild(script);
+                    })();
+                }
+            }
+        }, 500);
+if (typeof version == 'undefined') {
+        } else
+        {
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                if (MathJax.hasOwnProperty('typeset') ) {
+                    MathJax.typeset([container]);
+                } else {
+                    console.log('WARNING: Trying to force load MathJax 3');
+                    window.MathJax = {
+                        tex: {
+                            inlineMath: [['$', '$'], ['\\(', '\\)']]
+                        },
+                        svg: {
+                            fontCache: 'global'
+                        }
+                    };
+
+                    (function () {
+                        var script = document.createElement('script');
+                        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+                        script.async = true;
+                        document.head.appendChild(script);
+                    })();
+                }
+            } else {
+                console.log("MathJax not found");
+            }
+        }
+    }
+    // if (typeof MathJax !== 'undefined') {
+    //     const v = MathJax.version;
+    //     if (v[0] === '2') {
+    //         MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+    //     } else if (v[0] === '3') {
+    //         MathJax.typeset([container]);
+    //     }
+    // }
+
+    // Prevent link clicks from bubbling up
+    Array.from(container.getElementsByClassName('Link')).forEach(link => {
+        link.addEventListener('click', e => e.stopPropagation());
+    });
+}
+function levenshteinDistance(a, b) {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+
+    const matrix = Array(b.length + 1).fill(null).map(() => Array(a.length + 1).fill(null));
+
+    for (let i = 0; i <= a.length; i++) {
+        matrix[0][i] = i;
+    }
+
+    for (let j = 0; j <= b.length; j++) {
+        matrix[j][0] = j;
+    }
+
+    for (let j = 1; j <= b.length; j++) {
+        for (let i = 1; i <= a.length; i++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            matrix[j][i] = Math.min(
+                matrix[j - 1][i] + 1, // Deletion
+                matrix[j][i - 1] + 1, // Insertion
+                matrix[j - 1][i - 1] + cost // Substitution
+            );
+        }
+    }
+    return matrix[b.length][a.length];
+}
+// Object-oriented wrapper for string input questions
+class StringQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) {
+        super(qa, id, idx, opts, rootDiv);
+    }
+    render() {
+        make_string(this.qa, this.outerqDiv, this.qDiv, this.aDiv, this.id);
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('string', StringQuestion);
+
+function check_string(ths, event) {
+    if (event.keyCode === 13) {
+        ths.blur();
+
+        var id = ths.id.split('-')[0];
+        var submission = ths.value.trim();
+        var fb = document.getElementById("fb" + id);
+        fb.style.display = "none";
+        fb.innerHTML = "Incorrect -- try again.";
+
+        var answers = JSON.parse(ths.dataset.answers);
+        var defaultFB = "Incorrect. Try again.";
+        var correct;
+        var done = false;
+
+        // Handle default answer pattern: filter out and capture default feedback
+        var filteredAnswers = [];
+        answers.forEach(answer => {
+            if (answer.type === "default") {
+                defaultFB = answer.feedback;
+            } else {
+                filteredAnswers.push(answer);
+            }
+        });
+        answers = filteredAnswers;
+
+        answers.every(answer => {
+            correct = false;
+
+            let match = false;
+            if (answer.match_case) {
+                match = submission === answer.answer;
+            } else {
+                match = submission.toLowerCase() === answer.answer.toLowerCase();
+            }
+            console.log(submission);
+            console.log(answer.answer);
+            console.log(match);
+
+            if (match) {
+                if ("feedback" in answer) {
+                    fb.innerHTML = jaxify(answer.feedback);
+                } else {
+                    fb.innerHTML = jaxify("Correct");
+                }
+                correct = answer.correct;
+                done = true;
+            } else if (answer.fuzzy_threshold) {
+                var max_length = Math.max(submission.length, answer.answer.length);
+                var ratio;
+                if (answer.match_case) {
+                    ratio = 1- (levenshteinDistance(submission, answer.answer) / max_length);
+                } else {
+                    ratio = 1- (levenshteinDistance(submission.toLowerCase(),
+                                                    answer.answer.toLowerCase()) / max_length);
+                }
+                if (ratio >= answer.fuzzy_threshold) {
+                    if ("feedback" in answer) {
+                        fb.innerHTML = jaxify("(Fuzzy) " + answer.feedback);
+                    } else {
+                        fb.innerHTML = jaxify("Correct");
+                    }
+                    correct = answer.correct;
+                    done = true;
+                }
+
+            }
+
+            if (done) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        if ((!done) && (defaultFB != "")) {
+            fb.innerHTML = jaxify(defaultFB);
+        }
+
+        fb.style.display = "block";
+        if (correct) {
+            ths.className = "Input-text";
+            ths.classList.add("correctButton");
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+        } else {
+            ths.className = "Input-text";
+            ths.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            var qnum = document.getElementById("quizWrap" + id).dataset.qnum;
+            var responses = JSON.parse(responsesContainer.dataset.responses);
+            responses[qnum] = submission;
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+
+        if (typeof MathJax != 'undefined') {
+            var version = MathJax.version;
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([fb]);
+            }
+        } else {
+            console.log('MathJax not detected');
+        }
+        // After correct answer, if next JupyterQuiz question exists and has a text input, scroll by current question height
+        if (correct) {
+            var wrapper = ths.closest('.Quiz');
+            if (wrapper) {
+                var nextWrapper = wrapper.nextElementSibling;
+                if (nextWrapper && nextWrapper.classList.contains('Quiz')) {
+                    var nextInput = nextWrapper.querySelector('input.Input-text');
+                    if (nextInput) {
+                        var height = wrapper.getBoundingClientRect().height;
+                        nextInput.focus();
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+
+function string_keypress(evnt) {
+    var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+
+    if (charC == 13) {
+        check_string(this, evnt);
+    } 
+}
+
+
+function make_string(qa, outerqDiv, qDiv, aDiv, id) {
+    outerqDiv.className = "StringQn";
+    aDiv.style.display = 'block';
+
+    var lab = document.createElement("label");
+    lab.className = "InpLabel";
+    lab.innerHTML = "Type your answer here:";
+    aDiv.append(lab);
+
+    var inp = document.createElement("input");
+    inp.type = "text";
+    inp.id = id + "-0";
+    inp.className = "Input-text";
+    inp.setAttribute('data-answers', JSON.stringify(qa.answers));
+    // Apply optional input width (approx. number of characters, in em units)
+    if (qa.input_width != null) {
+        inp.style['min-width'] = qa.input_width + 'em';
+    }
+    aDiv.append(inp);
+
+    inp.onkeypress = string_keypress;
+    inp.onpaste = event => false;
+
+    inp.addEventListener("focus", function (event) {
+        this.value = "";
+        return false;
+    });
+}
+/*
+ * Handle asynchrony issues when re-running quizzes in Jupyter notebooks.
+ * Ensures show_questions is called after the container div is in the DOM.
+ */
+function try_show() {
+  if (document.getElementById("fnebLhqfCNNE")) {
+    show_questions(questionsfnebLhqfCNNE, fnebLhqfCNNE);
+  } else {
+    setTimeout(try_show, 200);
+  }
+};
+// Invoke immediately
+{
+  try_show();
+}
+}
+</script></div>
+</div>
 </section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="markdown">
 <h1>%% [markdown]<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h1>
-<section id="id6">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>היכן נמצא <span class="math notranslate nohighlight">\(k_B\)</span>?<br />
 A. <code class="docutils literal notranslate"><span class="pre">numpy.constants.kB</span></code><br />
@@ -2471,15 +3984,15 @@ C. ביצוע פעולות על מערכים שלמים ללא לולאות פי
 D. שימוש ב־<code class="docutils literal notranslate"><span class="pre">vector</span></code> ממודול <code class="docutils literal notranslate"><span class="pre">collections</span></code></p></li>
 </ol>
 </section>
-<section id="id7">
-<h2>איור (סקיצה)<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id12">
+<h2>איור (סקיצה)<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>תרשים סכמטי של זרימת נתונים: מדידה → NumPy (עיבוד) → SciPy (ניתוח) → Matplotlib (הצגה).</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id8">
-<h1>%% [markdown]<a class="headerlink" href="#id8" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id13">
+<h1>%% [markdown]<a class="headerlink" href="#id13" title="Link to this heading">#</a></h1>
 <section id="odes">
 <h2>2. אינטגרציה וגזירה נומרית + ODEs<a class="headerlink" href="#odes" title="Link to this heading">#</a></h2>
 <p><strong>אינטגרציה חד־ממדית:</strong> <code class="docutils literal notranslate"><span class="pre">integrate.quad</span></code> עבור <span class="math notranslate nohighlight">\(\int_a^b f(x)\,dx\)</span>.<br />
@@ -2506,7 +4019,7 @@ D. שימוש ב־<code class="docutils literal notranslate"><span class="pre">v
 trapz integral ~ 0.8862269117883661
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_19332/2073085679.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8262/2073085679.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   I_trapz = np.trapz(f(xs), xs)
 </pre></div>
 </div>
@@ -2547,10 +4060,10 @@ trapz integral ~ 0.8862269117883661
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id9">
-<h1>%% [markdown]<a class="headerlink" href="#id9" title="Link to this heading">#</a></h1>
-<section id="id10">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id14">
+<h1>%% [markdown]<a class="headerlink" href="#id14" title="Link to this heading">#</a></h1>
+<section id="id15">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>איזו פונקציה תחשב <span class="math notranslate nohighlight">\(\int_0^\infty e^{-x^2}\,dx\)</span> בדיוק נומרי טוב?<br />
 A. <code class="docutils literal notranslate"><span class="pre">np.sum</span></code><br />
@@ -2564,17 +4077,17 @@ C. <code class="docutils literal notranslate"><span class="pre">integrate.solve_
 D. <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code></p></li>
 </ol>
 </section>
-<section id="id11">
-<h2>איור (סקיצה)<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<section id="id16">
+<h2>איור (סקיצה)<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>שרטטו סכמת וקטור מצב <span class="math notranslate nohighlight">\(\mathbf{y}=[x,v]\)</span> והקשר בין נגזרות לזמן.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id12">
-<h1>%% [markdown]<a class="headerlink" href="#id12" title="Link to this heading">#</a></h1>
-<section id="id13">
-<h2>3. אופטימיזציה, שורשים, והתאמת עקומות<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id17">
+<h1>%% [markdown]<a class="headerlink" href="#id17" title="Link to this heading">#</a></h1>
+<section id="id18">
+<h2>3. אופטימיזציה, שורשים, והתאמת עקומות<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 <p><strong>שורשים:</strong> <code class="docutils literal notranslate"><span class="pre">optimize.root_scalar</span></code> לאיתור <span class="math notranslate nohighlight">\(x\)</span> כך ש־<span class="math notranslate nohighlight">\(f(x)=0\)</span>.<br />
 <strong>מינימום:</strong> <code class="docutils literal notranslate"><span class="pre">minimize_scalar</span></code> (חד־ממדי), <code class="docutils literal notranslate"><span class="pre">minimize</span></code> (רב־ממדי).<br />
 <strong>התאמת עקומות ניסוי:</strong> <code class="docutils literal notranslate"><span class="pre">optimize.curve_fit</span></code> — התאמה לא־ליניארית לנתונים <span class="math notranslate nohighlight">\((x,y)\)</span> והפקת טבלת covariance להערכת אי־ודאות.</p>
@@ -2623,10 +4136,10 @@ Estimated a=2.139 ± 0.050, b=0.459 ± 0.288
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id14">
-<h1>%% [markdown]<a class="headerlink" href="#id14" title="Link to this heading">#</a></h1>
-<section id="id15">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id19">
+<h1>%% [markdown]<a class="headerlink" href="#id19" title="Link to this heading">#</a></h1>
+<section id="id20">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>מה מחזירה <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> בנוסף לפרמטרים?<br />
 A. מטריצת ג’ייקוביאן<br />
@@ -2640,17 +4153,17 @@ C. <code class="docutils literal notranslate"><span class="pre">interp1d</span><
 D. <code class="docutils literal notranslate"><span class="pre">rfft</span></code></p></li>
 </ol>
 </section>
-<section id="id16">
-<h2>איור (סקיצה)<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<section id="id21">
+<h2>איור (סקיצה)<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכימה של שיוריים <span class="math notranslate nohighlight">\(r_i=y_i - \hat{y}_i\)</span> והמשמעות שלהם בבדיקת איכות התאמה.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id17">
-<h1>%% [markdown]<a class="headerlink" href="#id17" title="Link to this heading">#</a></h1>
-<section id="id18">
-<h2>4. אינטרפולציה והחלקה<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id22">
+<h1>%% [markdown]<a class="headerlink" href="#id22" title="Link to this heading">#</a></h1>
+<section id="id23">
+<h2>4. אינטרפולציה והחלקה<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
 <p><strong>אינטרפולציה חד־ממדית:</strong> <code class="docutils literal notranslate"><span class="pre">interpolate.interp1d(x,</span> <span class="pre">y,</span> <span class="pre">kind='linear'|'cubic'|...)</span></code> — קירוב ערכים בין נקודות מדידה.<br />
 <strong>Spline</strong>: <code class="docutils literal notranslate"><span class="pre">UnivariateSpline</span></code> מאפשר החלקה (smoothing) באמצעות פרמטר <span class="math notranslate nohighlight">\(s\)</span>.</p>
 <div class="cell docutils container">
@@ -2705,10 +4218,10 @@ D. <code class="docutils literal notranslate"><span class="pre">rfft</span></cod
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id19">
-<h1>%% [markdown]<a class="headerlink" href="#id19" title="Link to this heading">#</a></h1>
-<section id="id20">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id24">
+<h1>%% [markdown]<a class="headerlink" href="#id24" title="Link to this heading">#</a></h1>
+<section id="id25">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>איזה פרמטר ב־<code class="docutils literal notranslate"><span class="pre">UnivariateSpline</span></code> שולט על החלקה?<br />
 A. <code class="docutils literal notranslate"><span class="pre">k</span></code><br />
@@ -2722,15 +4235,15 @@ C. <code class="docutils literal notranslate"><span class="pre">&quot;spline&quo
 D. <code class="docutils literal notranslate"><span class="pre">&quot;poly3&quot;</span></code></p></li>
 </ol>
 </section>
-<section id="id21">
-<h2>איור (סקיצה)<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<section id="id26">
+<h2>איור (סקיצה)<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכימה של דגימות בדידות, אינטרפולציה ליניארית לעומת קובית, והחלקת spline.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id22">
-<h1>%% [markdown]<a class="headerlink" href="#id22" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id27">
+<h1>%% [markdown]<a class="headerlink" href="#id27" title="Link to this heading">#</a></h1>
 <section id="fft">
 <h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#fft" title="Link to this heading">#</a></h2>
 <p><strong>FFT חד־צדדי:</strong> <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code> לאותים ממשיים; תדירויות ב־<code class="docutils literal notranslate"><span class="pre">fft.rfftfreq(N,</span> <span class="pre">d=1/fs)</span></code>.<br />
@@ -2740,10 +4253,10 @@ D. <code class="docutils literal notranslate"><span class="pre">&quot;poly3&quot
 <p>ננתח אות סינוס מרובע תדרים ועם רעש, נזהה פסגות תדר.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id23">
-<h1>%% [markdown]<a class="headerlink" href="#id23" title="Link to this heading">#</a></h1>
-<section id="id24">
-<h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id28">
+<h1>%% [markdown]<a class="headerlink" href="#id28" title="Link to this heading">#</a></h1>
+<section id="id29">
+<h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#id29" title="Link to this heading">#</a></h2>
 <p><strong>FFT חד־צדדי:</strong> <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code> לאותים ממשיים; תדירויות ב־<code class="docutils literal notranslate"><span class="pre">fft.rfftfreq(N,</span> <span class="pre">d=1/fs)</span></code>.<br />
 <strong>נייקוויסט:</strong> <span class="math notranslate nohighlight">\(f_N = \tfrac{f_s}{2}\)</span>.<br />
 <strong>החלקה בסיסית:</strong> <code class="docutils literal notranslate"><span class="pre">signal.savgol_filter</span></code>.<br />
@@ -2796,10 +4309,10 @@ D. <code class="docutils literal notranslate"><span class="pre">&quot;poly3&quot
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id25">
-<h1>%% [markdown]<a class="headerlink" href="#id25" title="Link to this heading">#</a></h1>
-<section id="id26">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id30">
+<h1>%% [markdown]<a class="headerlink" href="#id30" title="Link to this heading">#</a></h1>
+<section id="id31">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id31" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>תדירות נייקוויסט היא:<br />
 A. <span class="math notranslate nohighlight">\(f_s\)</span><br />
@@ -2813,17 +4326,17 @@ C. <code class="docutils literal notranslate"><span class="pre">integrate.quad</
 D. <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code></p></li>
 </ol>
 </section>
-<section id="id27">
-<h2>איור (סקיצה)<a class="headerlink" href="#id27" title="Link to this heading">#</a></h2>
+<section id="id32">
+<h2>איור (סקיצה)<a class="headerlink" href="#id32" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>גרף סכמטי של דגימה בזמן וייצוגה בתחום התדר (FFT).</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id28">
-<h1>%% [markdown]<a class="headerlink" href="#id28" title="Link to this heading">#</a></h1>
-<section id="id29">
-<h2>6. אלגברה ליניארית מדעית<a class="headerlink" href="#id29" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id33">
+<h1>%% [markdown]<a class="headerlink" href="#id33" title="Link to this heading">#</a></h1>
+<section id="id34">
+<h2>6. אלגברה ליניארית מדעית<a class="headerlink" href="#id34" title="Link to this heading">#</a></h2>
 <p>נפתור <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span>, ונחשב ערכים עצמיים/וקטורים עצמיים:</p>
 <ul class="simple">
 <li><p>פתרון מערכת: <code class="docutils literal notranslate"><span class="pre">linalg.solve(A,</span> <span class="pre">b)</span></code></p></li>
@@ -2854,10 +4367,10 @@ Eigenvalues: [3.61803399+0.j 1.38196601+0.j]
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id30">
-<h1>%% [markdown]<a class="headerlink" href="#id30" title="Link to this heading">#</a></h1>
-<section id="id31">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id31" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id35">
+<h1>%% [markdown]<a class="headerlink" href="#id35" title="Link to this heading">#</a></h1>
+<section id="id36">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id36" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>עבור מטריצה סימטרית ממשית, נעדיף:<br />
 A. <code class="docutils literal notranslate"><span class="pre">eig</span></code><br />
@@ -2871,17 +4384,17 @@ C. <code class="docutils literal notranslate"><span class="pre">fft.rfft</span><
 D. <code class="docutils literal notranslate"><span class="pre">stats.ttest_ind</span></code></p></li>
 </ol>
 </section>
-<section id="id32">
-<h2>איור (סקיצה)<a class="headerlink" href="#id32" title="Link to this heading">#</a></h2>
+<section id="id37">
+<h2>איור (סקיצה)<a class="headerlink" href="#id37" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>המחשת כיווני וקטורים עצמיים והמתיחות לאורך כיוונים אלו.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id33">
-<h1>%% [markdown]<a class="headerlink" href="#id33" title="Link to this heading">#</a></h1>
-<section id="id34">
-<h2>7. סטטיסטיקה בסיסית למדידות<a class="headerlink" href="#id34" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id38">
+<h1>%% [markdown]<a class="headerlink" href="#id38" title="Link to this heading">#</a></h1>
+<section id="id39">
+<h2>7. סטטיסטיקה בסיסית למדידות<a class="headerlink" href="#id39" title="Link to this heading">#</a></h2>
 <p>נדגים שימוש בתפלגות נורמלית, אומדן פרמטרים, והתאמת התפלגות לנתונים:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">stats.norm</span></code> עבור PDF/CDF ודגימה אקראית.</p></li>
@@ -2916,10 +4429,10 @@ D. <code class="docutils literal notranslate"><span class="pre">stats.ttest_ind<
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id35">
-<h1>%% [markdown]<a class="headerlink" href="#id35" title="Link to this heading">#</a></h1>
-<section id="id36">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id36" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id40">
+<h1>%% [markdown]<a class="headerlink" href="#id40" title="Link to this heading">#</a></h1>
+<section id="id41">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id41" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>מה ההבדל בין <code class="docutils literal notranslate"><span class="pre">np.std(...,</span> <span class="pre">ddof=0)</span></code> ו-<code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>?<br />
 A. אין הבדל<br />
@@ -2933,15 +4446,15 @@ C. דגימות אקראיות<br />
 D. סטיית תקן</p></li>
 </ol>
 </section>
-<section id="id37">
-<h2>איור (סקיצה)<a class="headerlink" href="#id37" title="Link to this heading">#</a></h2>
+<section id="id42">
+<h2>איור (סקיצה)<a class="headerlink" href="#id42" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>המחשה של <span class="math notranslate nohighlight">\(68\)</span>–<span class="math notranslate nohighlight">\(95\)</span>–<span class="math notranslate nohighlight">\(99.7\%\)</span> סביב <span class="math notranslate nohighlight">\(\mu \pm \sigma, 2\sigma, 3\sigma\)</span>.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id38">
-<h1>%% [markdown]<a class="headerlink" href="#id38" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id43">
+<h1>%% [markdown]<a class="headerlink" href="#id43" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="capstone">
 <h1>דוגמאות מסכמות (Capstone)<a class="headerlink" href="#capstone" title="Link to this heading">#</a></h1>
@@ -3003,10 +4516,10 @@ D. סטיית תקן</p></li>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id39">
-<h1>%% [markdown]<a class="headerlink" href="#id39" title="Link to this heading">#</a></h1>
-<section id="id40">
-<h2>שאלות רב־ברירה (דוגמה 1)<a class="headerlink" href="#id40" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id44">
+<h1>%% [markdown]<a class="headerlink" href="#id44" title="Link to this heading">#</a></h1>
+<section id="id45">
+<h2>שאלות רב־ברירה (דוגמה 1)<a class="headerlink" href="#id45" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>אם <span class="math notranslate nohighlight">\(T=a\sqrt{L}\)</span>, אז <span class="math notranslate nohighlight">\(a\)</span> קשור ל־<span class="math notranslate nohighlight">\(g\)</span> כך ש:<br />
 A. <span class="math notranslate nohighlight">\(a = \dfrac{1}{2\pi}\sqrt{g}\)</span><br />
@@ -3020,17 +4533,17 @@ C. להאיץ את החישוב<br />
 D. להחליף את הפונקציה למודל</p></li>
 </ol>
 </section>
-<section id="id41">
-<h2>איור (סקיצה)<a class="headerlink" href="#id41" title="Link to this heading">#</a></h2>
+<section id="id46">
+<h2>איור (סקיצה)<a class="headerlink" href="#id46" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכמת ניסוי מטוטלת: נקודת תלייה, חוט באורך <span class="math notranslate nohighlight">\(L\)</span>, סטייה קטנה, מדידת תקופה.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id42">
-<h1>%% [markdown]<a class="headerlink" href="#id42" title="Link to this heading">#</a></h1>
-<section id="id43">
-<h2>דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית<a class="headerlink" href="#id43" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id47">
+<h1>%% [markdown]<a class="headerlink" href="#id47" title="Link to this heading">#</a></h1>
+<section id="id48">
+<h2>דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית<a class="headerlink" href="#id48" title="Link to this heading">#</a></h2>
 <p><strong>רקע:</strong> כוח גרר ריבועי: <span class="math notranslate nohighlight">\( \mathbf{F}_d = -\tfrac{1}{2}\rho C_d A v \mathbf{v} \)</span>.<br />
 שקול ל־ODE דו־ממדי עבור <span class="math notranslate nohighlight">\((x,y)\)</span> עם מהירויות <span class="math notranslate nohighlight">\((v_x,v_y)\)</span>:<br />
 [
@@ -3121,10 +4634,10 @@ D. להחליף את הפונקציה למודל</p></li>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id44">
-<h1>%% [markdown]<a class="headerlink" href="#id44" title="Link to this heading">#</a></h1>
-<section id="id45">
-<h2>שאלות רב־ברירה (דוגמה 2)<a class="headerlink" href="#id45" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id49">
+<h1>%% [markdown]<a class="headerlink" href="#id49" title="Link to this heading">#</a></h1>
+<section id="id50">
+<h2>שאלות רב־ברירה (דוגמה 2)<a class="headerlink" href="#id50" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>לשם עצירת ה־ODE בעת פגיעה בקרקע (<span class="math notranslate nohighlight">\(y=0\)</span>), השתמשנו ב־<br />
 A. <code class="docutils literal notranslate"><span class="pre">events</span></code> עם פונקציה שמחזירה <span class="math notranslate nohighlight">\(y\)</span><br />
@@ -3138,15 +4651,15 @@ C. <span class="math notranslate nohighlight">\(45^\circ\)</span><br />
 D. תלוי ב־<span class="math notranslate nohighlight">\(v_0\)</span> בלבד</p></li>
 </ol>
 </section>
-<section id="id46">
-<h2>איור (סקיצה)<a class="headerlink" href="#id46" title="Link to this heading">#</a></h2>
+<section id="id51">
+<h2>איור (סקיצה)<a class="headerlink" href="#id51" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>שרטטו כוחות על הקליע: משקל כלפי מטה וגרר ביחס ישר למהירות ובכיוון מנוגד.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id47">
-<h1>%% [markdown]<a class="headerlink" href="#id47" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id52">
+<h1>%% [markdown]<a class="headerlink" href="#id52" title="Link to this heading">#</a></h1>
 <section id="omega-n-zeta">
 <h2>דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span><a class="headerlink" href="#omega-n-zeta" title="Link to this heading">#</a></h2>
 <p><strong>רקע:</strong> משוואה: <span class="math notranslate nohighlight">\(x'' + 2\zeta\omega_n x' + \omega_n^2 x = 0\)</span><br />
@@ -3243,10 +4756,10 @@ Estimated Q ~ 9.96
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id48">
-<h1>%% [markdown]<a class="headerlink" href="#id48" title="Link to this heading">#</a></h1>
-<section id="id49">
-<h2>שאלות רב־ברירה (דוגמה 3)<a class="headerlink" href="#id49" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id53">
+<h1>%% [markdown]<a class="headerlink" href="#id53" title="Link to this heading">#</a></h1>
+<section id="id54">
+<h2>שאלות רב־ברירה (דוגמה 3)<a class="headerlink" href="#id54" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>הקשר בין <span class="math notranslate nohighlight">\(\omega_d\)</span> ו־<span class="math notranslate nohighlight">\(\omega_n\)</span> הוא:<br />
 A. <span class="math notranslate nohighlight">\(\omega_d = \omega_n\)</span><br />
@@ -3260,18 +4773,18 @@ C. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{2\zeta}\)</span><br 
 D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p></li>
 </ol>
 </section>
-<section id="id50">
-<h2>איור (סקיצה)<a class="headerlink" href="#id50" title="Link to this heading">#</a></h2>
+<section id="id55">
+<h2>איור (סקיצה)<a class="headerlink" href="#id55" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכמת מעטפת דעיכה <span class="math notranslate nohighlight">\(A e^{-\zeta\omega_n t}\)</span> והאוסילציה הפנימית בקצב <span class="math notranslate nohighlight">\(\omega_d\)</span>.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id51">
-<h1>%% [markdown]<a class="headerlink" href="#id51" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id56">
+<h1>%% [markdown]<a class="headerlink" href="#id56" title="Link to this heading">#</a></h1>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id52">
-<h1>נספח קצר — טיפים לשמירת תרשימים<a class="headerlink" href="#id52" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id57">
+<h1>נספח קצר — טיפים לשמירת תרשימים<a class="headerlink" href="#id57" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>לשימוש במאמרים/דוחות: עדיף <strong>SVG/PDF</strong> (וקטורי) עבור תרשימי קו/טקסט.</p></li>
 <li><p>לגדלים מדויקים: <code class="docutils literal notranslate"><span class="pre">fig.set_size_inches(width_inches,</span> <span class="pre">height_inches)</span></code> או <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(figsize=(w,h))</span></code>.</p></li>
@@ -3338,12 +4851,12 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 9 - Matplotlib &amp; SciPy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">חלק א’ — Matplotlib</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">שבוע 9 - Matplotlib &amp; SciPy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">חלק א’ — Matplotlib</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. אנטומיית תרשימים</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">דוגמה: שימוש במודל האובייקטי של matplotlib</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpi">דוגמה: גודל תרשים, DPI, פריסה ושמירה</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">דוגמה מקיפה: סוגי גרפים ב־matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">שימוש במודל האובייקטי של matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpi">גודל תרשים, DPI, פריסה ושמירה</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">סוגי גרפים ב־matplotlib</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot">Line plot</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
@@ -3353,13 +4866,25 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colormaps">התאמות מתקדמות: סולמות, טיקים, מקרא, סימונים, צירים תאומים, colormaps, ושמירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">התאמות מתקדמות</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">דוגמה מסכמת</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1) יצירת נתונים</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colormap">2) הכנה ל־Colormap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x">3) ציור הלוח העליון + סולם לוגריתמי בציר <span class="math notranslate nohighlight">\(x\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">4) הוספת Annotation לנקודת חצי־זמן</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-c">5) ציר תאום ליחידות חלופיות (K ↔ °C)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colorbar">6) הוספת Colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#y">7) לוח תחתון עם <span class="math notranslate nohighlight">\(y\)</span> לוגריתמי</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8) הרכבה, הצגה ושמירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">9) קריאה להרצה</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy">חלק ב’ — SciPy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">תזכורת קצרה ל-NumPy + קבועים פיזיקליים</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1) חישוב אנרגיית פוטון מאורך גל</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1) חישוב אנרגיית פוטון מאורך גל</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-b-t">2) סקאלת אנרגיה תרמית <span class="math notranslate nohighlight">\(k_B T\)</span> ומתיחות תרמית במתח</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">3) דוגמת Broadcasting: אנרגיה פוטנציאלית כבידתית</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4) חוק וין: אורך גל שיא של גוף שחור</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4) חוק וין: אורך גל שיא של גוף שחור</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-approx-dfrac-1-sqrt-varepsilon-0-mu-0">5) בדיקת־שפיות: <span class="math notranslate nohighlight">\(c \approx \dfrac{1}{\sqrt{\varepsilon_0 \mu_0}}\)</span></a></li>
@@ -3368,21 +4893,12 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">איור (סקיצה)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">%% [markdown]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -3391,7 +4907,7 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">4. אינטרפולציה והחלקה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -3400,20 +4916,20 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">4. אינטרפולציה והחלקה</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">%% [markdown]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">5. עיבוד אותות ו-FFT</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">איור (סקיצה)</a></li>
-</ul>
-</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">6. אלגברה ליניארית מדעית</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -3422,7 +4938,7 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">7. סטטיסטיקה בסיסית למדידות</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">6. אלגברה ליניארית מדעית</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">%% [markdown]</a><ul class="visible nav section-nav flex-column">
@@ -3430,36 +4946,45 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">7. סטטיסטיקה בסיסית למדידות</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">%% [markdown]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capstone">דוגמאות מסכמות (Capstone)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-t-l">דוגמה 1 — מטוטלת: הערכת <span class="math notranslate nohighlight">\(g\)</span> מהתלות <span class="math notranslate nohighlight">\(T(L)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">שאלות רב־ברירה (דוגמה 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
-</ul>
-</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">שאלות רב־ברירה (דוגמה 1)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">איור (סקיצה)</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">%% [markdown]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">שאלות רב־ברירה (דוגמה 3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">שאלות רב־ברירה (דוגמה 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">%% [markdown]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">נספח קצר — טיפים לשמירת תרשימים</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id57">נספח קצר — טיפים לשמירת תרשימים</a></li>
 </ul>
 
   </nav></div>
