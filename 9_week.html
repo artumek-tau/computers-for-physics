@@ -58,7 +58,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '9_week';</script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -198,7 +198,6 @@
 <li class="toctree-l1"><a class="reference internal" href="7_week.html">שבוע 7 - Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8_week.html">שבוע 8 - Numpy מתקדם</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">שבוע 9 - Matplotlib &amp; SciPy</a></li>
-
 
 
 
@@ -522,93 +521,96 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-approx-dfrac-1-sqrt-varepsilon-0-mu-0">5) בדיקת־שפיות: <span class="math notranslate nohighlight">\(c \approx \dfrac{1}{\sqrt{\varepsilon_0 \mu_0}}\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">אינטגרציה נומרית</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">נגזרות ומשוואות דיפרנציאליות רגילות (ODEs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">דוגמה: מתנד הרמוני</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">דוגמה:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">איור (סקיצה)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">4. אינטרפולציה והחלקה</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4. אינטרפולציה והחלקה</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">איור (סקיצה)</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">5. עיבוד אותות ו-FFT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">6. אלגברה ליניארית מדעית</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">6. אלגברה ליניארית מדעית</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">7. סטטיסטיקה בסיסית למדידות</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">7. סטטיסטיקה בסיסית למדידות</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">%% [markdown]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capstone">דוגמאות מסכמות (Capstone)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-t-l">דוגמה 1 — מטוטלת: הערכת <span class="math notranslate nohighlight">\(g\)</span> מהתלות <span class="math notranslate nohighlight">\(T(L)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">שאלות רב־ברירה (דוגמה 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">שאלות רב־ברירה (דוגמה 1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">שאלות רב־ברירה (דוגמה 2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">איור (סקיצה)</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">שאלות רב־ברירה (דוגמה 3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">איור (סקיצה)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">%% [markdown]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">נספח קצר — טיפים לשמירת תרשימים</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">שאלות רב־ברירה (דוגמה 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">נספח קצר — טיפים לשמירת תרשימים</a></li>
 </ul>
 
             </nav>
@@ -1376,8 +1378,8 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="sEtakjgaMbOA" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#sEtakjgaMbOA {
+<div class="output text_html"><div id="iEqgfqNVuyQw" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#iEqgfqNVuyQw {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -1594,7 +1596,7 @@ document.write(`
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionssEtakjgaMbOA=[{"question": "\u05d0\u05dd \u05d1\u05e8\u05e6\u05d5\u05e0\u05e0\u05d5 \u05dc\u05d4\u05e6\u05d9\u05d2 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e9\u05dc\u05d5\u05e9\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05d1\u05e6\u05d9\u05e8 x, \u05d4\u05d1\u05d7\u05d9\u05e8\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d4\u05d9\u05d0:", "type": "many_choice", "answers": [{"answer": "<code>ax.set_xscale('linear')</code>", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9 \u05dc\u05d0 \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e4\u05e8\u05d9\u05e1\u05d4 \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05e8\u05d1\u05d9\u05dd."}, {"answer": "<code>ax.set_xscale('log')</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05e1\u05d5\u05dc\u05dd \u05dc\u05d5\u05d2\u05e8\u05d9\u05ea\u05de\u05d9 \u05d1\u05e6\u05d9\u05e8 x \u05de\u05e6\u05d9\u05d2 \u05d4\u05d9\u05d8\u05d1 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05db\u05de\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc."}, {"answer": "<code>ax.set_yscale('log')</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05de\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e1\u05d5\u05dc\u05dd \u05e6\u05d9\u05e8 \u05d4-y, \u05dc\u05d0 \u05d0\u05ea \u05e6\u05d9\u05e8 \u05d4-x."}, {"answer": "\u05dc\u05d4\u05e9\u05d0\u05d9\u05e8 \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc", "correct": false, "feedback": "\u05d1\u05e8\u05d9\u05e8\u05ea \u05d4\u05de\u05d7\u05d3\u05dc \u05d4\u05d9\u05d0 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9, \u05e9\u05d0\u05d9\u05e0\u05d5 \u05de\u05ea\u05d0\u05d9\u05dd \u05db\u05d0\u05df."}]}, {"question": "\u05de\u05d4 \u05d9\u05d5\u05e6\u05e8 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8 \u05e6\u05d9\u05e8\u05d9\u05dd \u05d7\u05d3\u05e9 \u05d1\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea?", "type": "many_choice", "answers": [{"answer": "<code>fig = plt.figure()</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05d9\u05d5\u05e6\u05e8 Figure \u05d1\u05dc\u05d1\u05d3, \u05dc\u05dc\u05d0 Axes \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc."}, {"answer": "<code>ax = plt.axes()</code>", "correct": false, "feedback": "\u05d0\u05de\u05e0\u05dd \u05d9\u05d5\u05e6\u05e8 Axes, \u05d0\u05da \u05d4\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea \u05d5\u05d4\u05e0\u05e4\u05d5\u05e6\u05d4 \u05d4\u05d9\u05d0 <code>plt.subplots()</code>."}, {"answer": "<code>fig, ax = plt.subplots()</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05d6\u05d5 \u05d4\u05d3\u05e8\u05da \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea: \u05de\u05e7\u05d1\u05dc\u05d9\u05dd \u05d2\u05dd Figure \u05d5\u05d2\u05dd Axes \u05de\u05d5\u05db\u05e0\u05d9\u05dd \u05dc\u05e9\u05d9\u05de\u05d5\u05e9."}, {"answer": "<code>plt.plot(...)</code>", "correct": false, "feedback": "\u05d6\u05d5 \u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05e1\u05d2\u05e0\u05d5\u05df pyplot; \u05dc\u05d0 \u05d9\u05d5\u05e6\u05e8\u05ea \u05d1\u05de\u05e4\u05d5\u05e8\u05e9 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9 Figure \u05d5-Axes \u05dc\u05e2\u05d1\u05d5\u05d3\u05d4 \u05de\u05d1\u05d5\u05e1\u05e1\u05ea-\u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9\u05dd."}]}, {"question": "\u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9 (\u05db\u05de\u05d5 \u05d8\u05de\u05e4\u05e8\u05d8\u05d5\u05e8\u05d4 \u05e2\u05dc \u05e8\u05e9\u05ea), \u05de\u05d4 \u05de\u05ea\u05d0\u05d9\u05dd?", "type": "many_choice", "answers": [{"answer": "<code>plot</code>", "correct": false, "feedback": "plot \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e2\u05e7\u05d5\u05de\u05d5\u05ea/\u05e7\u05d5\u05d5\u05d9\u05dd, \u05dc\u05d0 \u05dc\u05e9\u05d3\u05d5\u05ea \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d9\u05dd."}, {"answer": "<code>scatter</code>", "correct": false, "feedback": "scatter \u05de\u05e6\u05d9\u05d2 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05d1\u05d3\u05d9\u05d3\u05d5\u05ea; \u05dc\u05e9\u05d3\u05d4 \u05e8\u05e6\u05d9\u05e3 \u05e2\u05d3\u05d9\u05e4\u05d4 \u05d4\u05d3\u05de\u05d9\u05d4 \u05e8\u05e1\u05d8\u05e8\u05d9\u05ea."}, {"answer": "<code>hist</code>", "correct": false, "feedback": "hist \u05de\u05e6\u05d9\u05d2 \u05d4\u05ea\u05e4\u05dc\u05d2\u05d5\u05ea \u05d7\u05d3\u05be\u05de\u05de\u05d3\u05d9\u05ea (\u05d4\u05d9\u05e1\u05d8\u05d5\u05d2\u05e8\u05de\u05d4), \u05dc\u05d0 \u05de\u05e4\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05ea."}, {"answer": "<code>imshow</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! imshow (\u05d0\u05d5 matshow) \u05de\u05ea\u05d0\u05d9\u05de\u05d9\u05dd \u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d5\u05ea/\u05de\u05e4\u05d5\u05ea \u05d7\u05d5\u05dd \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d5\u05ea."}]}];
+</style></div><script type="application/javascript">var questionsiEqgfqNVuyQw=[{"question": "\u05d0\u05dd \u05d1\u05e8\u05e6\u05d5\u05e0\u05e0\u05d5 \u05dc\u05d4\u05e6\u05d9\u05d2 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e9\u05dc\u05d5\u05e9\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05d1\u05e6\u05d9\u05e8 x, \u05d4\u05d1\u05d7\u05d9\u05e8\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d4\u05d9\u05d0:", "type": "many_choice", "answers": [{"answer": "<code>ax.set_xscale('linear')</code>", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9 \u05dc\u05d0 \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e4\u05e8\u05d9\u05e1\u05d4 \u05e2\u05dc \u05e4\u05e0\u05d9 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc \u05e8\u05d1\u05d9\u05dd."}, {"answer": "<code>ax.set_xscale('log')</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05e1\u05d5\u05dc\u05dd \u05dc\u05d5\u05d2\u05e8\u05d9\u05ea\u05de\u05d9 \u05d1\u05e6\u05d9\u05e8 x \u05de\u05e6\u05d9\u05d2 \u05d4\u05d9\u05d8\u05d1 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05e4\u05e0\u05d9 \u05db\u05de\u05d4 \u05e1\u05d3\u05e8\u05d9 \u05d2\u05d5\u05d3\u05dc."}, {"answer": "<code>ax.set_yscale('log')</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05de\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e1\u05d5\u05dc\u05dd \u05e6\u05d9\u05e8 \u05d4-y, \u05dc\u05d0 \u05d0\u05ea \u05e6\u05d9\u05e8 \u05d4-x."}, {"answer": "\u05dc\u05d4\u05e9\u05d0\u05d9\u05e8 \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc", "correct": false, "feedback": "\u05d1\u05e8\u05d9\u05e8\u05ea \u05d4\u05de\u05d7\u05d3\u05dc \u05d4\u05d9\u05d0 \u05e1\u05d5\u05dc\u05dd \u05dc\u05d9\u05e0\u05d9\u05d0\u05e8\u05d9, \u05e9\u05d0\u05d9\u05e0\u05d5 \u05de\u05ea\u05d0\u05d9\u05dd \u05db\u05d0\u05df."}]}, {"question": "\u05de\u05d4 \u05d9\u05d5\u05e6\u05e8 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8 \u05e6\u05d9\u05e8\u05d9\u05dd \u05d7\u05d3\u05e9 \u05d1\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea?", "type": "many_choice", "answers": [{"answer": "<code>fig = plt.figure()</code>", "correct": false, "feedback": "\u05d6\u05d4 \u05d9\u05d5\u05e6\u05e8 Figure \u05d1\u05dc\u05d1\u05d3, \u05dc\u05dc\u05d0 Axes \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc."}, {"answer": "<code>ax = plt.axes()</code>", "correct": false, "feedback": "\u05d0\u05de\u05e0\u05dd \u05d9\u05d5\u05e6\u05e8 Axes, \u05d0\u05da \u05d4\u05e9\u05d9\u05d8\u05d4 \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea \u05d5\u05d4\u05e0\u05e4\u05d5\u05e6\u05d4 \u05d4\u05d9\u05d0 <code>plt.subplots()</code>."}, {"answer": "<code>fig, ax = plt.subplots()</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05d6\u05d5 \u05d4\u05d3\u05e8\u05da \u05d4\u05de\u05d5\u05de\u05dc\u05e6\u05ea: \u05de\u05e7\u05d1\u05dc\u05d9\u05dd \u05d2\u05dd Figure \u05d5\u05d2\u05dd Axes \u05de\u05d5\u05db\u05e0\u05d9\u05dd \u05dc\u05e9\u05d9\u05de\u05d5\u05e9."}, {"answer": "<code>plt.plot(...)</code>", "correct": false, "feedback": "\u05d6\u05d5 \u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05e1\u05d2\u05e0\u05d5\u05df pyplot; \u05dc\u05d0 \u05d9\u05d5\u05e6\u05e8\u05ea \u05d1\u05de\u05e4\u05d5\u05e8\u05e9 \u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9 Figure \u05d5-Axes \u05dc\u05e2\u05d1\u05d5\u05d3\u05d4 \u05de\u05d1\u05d5\u05e1\u05e1\u05ea-\u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9\u05dd."}]}, {"question": "\u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9 (\u05db\u05de\u05d5 \u05d8\u05de\u05e4\u05e8\u05d8\u05d5\u05e8\u05d4 \u05e2\u05dc \u05e8\u05e9\u05ea), \u05de\u05d4 \u05de\u05ea\u05d0\u05d9\u05dd?", "type": "many_choice", "answers": [{"answer": "<code>plot</code>", "correct": false, "feedback": "plot \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05e2\u05e7\u05d5\u05de\u05d5\u05ea/\u05e7\u05d5\u05d5\u05d9\u05dd, \u05dc\u05d0 \u05dc\u05e9\u05d3\u05d5\u05ea \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d9\u05dd."}, {"answer": "<code>scatter</code>", "correct": false, "feedback": "scatter \u05de\u05e6\u05d9\u05d2 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05d1\u05d3\u05d9\u05d3\u05d5\u05ea; \u05dc\u05e9\u05d3\u05d4 \u05e8\u05e6\u05d9\u05e3 \u05e2\u05d3\u05d9\u05e4\u05d4 \u05d4\u05d3\u05de\u05d9\u05d4 \u05e8\u05e1\u05d8\u05e8\u05d9\u05ea."}, {"answer": "<code>hist</code>", "correct": false, "feedback": "hist \u05de\u05e6\u05d9\u05d2 \u05d4\u05ea\u05e4\u05dc\u05d2\u05d5\u05ea \u05d7\u05d3\u05be\u05de\u05de\u05d3\u05d9\u05ea (\u05d4\u05d9\u05e1\u05d8\u05d5\u05d2\u05e8\u05de\u05d4), \u05dc\u05d0 \u05de\u05e4\u05d4 \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05ea."}, {"answer": "<code>imshow</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! imshow (\u05d0\u05d5 matshow) \u05de\u05ea\u05d0\u05d9\u05de\u05d9\u05dd \u05dc\u05d4\u05e6\u05d2\u05ea \u05e9\u05d3\u05d5\u05ea/\u05de\u05e4\u05d5\u05ea \u05d7\u05d5\u05dd \u05d3\u05d5\u05be\u05de\u05de\u05d3\u05d9\u05d5\u05ea."}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -2657,8 +2659,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("sEtakjgaMbOA")) {
-    show_questions(questionssEtakjgaMbOA, sEtakjgaMbOA);
+  if (document.getElementById("iEqgfqNVuyQw")) {
+    show_questions(questionsiEqgfqNVuyQw, iEqgfqNVuyQw);
   } else {
     setTimeout(try_show, 200);
   }
@@ -2888,8 +2890,8 @@ function try_show() {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="syUuqlhtjphB" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
-#syUuqlhtjphB {
+<div class="output text_html"><div id="aHbUIeGEKyam" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#aHbUIeGEKyam {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -3106,7 +3108,7 @@ function try_show() {
         background-color: var(--jq-correct-color);
     }
 }
-</style></div><script type="application/javascript">var questionssyUuqlhtjphB=[{"question": "\u05e0\u05ea\u05d5\u05df \u05d4\u05e7\u05d5\u05d3:<br><br>c = constants.c  # \u05de\u05d4\u05d9\u05e8\u05d5\u05ea \u05d4\u05d0\u05d5\u05e8 (m/s)<br>h = constants.h  # \u05e7\u05d1\u05d5\u05e2 \u05e4\u05dc\u05d0\u05e0\u05e7 (J\u00b7s)<br>kB = constants.Boltzmann # \u05e7\u05d1\u05d5\u05e2 \u05d1\u05d5\u05dc\u05e6\u05de\u05df (J/K)<br><br>\u05de\u05d4 \u05e0\u05db\u05d5\u05df \u05dc\u05d2\u05d1\u05d9 \u05d4\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-scIpy.constants?", "type": "many_choice", "answers": [{"answer": "\u05de\u05d0\u05e4\u05e9\u05e8 \u05d2\u05d9\u05e9\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05dc\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd \u05de\u05d5\u05db\u05e8\u05d9\u05dd \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea SI", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! scipy.constants \u05db\u05d5\u05dc\u05dc \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd \u05de\u05e7\u05d5\u05d1\u05dc\u05d9\u05dd \u05db\u05de\u05d5 c, h, kB \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05e1\u05d8\u05e0\u05d3\u05e8\u05d8\u05d9\u05d5\u05ea."}, {"answer": "\u05e0\u05d3\u05e8\u05e9 \u05dc\u05d4\u05de\u05d9\u05e8 \u05ea\u05de\u05d9\u05d3 \u05d0\u05ea \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05dc\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05dc\u05d0\u05beSI (\u05db\u05de\u05d5 eV)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05d5\u05d2\u05d3\u05e8\u05d9\u05dd \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea SI \u05db\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc. \u05d4\u05de\u05e8\u05d4 \u05e0\u05d3\u05e8\u05e9\u05ea \u05e8\u05e7 \u05d0\u05dd \u05e8\u05d5\u05e6\u05d9\u05dd \u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05d0\u05d7\u05e8\u05d5\u05ea."}, {"answer": "\u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05d9\u05d5\u05e6\u05e8\u05d9\u05dd \u05d0\u05e7\u05e8\u05d0\u05d9\u05ea \u05d1\u05db\u05dc \u05e8\u05d9\u05e6\u05d4 \u05d5\u05dc\u05db\u05df \u05d0\u05d9\u05e0\u05dd \u05de\u05ea\u05d0\u05d9\u05de\u05d9\u05dd \u05dc\u05e9\u05d9\u05de\u05d5\u05e9 \u05de\u05d3\u05e2\u05d9", "correct": false, "feedback": "\u05de\u05de\u05e9 \u05dc\u05d0 \u2014 \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e2\u05e8\u05db\u05d9\u05dd \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05dc\u05e4\u05d9 CODATA, \u05dc\u05d0 \u05d0\u05e7\u05e8\u05d0\u05d9\u05d9\u05dd."}, {"answer": "\u05d4\u05d2\u05d9\u05e9\u05d4 \u05dc\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05ea\u05d1\u05e6\u05e2\u05ea \u05d3\u05e8\u05da numpy \u05d5\u05dc\u05d0 \u05d3\u05e8\u05da scipy", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 numpy \u05dc\u05d0 \u05de\u05e1\u05e4\u05e7 \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd, \u05e8\u05e7 scipy.constants \u05e2\u05d5\u05e9\u05d4 \u05d6\u05d0\u05ea."}]}];
+</style></div><script type="application/javascript">var questionsaHbUIeGEKyam=[{"question": "\u05e0\u05ea\u05d5\u05df \u05d4\u05e7\u05d5\u05d3:<br><br>c = constants.c  # \u05de\u05d4\u05d9\u05e8\u05d5\u05ea \u05d4\u05d0\u05d5\u05e8 (m/s)<br>h = constants.h  # \u05e7\u05d1\u05d5\u05e2 \u05e4\u05dc\u05d0\u05e0\u05e7 (J\u00b7s)<br>kB = constants.Boltzmann # \u05e7\u05d1\u05d5\u05e2 \u05d1\u05d5\u05dc\u05e6\u05de\u05df (J/K)<br><br>\u05de\u05d4 \u05e0\u05db\u05d5\u05df \u05dc\u05d2\u05d1\u05d9 \u05d4\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-scIpy.constants?", "type": "many_choice", "answers": [{"answer": "\u05de\u05d0\u05e4\u05e9\u05e8 \u05d2\u05d9\u05e9\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05dc\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd \u05de\u05d5\u05db\u05e8\u05d9\u05dd \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea SI", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! scipy.constants \u05db\u05d5\u05dc\u05dc \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd \u05de\u05e7\u05d5\u05d1\u05dc\u05d9\u05dd \u05db\u05de\u05d5 c, h, kB \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05e1\u05d8\u05e0\u05d3\u05e8\u05d8\u05d9\u05d5\u05ea."}, {"answer": "\u05e0\u05d3\u05e8\u05e9 \u05dc\u05d4\u05de\u05d9\u05e8 \u05ea\u05de\u05d9\u05d3 \u05d0\u05ea \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05dc\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05dc\u05d0\u05beSI (\u05db\u05de\u05d5 eV)", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05d5\u05d2\u05d3\u05e8\u05d9\u05dd \u05d1\u05d9\u05d7\u05d9\u05d3\u05d5\u05ea SI \u05db\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc. \u05d4\u05de\u05e8\u05d4 \u05e0\u05d3\u05e8\u05e9\u05ea \u05e8\u05e7 \u05d0\u05dd \u05e8\u05d5\u05e6\u05d9\u05dd \u05d9\u05d7\u05d9\u05d3\u05d5\u05ea \u05d0\u05d7\u05e8\u05d5\u05ea."}, {"answer": "\u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05d9\u05d5\u05e6\u05e8\u05d9\u05dd \u05d0\u05e7\u05e8\u05d0\u05d9\u05ea \u05d1\u05db\u05dc \u05e8\u05d9\u05e6\u05d4 \u05d5\u05dc\u05db\u05df \u05d0\u05d9\u05e0\u05dd \u05de\u05ea\u05d0\u05d9\u05de\u05d9\u05dd \u05dc\u05e9\u05d9\u05de\u05d5\u05e9 \u05de\u05d3\u05e2\u05d9", "correct": false, "feedback": "\u05de\u05de\u05e9 \u05dc\u05d0 \u2014 \u05d4\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e2\u05e8\u05db\u05d9\u05dd \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05dc\u05e4\u05d9 CODATA, \u05dc\u05d0 \u05d0\u05e7\u05e8\u05d0\u05d9\u05d9\u05dd."}, {"answer": "\u05d4\u05d2\u05d9\u05e9\u05d4 \u05dc\u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05de\u05ea\u05d1\u05e6\u05e2\u05ea \u05d3\u05e8\u05da numpy \u05d5\u05dc\u05d0 \u05d3\u05e8\u05da scipy", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 numpy \u05dc\u05d0 \u05de\u05e1\u05e4\u05e7 \u05e7\u05d1\u05d5\u05e2\u05d9\u05dd \u05e4\u05d9\u05d6\u05d9\u05e7\u05dc\u05d9\u05d9\u05dd, \u05e8\u05e7 scipy.constants \u05e2\u05d5\u05e9\u05d4 \u05d6\u05d0\u05ea."}]}];
 
 if (typeof Question === 'undefined') {
 // Make a random ID
@@ -4169,8 +4171,8 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
  * Ensures show_questions is called after the container div is in the DOM.
  */
 function try_show() {
-  if (document.getElementById("syUuqlhtjphB")) {
-    show_questions(questionssyUuqlhtjphB, syUuqlhtjphB);
+  if (document.getElementById("aHbUIeGEKyam")) {
+    show_questions(questionsaHbUIeGEKyam, aHbUIeGEKyam);
   } else {
     setTimeout(try_show, 200);
   }
@@ -4186,99 +4188,1791 @@ function try_show() {
 </section>
 <section id="odes">
 <h2>2. אינטגרציה וגזירה נומרית + ODEs<a class="headerlink" href="#odes" title="Link to this heading">#</a></h2>
-<p><strong>אינטגרציה חד־ממדית:</strong> <code class="docutils literal notranslate"><span class="pre">integrate.quad</span></code> עבור <span class="math notranslate nohighlight">\(\int_a^b f(x)\,dx\)</span>.<br />
-<strong>טרפזים/מצטבר:</strong> <code class="docutils literal notranslate"><span class="pre">numpy.trapz</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy.integrate.cumtrapz</span></code> כדגמים פשוטים.<br />
-<strong>משוואות דיפרנציאליות רגילות (ODE):</strong><br />
-נפתור בעיה כללית <span class="math notranslate nohighlight">\( \dot{\mathbf{y}} = f(t,\mathbf{y}) \)</span> עם <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>, ונראה דוגמת מתנד הרמוני <span class="math notranslate nohighlight">\( \ddot{x} + \omega^2 x = 0 \)</span>.</p>
+<p>בפיזיקה ומתמטיקה רבות מהבעיות אינן ניתנות לפתרון אנליטי פשוט, ולכן יש צורך להעריך את הפתרונות באופן נומרי באמצעות קירובים חישוביים.</p>
+<section id="id12">
+<h3>אינטגרציה נומרית<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>המטרה היא להעריך שטח מתחת לפונקציה:</p>
+<div class="math notranslate nohighlight">
+\[
+I = \int_a^b f(x)\,dx
+\]</div>
+<ul>
+<li><p><strong>שיטות מדויקות:</strong><br />
+<code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad</span></code> מחשבת את האינטגרל בעזרת אלגוריתם אדפטיבי.</p></li>
+<li><p><strong>שיטות פשוטות:</strong></p>
+<ul>
+<li><p>כלל הטרפזים:</p>
+<div class="math notranslate nohighlight">
+\[
+    I \approx \sum_i \tfrac{1}{2}\,(x_{i+1}-x_i)\,[f(x_i)+f(x_{i+1})]
+    \]</div>
+<p>מיושם ב־<code class="docutils literal notranslate"><span class="pre">numpy.trapz</span></code>.</p>
+</li>
+<li><p>חישוב מצטבר (cumulative) לאורך וקטור נקודות בעזרת <code class="docutils literal notranslate"><span class="pre">scipy.integrate.cumtrapz</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition- admonition">
+<p class="admonition-title">מדוע יש שתי שיטות אינטגרציה?</p>
+<p>נרצה לאמוד את האינטגרל</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\infty e^{-x^2}\,dx=\frac{\sqrt{\pi}}{2}.
+\]</div>
+<p>לבעיה יש <strong>גבול אינסופי</strong>, ולכן:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">integrate.quad</span></code> יודעת לטפל <strong>באופן ישיר</strong> באינטגרלים לא־נאותים (כולל <span class="math notranslate nohighlight">\(\infty\)</span>) באלגוריתם אדפטיבי.</p></li>
+<li><p>לעומת זאת, כלל הטרפזים הוא חישוב <strong>דיסקרטי</strong> על קטע סופי בלבד. לכן נחתוך ב־<span class="math notranslate nohighlight">\([0,L]\)</span> ונבדוק התכנסות כאשר מגדילים את <span class="math notranslate nohighlight">\(L\)</span> ומדקקים את הרשת.</p></li>
+</ul>
+</div>
+<p>להלן דוגמה בשימוש בפונקציות אינטגרציה של SciPy שממחישה את ההבדל ואת טיב הקירוב:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
-<span class="c1"># Numeric integration: quad vs trapz</span>
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Gaussian</span>
+<span class="c1"># SciPy-only integration demo: quad (improper integral) vs trapezoid (finite interval)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">special</span>
 
-<span class="n">I_quad</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>  <span class="c1"># integral from 0 to infinity</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">I_trapz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">xs</span><span class="p">)</span>
+<span class="c1"># Target integrand and exact value on [0, ∞)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>          <span class="c1"># Gaussian</span>
+<span class="n">I_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>           <span class="c1"># integral_0^∞ e^{-x^2} dx</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quad integral ~&quot;</span><span class="p">,</span> <span class="n">I_quad</span><span class="p">,</span> <span class="s2">&quot;estimated error ~&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;trapz integral ~&quot;</span><span class="p">,</span> <span class="n">I_trapz</span><span class="p">)</span>
+<span class="c1"># 1) quad can handle the infinite limit directly</span>
+<span class="n">I_quad</span><span class="p">,</span> <span class="n">err_quad</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exact               =&quot;</span><span class="p">,</span> <span class="n">I_exact</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quad (0..∞)         =&quot;</span><span class="p">,</span> <span class="n">I_quad</span><span class="p">,</span> <span class="s2">&quot;   | est. abs error ~&quot;</span><span class="p">,</span> <span class="n">err_quad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;abs error (quad)    =&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">I_quad</span> <span class="o">-</span> <span class="n">I_exact</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1"># 2) trapezoid must approximate [0, ∞) by [0, L] and a finite grid</span>
+<span class="n">Ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>         <span class="c1"># cutoff values</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>    <span class="c1"># number of grid points</span>
+
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">Ls</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Ns</span><span class="p">:</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>                 <span class="c1"># finite grid</span>
+        <span class="n">I_trap</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">xs</span><span class="p">)</span>   <span class="c1"># SciPy&#39;s trapezoid (not NumPy)</span>
+        <span class="c1"># Add tail estimate via complementary error function: ∫_L^∞ e^{-x^2} dx = (√π/2) erfc(L)</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">special</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+        <span class="n">I_trap_tail</span> <span class="o">=</span> <span class="n">I_trap</span> <span class="o">+</span> <span class="n">tail</span>               <span class="c1"># corrected trapezoid with tail</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;L=</span><span class="si">{</span><span class="n">L</span><span class="si">:</span><span class="s2">&lt;2</span><span class="si">}</span><span class="s2">  N=</span><span class="si">{</span><span class="n">N</span><span class="si">:</span><span class="s2">&lt;5</span><span class="si">}</span><span class="s2"> | trap=</span><span class="si">{</span><span class="n">I_trap</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">  + tail=</span><span class="si">{</span><span class="n">tail</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">  -&gt; trap+tail=</span><span class="si">{</span><span class="n">I_trap_tail</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">  | abs err=</span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">I_trap_tail</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">I_exact</span><span class="p">)</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>quad integral ~ 0.8862269254527579 estimated error ~ 7.10131839047246e-09
-trapz integral ~ 0.8862269117883661
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exact               = 0.8862269254527579
+quad (0..∞)         = 0.8862269254527579    | est. abs error ~ 7.10131839047246e-09
+abs error (quad)    = 0.0
+------------------------------------------------------------
+L=2   N=200   | trap=0.88208077  + tail=4.146e-03  -&gt; trap+tail=0.88622631  | abs err=6.17e-07
+L=2   N=1000  | trap=0.88208137  + tail=4.146e-03  -&gt; trap+tail=0.88622690  | abs err=2.45e-08
+L=2   N=5000  | trap=0.88208139  + tail=4.146e-03  -&gt; trap+tail=0.88622692  | abs err=9.77e-10
+------------------------------------------------------------
+L=3   N=200   | trap=0.88620733  + tail=1.958e-05  -&gt; trap+tail=0.88622691  | abs err=1.40e-08
+L=3   N=1000  | trap=0.88620735  + tail=1.958e-05  -&gt; trap+tail=0.88622692  | abs err=5.56e-10
+L=3   N=5000  | trap=0.88620735  + tail=1.958e-05  -&gt; trap+tail=0.88622693  | abs err=2.22e-11
+------------------------------------------------------------
+L=4   N=200   | trap=0.88622691  + tail=1.366e-08  -&gt; trap+tail=0.88622693  | abs err=3.03e-11
+L=4   N=1000  | trap=0.88622691  + tail=1.366e-08  -&gt; trap+tail=0.88622693  | abs err=1.20e-12
+L=4   N=5000  | trap=0.88622691  + tail=1.366e-08  -&gt; trap+tail=0.88622693  | abs err=4.81e-14
+------------------------------------------------------------
+L=6   N=200   | trap=0.88622693  + tail=1.907e-17  -&gt; trap+tail=0.88622693  | abs err=0.00e+00
+L=6   N=1000  | trap=0.88622693  + tail=1.907e-17  -&gt; trap+tail=0.88622693  | abs err=1.11e-16
+L=6   N=5000  | trap=0.88622693  + tail=1.907e-17  -&gt; trap+tail=0.88622693  | abs err=1.11e-16
+------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8432/2073085679.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  I_trapz = np.trapz(f(xs), xs)
-</pre></div>
 </div>
 </div>
+<div class="admonition- admonition">
+<p class="admonition-title">מה רואים בתוצאות?</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">quad</span></code> נותנת תוצאה מדויקת מאוד ישירות על <span class="math notranslate nohighlight">\([0,\infty)\)</span>, עם הערכת שגיאה פנימית.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trapezoid</span></code> לבדו על <span class="math notranslate nohighlight">\([0,L]\)</span> יחמיץ את הזנב (<span class="math notranslate nohighlight">\(x &gt; L\)</span>). שיפור פשוט הוא להוסיף תיקון זנב אנליטי:</p>
+<div class="math notranslate nohighlight">
+\[
+  \int_L^\infty e^{-x^2}\,dx \;=\; \tfrac{\sqrt{\pi}}{2}\,\mathrm{erfc}(L),
+  \]</div>
+<p>ואז השגיאה תלויה בעיקר בצפיפות הרשת ובבחירת <span class="math notranslate nohighlight">\(L\)</span>.</p>
+</li>
+<li><p>הגדלת <span class="math notranslate nohighlight">\(L\)</span> ו־<span class="math notranslate nohighlight">\(N\)</span> משפרת את הדיוק, אך העלות החישובית גדלה — זו בדיוק התועלת של <code class="docutils literal notranslate"><span class="pre">quad</span></code> בשילוב גבולות אינסופיים.</p></li>
+</ul>
 </div>
+</section>
+<section id="id13">
+<h3>נגזרות ומשוואות דיפרנציאליות רגילות (ODEs)<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>במקרים רבים אנו מתעניינים בהתפתחות בזמן של מערכת, המתוארת על ידי ODE:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\mathbf{y}}{dt} = f(t,\mathbf{y}), \quad \mathbf{y}(t_0) = \mathbf{y}_0
+\]</div>
+<p>כלומר, הנגזרת של המשתנה <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> תלויה בזמן ובערכו הנוכחי.<br />
+כדי לפתור, משתמשים בפונקציה <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code>, שמבצעת אינטגרציה נומרית לאורך הזמן.</p>
+</section>
+<section id="id14">
+<h3>דוגמה: מתנד הרמוני<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>המשוואה של מתנד הרמוני פשוט היא:</p>
+<div class="math notranslate nohighlight">
+\[
+\ddot{x} + \omega^2 x = 0
+\]</div>
+<p>שניתן לרשום כמערכת של שתי משוואות מסדר ראשון:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\dot{x} &amp;= v \\
+\dot{v} &amp;= -\omega^2 x
+\end{aligned}
+\end{split}\]</div>
+<p>כך אפשר לייצג את המצב כוקטור <span class="math notranslate nohighlight">\(\mathbf{y} = [x,v]\)</span> ולפתור נומרית באמצעות <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>.</p>
+<section id="id15">
+<h4>דוגמה:<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
+<p>נפתור נומרית את משוואת המתנד ההרמוני הפשוט</p>
+<div class="math notranslate nohighlight">
+\[
+\ddot{x} + \omega^2 x = 0,
+\]</div>
+<p>על ידי פירוקה למערכת מסדר ראשון:</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{x}=v,\qquad \dot{v}=-\omega^2 x.
+\]</div>
+<p>נשתמש ב־<code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> כדי לבצע אינטגרציה בזמן, נשווה לפתרון האנליטי
+<span class="math notranslate nohighlight">\( x(t)=A\cos(\omega t)+B\sin(\omega t)\)</span>
+(בעת אתחול <span class="math notranslate nohighlight">\(x(0)=1,\ v(0)=0\)</span> נקבל <span class="math notranslate nohighlight">\(x(t)=\cos(\omega t)\)</span>),
+ונבדוק <strong>שימור אנרגיה</strong></p>
+<div class="math notranslate nohighlight">
+\[
+E(t)=\tfrac{1}{2}\,m v(t)^2+\tfrac{1}{2}\,k x(t)^2
+=\tfrac{1}{2}\,v(t)^2+\tfrac{1}{2}\,\omega^2 x(t)^2
+\]</div>
+<p>(עבור <span class="math notranslate nohighlight">\(m=1,\ k=\omega^2\)</span>). נציג גם דיוק (שגיאת עקבה) ודיון קצר על פרמטרי הדיוק של הפותר.</p>
+<p>ראשית נייבא ספריות ונגדיר קבועים:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\omega\)</span> מגדיר את תדר המתנד</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> את תחום הזמן לפתרון</p></li>
+<li><p>תנאי ההתחלה <span class="math notranslate nohighlight">\(\mathbf{y}(0)=[x(0),v(0)]=[1,0]\)</span>.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
-<span class="c1"># ODE: simple harmonic oscillator x&#39;&#39; + w^2 x = 0</span>
-<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>  <span class="c1"># rad/s</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">sho</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>            <span class="c1"># natural frequency [rad/s]</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>    <span class="c1"># simulation window [s]</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>        <span class="c1"># initial state: x(0)=1, v(0)=0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>נגדיר את הפונקציה <span class="math notranslate nohighlight">\(f(t,\mathbf{y})\)</span> כך ש־<span class="math notranslate nohighlight">\(\mathbf{y}=[x,v]\)</span> ו־<span class="math notranslate nohighlight">\(\dot{\mathbf{y}}=[v,\,-\omega^2 x]\)</span>.  זהו הייצוג הסטנדרטי ל־<code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sho</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="c1"># y = [x, v]</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="n">dxdt</span> <span class="o">=</span> <span class="n">v</span>
-    <span class="n">dvdt</span> <span class="o">=</span> <span class="o">-</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">dxdt</span><span class="p">,</span> <span class="n">dvdt</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">v</span><span class="p">,</span> <span class="o">-</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>נפעיל את <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> עם סבילות יחסית/מוחלטת (<span class="math notranslate nohighlight">\(rtol, atol\)</span>) לקבלת פתרון מדויק וחלק. <code class="docutils literal notranslate"><span class="pre">dense_output=True</span></code> מאפשר להעריך את <span class="math notranslate nohighlight">\(\mathbf{y}(t)\)</span> בכל <span class="math notranslate nohighlight">\(t\)</span> מבוקש דרך <code class="docutils literal notranslate"><span class="pre">sol.sol(t)</span></code>.
+נגדיר רשת זמן אחידה, ומחלץ את <span class="math notranslate nohighlight">\(x(t)\)</span> ו־<span class="math notranslate nohighlight">\(v(t)\)</span> הנומריים.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rtol</span> <span class="o">=</span> <span class="mf">1e-9</span>
+<span class="n">atol</span> <span class="o">=</span> <span class="mf">1e-12</span>
 
-<span class="n">t_span</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>        <span class="c1"># seconds</span>
-<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>          <span class="c1"># initial displacement 1, zero velocity</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">sho</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">sho</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span>        <span class="c1"># Dormand–Prince explicit RK</span>
+    <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>    <span class="c1"># enables sol.sol(t) evaluation</span>
+    <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span>
+    <span class="n">max_step</span><span class="o">=</span><span class="mf">0.01</span>         <span class="c1"># optional: finer dense output</span>
+<span class="p">)</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">t_span</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">sol</span><span class="p">(</span><span class="n">t</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">t_span</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+<span class="n">xy</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">sol</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>          <span class="c1"># evaluate dense solution</span>
+<span class="n">x_num</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">v_num</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>עבור תנאי ההתחלה שנבחרו מתקבל פתרון אנליטי <span class="math notranslate nohighlight">\(x(t)=\cos(\omega t)\)</span>, <span class="math notranslate nohighlight">\(v(t)=-\omega\sin(\omega t)\)</span>.<br />
+נחשב את שגיאת המיקום <span class="math notranslate nohighlight">\(x_{\text{num}}-x_{\text{ana}}\)</span> לאורך הזמן לבדיקת הדיוק.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_ana</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">v_ana</span> <span class="o">=</span> <span class="o">-</span><span class="n">w</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">err_x</span> <span class="o">=</span> <span class="n">x_num</span> <span class="o">-</span> <span class="n">x_ana</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<p>נחשב את האנרגיה <span class="math notranslate nohighlight">\(E(t)=\tfrac{1}{2}v^2+\tfrac{1}{2}\omega^2 x^2\)</span> (עם <span class="math notranslate nohighlight">\(m=1,\ k=\omega^2\)</span>).<br />
+נבדוק <strong>סטיית אנרגיה יחסית</strong> <span class="math notranslate nohighlight">\((E-E_0)/E_0\)</span> כדי לוודא שהפתרון יציב ונאמן לדינמיקה השמרנית.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">v_num</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x_num</span><span class="o">**</span><span class="mi">2</span>   <span class="c1"># m=1, k=ω^2</span>
+<span class="n">E0</span> <span class="o">=</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">rel_energy_drift</span> <span class="o">=</span> <span class="p">(</span><span class="n">E</span> <span class="o">-</span> <span class="n">E0</span><span class="p">)</span><span class="o">/</span><span class="n">E0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ניצור 4 תתי־תרשימים:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(x(t)\)</span> נומרי מול אנליטי — לבדיקת חפיפה ודיוק.</p></li>
+<li><p><strong>פורטרט פאזה</strong> <span class="math notranslate nohighlight">\(v\)</span> מול <span class="math notranslate nohighlight">\(x\)</span> — מציג מסלול אליפטי אופייני למתנד הרמוני.</p></li>
+<li><p>אנרגיה <span class="math notranslate nohighlight">\(E(t)\)</span> וקו <span class="math notranslate nohighlight">\(E(0)\)</span> — לבדיקת שימור אנרגיה נומרית.</p></li>
+<li><p>שגיאת מיקום — מציג את גודל ההפרש בין נומרי לאנליטי לאורך הזמן.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;מתנד הרמוני: $x&#39;&#39;+\omega^2 x=0$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="c1"># (1) x(t): numerical vs analytical</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_num</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;numerical&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_ana</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;analytic&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x(t)$: numerical vs analytic&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$ (s)&quot;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$ (m)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># (2) phase portrait v(x)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_num</span><span class="p">,</span> <span class="n">v_num</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Phase portrait: $v$ vs $x$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$ (m)&quot;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$v$ (m/s)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># (3) E(t)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$E(t)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">E0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$E(0)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Energy $E=\tfrac</span><span class="si">{1}{2}</span><span class="s2">v^2+\tfrac</span><span class="si">{1}{2}</span><span class="s2">\omega^2 x^2$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$ (s)&quot;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$E$ (J)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># (4) Position error</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">err_x</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Position error $x_{\rm num}-x_{\rm ana}$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$ (s)&quot;</span><span class="p">);</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;error (m)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ed597a76b0c31553a00141d663df49ad20c206005d9d5d09ba217145709c6695.png" src="_images/ed597a76b0c31553a00141d663df49ad20c206005d9d5d09ba217145709c6695.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">File ~/.local/lib/python3.12/site-packages/IPython/core/formatters.py:402,</span> in <span class="ni">BaseFormatter.__call__</span><span class="nt">(self, obj)</span>
+<span class="g g-Whitespace">    </span><span class="mi">400</span>     <span class="k">pass</span>
+<span class="g g-Whitespace">    </span><span class="mi">401</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">402</span>     <span class="k">return</span> <span class="n">printer</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">403</span> <span class="c1"># Finally look for special method names</span>
+<span class="g g-Whitespace">    </span><span class="mi">404</span> <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/IPython/core/pylabtools.py:170,</span> in <span class="ni">print_figure</span><span class="nt">(fig, fmt, bbox_inches, base64, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backend_bases</span><span class="w"> </span><span class="kn">import</span> <span class="n">FigureCanvasBase</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span>     <span class="n">FigureCanvasBase</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">170</span> <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">bytes_io</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="n">data</span> <span class="o">=</span> <span class="n">bytes_io</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span> <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;svg&#39;</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/backend_bases.py:2157,</span> in <span class="ni">FigureCanvasBase.print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2154</span>     <span class="c1"># we do this instead of `self.figure.draw_without_rendering`</span>
+<span class="g g-Whitespace">   </span><span class="mi">2155</span>     <span class="c1"># so that we can inject the orientation</span>
+<span class="g g-Whitespace">   </span><span class="mi">2156</span>     <span class="k">with</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">renderer</span><span class="p">,</span> <span class="s2">&quot;_draw_disabled&quot;</span><span class="p">,</span> <span class="n">nullcontext</span><span class="p">)():</span>
+<span class="ne">-&gt; </span><span class="mi">2157</span>         <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2158</span> <span class="k">if</span> <span class="n">bbox_inches</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2159</span>     <span class="k">if</span> <span class="n">bbox_inches</span> <span class="o">==</span> <span class="s2">&quot;tight&quot;</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/artist.py:94,</span> in <span class="ni">_finalize_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">draw</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="k">def</span><span class="w"> </span><span class="nf">draw_wrapper</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">94</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="k">if</span> <span class="n">renderer</span><span class="o">.</span><span class="n">_rasterizing</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">stop_rasterizing</span><span class="p">()</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/artist.py:71,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">71</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/figure.py:3257,</span> in <span class="ni">Figure.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3254</span>             <span class="c1"># ValueError can occur when resizing a window.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3256</span>     <span class="bp">self</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3257</span>     <span class="n">mimage</span><span class="o">.</span><span class="n">_draw_list_compositing_images</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3258</span>         <span class="n">renderer</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">artists</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">suppressComposite</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3260</span>     <span class="n">renderer</span><span class="o">.</span><span class="n">close_group</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3261</span> <span class="k">finally</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/image.py:134,</span> in <span class="ni">_draw_list_compositing_images</span><span class="nt">(renderer, parent, artists, suppress_composite)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="k">if</span> <span class="n">not_composite</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">has_images</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">artists</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">134</span>         <span class="n">a</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="c1"># Composite any adjacent images together</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">image_group</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/artist.py:71,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">71</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/axes/_base.py:3190,</span> in <span class="ni">_AxesBase.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3187</span>     <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">3188</span>         <span class="n">artists</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">spine</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3190</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_title_position</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3192</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">axison</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3193</span>     <span class="k">for</span> <span class="n">_axis</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_axis_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/axes/_base.py:3137,</span> in <span class="ni">_AxesBase._update_title_position</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3135</span>         <span class="k">if</span> <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">offsetText</span><span class="o">.</span><span class="n">get_text</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">3136</span>             <span class="n">bb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">offsetText</span><span class="o">.</span><span class="n">get_tightbbox</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3137</span>             <span class="k">if</span> <span class="n">bb</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">get_tightbbox</span><span class="p">(</span><span class="n">renderer</span><span class="p">),</span> <span class="n">bb</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3138</span>                 <span class="n">top</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">ymax</span>
+<span class="g g-Whitespace">   </span><span class="mi">3139</span> <span class="k">if</span> <span class="n">top</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3140</span>     <span class="c1"># the top of Axes is not even on the figure, so don&#39;t try and</span>
+<span class="g g-Whitespace">   </span><span class="mi">3141</span>     <span class="c1"># automatically place it.</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/artist.py:364,</span> in <span class="ni">Artist.get_tightbbox</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_tightbbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">350</span><span class="sd">     Like `.Artist.get_window_extent`, but includes any clipping.</span>
+<span class="g g-Whitespace">    </span><span class="mi">351</span><span class="sd"> </span>
+<span class="sd">   (...)    362         Returns None if clipping results in no intersection.</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">364</span>     <span class="n">bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_window_extent</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clip_on</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>         <span class="n">clip_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clip_box</span><span class="p">()</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/text.py:969,</span> in <span class="ni">Text.get_window_extent</span><span class="nt">(self, renderer, dpi)</span>
+<span class="g g-Whitespace">    </span><span class="mi">964</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>         <span class="s2">&quot;Cannot get window extent of text w/o renderer. You likely &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">966</span>         <span class="s2">&quot;want to call &#39;figure.draw_without_rendering()&#39; first.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">968</span> <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">969</span>     <span class="n">bbox</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">descent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">970</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_unitless_position</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span><span class="o">.</span><span class="n">transform</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/text.py:382,</span> in <span class="ni">Text._get_layout</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span> <span class="n">clean_line</span><span class="p">,</span> <span class="n">ismath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_math</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span> <span class="k">if</span> <span class="n">clean_line</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">382</span>     <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">_get_text_metrics_with_cache</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span>         <span class="n">renderer</span><span class="p">,</span> <span class="n">clean_line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fontproperties</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span>         <span class="n">ismath</span><span class="o">=</span><span class="n">ismath</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_figure</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="n">w</span> <span class="o">=</span> <span class="n">h</span> <span class="o">=</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/text.py:69,</span> in <span class="ni">_get_text_metrics_with_cache</span><span class="nt">(renderer, text, fontprop, ismath, dpi)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Call ``renderer.get_text_width_height_descent``, caching the results.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="c1"># Cached based on a copy of fontprop so that later in-place mutations of</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> <span class="c1"># the passed-in argument do not mess up the cache.</span>
+<span class="ne">---&gt; </span><span class="mi">69</span> <span class="k">return</span> <span class="n">_get_text_metrics_with_cache_impl</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>     <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">renderer</span><span class="p">),</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontprop</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">ismath</span><span class="p">,</span> <span class="n">dpi</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/text.py:77,</span> in <span class="ni">_get_text_metrics_with_cache_impl</span><span class="nt">(renderer_ref, text, fontprop, ismath, dpi)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_text_metrics_with_cache_impl</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>         <span class="n">renderer_ref</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontprop</span><span class="p">,</span> <span class="n">ismath</span><span class="p">,</span> <span class="n">dpi</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>     <span class="c1"># dpi is unused, but participates in cache invalidation (via the renderer).</span>
+<span class="ne">---&gt; </span><span class="mi">77</span>     <span class="k">return</span> <span class="n">renderer_ref</span><span class="p">()</span><span class="o">.</span><span class="n">get_text_width_height_descent</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fontprop</span><span class="p">,</span> <span class="n">ismath</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:215,</span> in <span class="ni">RendererAgg.get_text_width_height_descent</span><span class="nt">(self, s, prop, ismath)</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_text_width_height_descent</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">ismath</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">if</span> <span class="n">ismath</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">descent</span><span class="p">,</span> <span class="n">font_image</span> <span class="o">=</span> \
+<span class="ne">--&gt; </span><span class="mi">215</span>         <span class="bp">self</span><span class="o">.</span><span class="n">mathtext_parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="k">return</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">descent</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="n">font</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_font</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/mathtext.py:86,</span> in <span class="ni">MathTextParser.parse</span><span class="nt">(self, s, dpi, prop, antialiased)</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backends</span><span class="w"> </span><span class="kn">import</span> <span class="n">backend_agg</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="n">load_glyph_flags</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="s2">&quot;vector&quot;</span><span class="p">:</span> <span class="n">LoadFlags</span><span class="o">.</span><span class="n">NO_HINTING</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>     <span class="s2">&quot;raster&quot;</span><span class="p">:</span> <span class="n">backend_agg</span><span class="o">.</span><span class="n">get_hinting_flag</span><span class="p">(),</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_type</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">86</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_cached</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dpi</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">antialiased</span><span class="p">,</span> <span class="n">load_glyph_flags</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/mathtext.py:100,</span> in <span class="ni">MathTextParser._parse_cached</span><span class="nt">(self, s, dpi, prop, antialiased, load_glyph_flags)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># Cache the parser globally.</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">_mathtext</span><span class="o">.</span><span class="n">Parser</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">100</span> <span class="n">box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">fontset</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">,</span> <span class="n">dpi</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">output</span> <span class="o">=</span> <span class="n">_mathtext</span><span class="o">.</span><span class="n">ship</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_type</span> <span class="o">==</span> <span class="s2">&quot;vector&quot;</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/matplotlib/_mathtext.py:2173,</span> in <span class="ni">Parser.parse</span><span class="nt">(self, s, fonts_object, fontsize, dpi)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2170</span>     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expression</span><span class="o">.</span><span class="n">parseString</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2171</span> <span class="k">except</span> <span class="n">ParseBaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2172</span>     <span class="c1"># explain becomes a plain method on pyparsing 3 (err.explain(0)).</span>
+<span class="ne">-&gt; </span><span class="mi">2173</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">ParseException</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">2174</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_stack</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2175</span> <span class="bp">self</span><span class="o">.</span><span class="n">_in_subscript_or_superscript</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="ne">ValueError</span>: 
+<span class="n">E</span><span class="o">=</span>\<span class="n">tfrac</span><span class="p">{</span><span class="mi">1</span><span class="p">}{</span><span class="mi">2</span><span class="p">}</span><span class="n">v</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span>\<span class="n">tfrac</span><span class="p">{</span><span class="mi">1</span><span class="p">}{</span><span class="mi">2</span><span class="p">}</span>\<span class="n">omega</span><span class="o">^</span><span class="mi">2</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span>
+  <span class="o">^</span>
+<span class="ne">ParseFatalException</span>: Unknown symbol: \tfrac, found &#39;\&#39;  (at char 2), (line:1, col:3)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1200x780 with 4 Axes&gt;
+</pre></div>
 </div>
 </div>
+</div>
+<p>נדפיס נתוני ביצוע: זמן סופי, מספר הצעדים שננקטו, שגיאת מיקום מקסימלית וסטיית אנרגיה יחסית מירבית — סיכום מהיר לאיכות הפתרון.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final time reached: t = </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s, steps taken: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max |x error| over grid: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">err_x</span><span class="p">))</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relative energy drift (max): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rel_energy_drift</span><span class="p">))</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final time reached: t = 2.000 s, steps taken: 256
+Max |x error| over grid: 1.51e-09
+Relative energy drift (max): 3.02e-09
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">מה רואים בתוצאות?</p>
+<ul class="simple">
+<li><p><strong>השוואה אנליטי–נומרי:</strong> העקומות של <span class="math notranslate nohighlight">\(x(t)\)</span> כמעט חופפות (הפרש קטן מאוד). זה מצביע על דיוק גבוה של <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> בהגדרות <span class="math notranslate nohighlight">\(rtol, atol\)</span> שנבחרו.</p></li>
+<li><p><strong>פורטרט פאזה (Phase portrait):</strong> הגרף של <span class="math notranslate nohighlight">\(v\)</span> מול <span class="math notranslate nohighlight">\(x\)</span> הוא אליפסה (למעשה מעגל בסקלות מתאימות), כצפוי למתנד הרמוני שבו האנרגיה מחולקת בין תנועה (קינטית) וקפיץ (פוטנציאלית).</p></li>
+<li><p><strong>אנרגיה:</strong> <span class="math notranslate nohighlight">\(E(t)=\tfrac{1}{2}v^2+\tfrac{1}{2}\omega^2x^2\)</span> נשמרת כמעט קבועה (סטיות זעירות מקורן בשגיאות עיגול/אינטגרציה).</p></li>
+<li><p><strong>שגיאת מיקום:</strong> ההפרש <span class="math notranslate nohighlight">\(x_{\rm num}-x_{\rm ana}\)</span> זעיר לאורך כל התחום; אם מקשיחים את הדרישות (למשל מפחיתים <span class="math notranslate nohighlight">\(rtol, atol\)</span> עוד), ניתן להקטין את השגיאה על חשבון זמן ריצה.</p></li>
+</ul>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">כללי אצבע</p>
+<ul class="simple">
+<li><p>אפשר לשנות שיטת אינטגרציה דרך <code class="docutils literal notranslate"><span class="pre">method</span></code> (למשל <code class="docutils literal notranslate"><span class="pre">&quot;DOP853&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Radau&quot;</span></code> לבעיות קשיחות).</p></li>
+<li><p>הגדלת הדיוק (<code class="docutils literal notranslate"><span class="pre">rtol</span></code>, <code class="docutils literal notranslate"><span class="pre">atol</span></code>) או הקטנת <code class="docutils literal notranslate"><span class="pre">max_step</span></code> תקטין שגיאות – אך תגדיל את מספר הצעדים וזמן החישוב.</p></li>
+<li><p>עבור בדיקות אימות, השוואה לפתרון אנליטי (כאשר קיים) ולמעקב אחר אנרגיה הם כלים יעילים לגילוי בעיות בדיוק/יציבות.</p></li>
+</ul>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="SiXQlXESbkJY" data-shufflequestions="False" data-shuffleanswers="True" data-preserveresponses="false" data-numquestions="1000000" data-maxwidth="600" style="border-radius: 10px; text-align: left"><style>
+#SiXQlXESbkJY {
+   --jq-multiple-choice-bg: #6f78ffff;
+   --jq-mc-button-bg: #fafafa;
+   --jq-mc-button-border: #e0e0e0e0;
+   --jq-mc-button-inset-shadow: #555555;
+   --jq-many-choice-bg: #f75c03ff;
+   --jq-numeric-bg: #392061ff;
+   --jq-numeric-input-bg: #c0c0c0;
+   --jq-numeric-input-label: #101010;
+   --jq-numeric-input-shadow: #999999;
+   --jq-string-bg: #4c1a57;
+   --jq-incorrect-color: #c80202;
+   --jq-correct-color: #009113;
+   --jq-text-color: #fafafa;
+}
+
+.Quiz {
+    max-width: 600px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+/*    margin-bottom: 15px;*/
+/*    padding-bottom: 4px;*/
+    padding-top: 4px;
+    line-height: 1.1;
+    font-size: 16pt;
+    border-radius: inherit;
+}
+
+.QuizCode {
+    font-size: 14pt;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.QuizCode>pre {
+    padding: 4px;
+}
+
+.Quiz code {
+    background-color: lightgray;
+    color: black;
+}
+
+.Quiz .QuizCode code {
+    background-color: inherit;
+    color: inherit;
+}
+
+
+.Quiz .MCButton code {
+    background-color: inherit;
+    color: inherit;
+}
+
+.MCButton .QuizCode {
+    text-align: left;
+}
+
+
+
+
+.Answer {
+    border-radius: inherit;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px 0;
+}
+
+@media only screen and (max-width:480px) {
+    .Answer {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.Feedback {
+    font-size: 16pt;
+    text-align: center;
+/*    min-height: 2em;*/
+}
+
+.Input {
+    align: left;
+    font-size: 20pt;
+}
+
+.Input-text {
+    display: block;
+    margin: 10px;
+    color: inherit;
+    width: unset;
+    min-width: 140px;
+    max-width: 93%;
+    field-sizing: content;
+    background-color: var(--jq-numeric-input-bg);
+    color: var(--jq-text-color);
+    padding: 5px;
+    padding-left: 10px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: inherit;
+    line-height: 20pt;
+    border: none;
+    border-radius: 0.2rem;
+    transition: box-shadow 0.1s);
+}
+
+.Input-text:focus {
+    /*outline: none;*/
+    background-color: var(--jq-numeric-input-bg);
+    box-shadow: 0.6rem 0.8rem 1.4rem -0.5rem var(--jq-numeric-input-shadow);
+}
+
+.MCButton {
+    background: var(--jq-mc-button-bg);
+    border: 1px solid var(--jq-mc-button-border);
+    border-radius: inherit;
+    color: #333333;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MCButton p {
+    color: inherit;
+}
+
+.MultipleChoiceQn {
+    padding: 10px;
+    background: var(--jq-multiple-choice-bg);
+    color: var(--jq-text-color);
+    border-radius: inherit;
+}
+
+.ManyChoiceQn {
+    padding: 10px;
+    background: var(--jq-many-choice-bg);
+    color: var(--jq-text-color);
+    border-radius: inherit;
+}
+
+.NumericQn {
+    background: var(--jq-numeric-bg);
+    border-radius: inherit;
+    color: var(--jq-text-color);
+    padding: 10px;
+}
+
+.NumericQn p {
+    color: inherit;
+}
+
+.StringQn {
+    background: var(--jq-string-bg);
+    border-radius: inherit;
+    color: var(--jq-text-color);
+    padding: 10px;
+}
+
+.StringQn p {
+    color: inherit;
+}
+
+
+.InpLabel {
+    color: var(--jq-numeric-input-label);
+    float: left;
+    font-size: 15pt;
+    line-height: 34px;
+    margin-right: 10px;
+}
+
+.incorrect {
+    color: var(--jq-incorrect-color);
+}
+
+.correct {
+    color: var(--jq-correct-color);
+}
+
+.correctButton {
+    /*
+    background: var(--jq-correct-color);
+   */
+    animation: correct-anim 0.6s ease;
+    animation-fill-mode: forwards;
+    box-shadow: inset 0 0 5px var(--jq-mc-button-inset-shadow);
+    color: var(--jq-text-color);
+    /*outline: none;*/
+}
+
+.incorrectButton {
+    animation: incorrect-anim 0.8s ease;
+    animation-fill-mode: forwards;
+    box-shadow: inset 0 0 5px var(--jq-mc-button-inset-shadow);
+    color: var(--jq-text-color);
+    /*outline: none;*/
+}
+
+@keyframes incorrect-anim {
+    100% {
+        background-color: var(--jq-incorrect-color);
+    }
+}
+
+@keyframes correct-anim {
+    100% {
+        background-color: var(--jq-correct-color);
+    }
+}
+</style></div><script type="application/javascript">var questionsSiXQlXESbkJY=[{"question": "\u05d0\u05d9\u05d6\u05d5 \u05e4\u05d5\u05e0\u05e7\u05e6\u05d9\u05d4 \u05de\u05ea\u05d0\u05d9\u05de\u05d4 \u05dc\u05d7\u05d9\u05e9\u05d5\u05d1 \u05d0\u05d9\u05e0\u05d8\u05d2\u05e8\u05dc \u05e2\u05dd \u05d2\u05d1\u05d5\u05dc \u05d0\u05d9\u05e0\u05e1\u05d5\u05e4\u05d9 \u05de\u05d4\u05e6\u05d5\u05e8\u05d4 $\\int_0^{\\infty} e^{-x^2}\\,dx$?", "type": "many_choice", "answers": [{"answer": "<code>numpy.trapz</code>", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 trapz \u05e4\u05d5\u05e2\u05dc \u05e2\u05dc \u05e7\u05d8\u05e2 \u05e1\u05d5\u05e4\u05d9 \u05e2\u05dd \u05e8\u05e9\u05ea \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05ea\u05d5\u05e0\u05d4."}, {"answer": "<code>integrate.quad</code>", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! integrate.quad \u05d9\u05d5\u05d3\u05e2 \u05dc\u05d8\u05e4\u05dc \u05d2\u05dd \u05d1\u05d0\u05d9\u05e0\u05d8\u05d2\u05e8\u05dc\u05d9\u05dd \u05e2\u05dd \u05d2\u05d1\u05d5\u05dc \u05d0\u05d9\u05e0\u05e1\u05d5\u05e4\u05d9."}, {"answer": "<code>integrate.solve_ivp</code>", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 solve_ivp \u05de\u05d9\u05d5\u05e2\u05d3 \u05dc\u05de\u05e9\u05d5\u05d5\u05d0\u05d5\u05ea \u05d3\u05d9\u05e4\u05e8\u05e0\u05e6\u05d9\u05d0\u05dc\u05d9\u05d5\u05ea, \u05dc\u05d0 \u05dc\u05d0\u05d9\u05e0\u05d8\u05d2\u05e8\u05dc\u05d9\u05dd."}, {"answer": "<code>integrate.cumtrapz</code>", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 cumtrapz \u05e0\u05d5\u05ea\u05df \u05d0\u05d9\u05e0\u05d8\u05d2\u05e8\u05dc \u05de\u05e6\u05d8\u05d1\u05e8 \u05e2\u05dc \u05e8\u05e9\u05ea \u05d1\u05d3\u05d9\u05d3\u05d4 \u05d1\u05e7\u05d8\u05e2 \u05e1\u05d5\u05e4\u05d9."}]}, {"question": "\u05d1\u05db\u05ea\u05d9\u05d1\u05ea \u05de\u05e9\u05d5\u05d5\u05d0\u05ea \u05de\u05ea\u05e0\u05d3 \u05d4\u05e8\u05de\u05d5\u05e0\u05d9 $\\ddot{x} + \\omega^2 x = 0$, \u05de\u05d4\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea \u05d4\u05de\u05e1\u05d3\u05e8 \u05d4\u05e8\u05d0\u05e9\u05d5\u05df \u05d4\u05de\u05ea\u05d0\u05d9\u05de\u05d4 \u05dc\u05e4\u05ea\u05e8\u05d5\u05df \u05d1-<code>solve_ivp</code>?", "type": "many_choice", "answers": [{"answer": "$\\dot{x} = v,\\ \\ \\dot{v} = -\\omega^2 x$", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05de\u05d2\u05d3\u05d9\u05e8\u05d9\u05dd \u05de\u05e6\u05d1 $\\mathbf{y}=[x,v]$ \u05db\u05da \u05e9-$\\dot{\\mathbf{y}}=[v,-\\omega^2 x]$."}, {"answer": "$\\dot{x} = -\\omega^2 x,\\ \\ \\dot{v} = v$", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05d6\u05d4\u05d5 \u05e1\u05d9\u05d3\u05d5\u05e8 \u05de\u05e9\u05d5\u05d5\u05d0\u05d5\u05ea \u05e9\u05d0\u05d9\u05e0\u05d5 \u05de\u05ea\u05d0\u05d9\u05dd \u05dc\u05de\u05ea\u05e0\u05d3 \u05d4\u05d4\u05e8\u05de\u05d5\u05e0\u05d9."}, {"answer": "$\\dot{x} = x,\\ \\ \\dot{v} = v$", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05d0\u05dc\u05d5 \u05d0\u05d9\u05e0\u05df \u05de\u05e9\u05d5\u05d5\u05d0\u05d5\u05ea \u05d4\u05de\u05ea\u05d0\u05e8\u05d5\u05ea \u05de\u05ea\u05e0\u05d3 \u05d4\u05e8\u05de\u05d5\u05e0\u05d9."}, {"answer": "$\\dot{x} = -v,\\ \\ \\dot{v} = \\omega^2 x$", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05e1\u05d9\u05de\u05e0\u05d9 \u05d4\u05e0\u05d2\u05d6\u05e8\u05d5\u05ea \u05d4\u05ea\u05d4\u05e4\u05db\u05d5."}]}, {"question": "\u05d0\u05d9\u05d6\u05d5 \u05db\u05de\u05d5\u05ea \u05e0\u05e9\u05de\u05e8\u05ea \u05d1\u05de\u05ea\u05e0\u05d3 \u05d4\u05e8\u05de\u05d5\u05e0\u05d9 \u05d0\u05d9\u05d3\u05d9\u05d0\u05dc\u05d9 \u05d5\u05d9\u05db\u05d5\u05dc\u05d4 \u05dc\u05e9\u05de\u05e9 \u05dc\u05d1\u05d3\u05d9\u05e7\u05ea \u05d3\u05d9\u05d5\u05e7 \u05e0\u05d5\u05de\u05e8\u05d9?", "type": "many_choice", "answers": [{"answer": "\u05d4\u05ea\u05e0\u05e2 $p = m v$", "correct": false, "feedback": "\u05dc\u05d0 \u05de\u05d3\u05d5\u05d9\u05e7 \u2014 \u05d4\u05ea\u05e0\u05e2 \u05dc\u05d1\u05d3\u05d5 \u05d0\u05d9\u05e0\u05d5 \u05e7\u05d1\u05d5\u05e2; \u05d4\u05d5\u05d0 \u05de\u05ea\u05d7\u05dc\u05e3 \u05d1\u05d4\u05ea\u05d0\u05dd \u05dc\u05de\u05d9\u05e7\u05d5\u05dd \u05d5\u05d4\u05de\u05d4\u05d9\u05e8\u05d5\u05ea."}, {"answer": "\u05d4\u05d0\u05e0\u05e8\u05d2\u05d9\u05d4 \u05d4\u05db\u05d5\u05dc\u05dc\u05ea $E = \\tfrac{1}{2}v^2 + \\tfrac{1}{2}\\,\\omega^2 x^2$ (\u05e2\u05d1\u05d5\u05e8 $m=1$)", "correct": true, "feedback": "\u05e0\u05db\u05d5\u05df! \u05d1\u05de\u05ea\u05e0\u05d3 \u05d4\u05e8\u05de\u05d5\u05e0\u05d9 \u05d0\u05d9\u05d3\u05d9\u05d0\u05dc\u05d9 \u05d4\u05d0\u05e0\u05e8\u05d2\u05d9\u05d4 \u05e0\u05e9\u05de\u05e8\u05ea, \u05d5\u05e1\u05d8\u05d9\u05d9\u05d4 \u05e7\u05d8\u05e0\u05d4 \u05de\u05e6\u05d1\u05d9\u05e2\u05d4 \u05e2\u05dc \u05e4\u05ea\u05e8\u05d5\u05df \u05e0\u05d5\u05de\u05e8\u05d9 \u05de\u05d3\u05d5\u05d9\u05e7."}, {"answer": "\u05d4\u05de\u05d9\u05e7\u05d5\u05dd $x(t)$", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05de\u05e9\u05ea\u05e0\u05d4 \u05de\u05d7\u05d6\u05d5\u05e8\u05d9\u05ea \u05d1\u05d6\u05de\u05df."}, {"answer": "\u05d4\u05de\u05d4\u05d9\u05e8\u05d5\u05ea $v(t)$", "correct": false, "feedback": "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df \u2014 \u05d2\u05dd \u05d4\u05de\u05d4\u05d9\u05e8\u05d5\u05ea \u05de\u05e9\u05ea\u05e0\u05d4 \u05d1\u05d6\u05de\u05df."}]}];
+
+if (typeof Question === 'undefined') {
+// Make a random ID
+function makeid(length) {
+    var result = [];
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+    }
+    return result.join('');
+}
+// Convert LaTeX delimiters and markdown links to HTML
+function jaxify(string) {
+    let mystring = string;
+    let count = 0, count2 = 0;
+    let loc = mystring.search(/([^\\]|^)(\$)/);
+    let loc2 = mystring.search(/([^\\]|^)(\$\$)/);
+    while (loc >= 0 || loc2 >= 0) {
+        if (loc2 >= 0) {
+            mystring = mystring.replace(/([^\\]|^)(\$\$)/, count2 % 2 ? '$1\\]' : '$1\\[');
+            count2++;
+        } else {
+            mystring = mystring.replace(/([^\\]|^)(\$)/, count % 2 ? '$1\\)' : '$1\\(');
+            count++;
+        }
+        loc = mystring.search(/([^\\]|^)(\$)/);
+        loc2 = mystring.search(/([^\\]|^)(\$\$)/);
+    }
+    // Replace markdown links
+    mystring = mystring.replace(/<http(.*?)>/g, '<a href="http$1" target="_blank" class="Link">http$1</a>');
+    mystring = mystring.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="Link">$1</a>');
+    return mystring;
+}
+
+// Base class for question types
+class Question {
+    static registry = {};
+    static register(type, cls) {
+        Question.registry[type] = cls;
+    }
+    static create(qa, id, index, options, rootDiv) {
+        const Cls = Question.registry[qa.type];
+        if (!Cls) {
+            console.error(`No question class registered for type "${qa.type}"`);
+            return;
+        }
+        const q = new Cls(qa, id, index, options, rootDiv);
+        q.render();
+    }
+
+    constructor(qa, id, index, options, rootDiv) {
+        this.qa = qa;
+        this.id = id;
+        this.index = index;
+        this.options = options;
+        this.rootDiv = rootDiv;
+        // wrapper
+        this.wrapper = document.createElement('div');
+        this.wrapper.id = `quizWrap${id}`;
+        this.wrapper.className = 'Quiz';
+        this.wrapper.dataset.qnum = index;
+        this.wrapper.style.maxWidth = `${options.maxWidth}px`;
+        rootDiv.appendChild(this.wrapper);
+        // question container
+        this.outerqDiv = document.createElement('div');
+        this.outerqDiv.id = `OuterquizQn${id}${index}`;
+        this.wrapper.appendChild(this.outerqDiv);
+        // question text
+        this.qDiv = document.createElement('div');
+        this.qDiv.id = `quizQn${id}${index}`;
+        if (qa.question) {
+            this.qDiv.innerHTML = jaxify(qa.question);
+            this.outerqDiv.appendChild(this.qDiv);
+        }
+        // code block
+        if (qa.code) {
+            const codeDiv = document.createElement('div');
+            codeDiv.id = `code${id}${index}`;
+            codeDiv.className = 'QuizCode';
+            const pre = document.createElement('pre');
+            const codeEl = document.createElement('code');
+            codeEl.innerHTML = qa.code;
+            pre.appendChild(codeEl);
+            codeDiv.appendChild(pre);
+            this.outerqDiv.appendChild(codeDiv);
+        }
+        // answer container
+        this.aDiv = document.createElement('div');
+        this.aDiv.id = `quizAns${id}${index}`;
+        this.aDiv.className = 'Answer';
+        this.wrapper.appendChild(this.aDiv);
+        // feedback container (append after answers)
+        this.fbDiv = document.createElement('div');
+        this.fbDiv.id = `fb${id}`;
+        this.fbDiv.className = 'Feedback';
+        this.fbDiv.dataset.answeredcorrect = 0;
+    }
+
+    render() {
+        throw new Error('render() not implemented');
+    }
+
+    preserveResponse(val) {
+        if (!this.options.preserveResponses) return;
+        const resp = document.getElementById(`responses${this.rootDiv.id}`);
+        if (!resp) return;
+        const arr = JSON.parse(resp.dataset.responses);
+        arr[this.index] = val;
+        resp.dataset.responses = JSON.stringify(arr);
+        printResponses(resp);
+    }
+
+    typeset(container) {
+        if (typeof MathJax !== 'undefined') {
+            const v = MathJax.version;
+            if (v[0] === '2') {
+                MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+            } else {
+                MathJax.typeset([container]);
+            }
+        }
+    }
+}
+
+// Choose a random subset of an array. Can also be used to shuffle the array
+function getRandomSubarray(arr, size) {
+    var shuffled = arr.slice(0), i = arr.length, temp, index;
+    while (i--) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, size);
+}
+
+function printResponses(responsesContainer) {
+    var responses=JSON.parse(responsesContainer.dataset.responses);
+    var stringResponses='<B>IMPORTANT!</B>To preserve this answer sequence for submission, when you have finalized your answers: <ol> <li> Copy the text in this cell below "Answer String"</li> <li> Double click on the cell directly below the Answer String, labeled "Replace Me"</li> <li> Select the whole "Replace Me" text</li> <li> Paste in your answer string and press shift-Enter.</li><li>Save the notebook using the save icon or File->Save Notebook menu item</li></ul><br><br><br><b>Answer String:</b><br> ';
+    console.log(responses);
+    responses.forEach((response, index) => {
+        if (response) {
+            console.log(index + ': ' + response);
+            stringResponses+= index + ': ' + response +"<BR>";
+        }
+    });
+    responsesContainer.innerHTML=stringResponses;
+}
+/* Callback function to determine whether a selected multiple-choice
+   button corresponded to a correct answer and to provide feedback
+   based on the answer */
+function check_mc() {
+    var id = this.id.split('-')[0];
+    //var response = this.id.split('-')[1];
+    //console.log(response);
+    //console.log("In check_mc(), id="+id);
+    //console.log(event.srcElement.id)           
+    //console.log(event.srcElement.dataset.correct)   
+    //console.log(event.srcElement.dataset.feedback)
+
+    var label = event.srcElement;
+    //console.log(label, label.nodeName);
+    var depth = 0;
+    while ((label.nodeName != "LABEL") && (depth < 20)) {
+        label = label.parentElement;
+        console.log(depth, label);
+        depth++;
+    }
+
+
+
+    var answers = label.parentElement.children;
+    //console.log(answers);
+
+    // Split behavior based on multiple choice vs many choice:
+    var fb = document.getElementById("fb" + id);
+
+
+
+    /* Multiple choice (1 answer). Allow for 0 correct
+       answers as an edge case */
+    if (fb.dataset.numcorrect <= 1) {
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            //console.log(responsesContainer);
+            var response = label.firstChild.innerText;
+            if (label.querySelector(".QuizCode")){
+                response+= label.querySelector(".QuizCode").firstChild.innerText;
+            }
+            console.log(response);
+            //console.log(document.getElementById("quizWrap"+id));
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            console.log(responses);
+            responses[qnum]= response;
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End code to preserve responses
+
+        for (var i = 0; i < answers.length; i++) {
+            var child = answers[i];
+            //console.log(child);
+            child.className = "MCButton";
+        }
+
+
+
+        if (label.dataset.correct == "true") {
+            // console.log("Correct action");
+            if ("feedback" in label.dataset) {
+                fb.innerHTML = jaxify(label.dataset.feedback);
+            } else {
+                fb.innerHTML = "Correct!";
+            }
+            label.classList.add("correctButton");
+
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+
+        } else {
+            if ("feedback" in label.dataset) {
+                fb.innerHTML = jaxify(label.dataset.feedback);
+            } else {
+                fb.innerHTML = "Incorrect -- try again.";
+            }
+            //console.log("Error action");
+            label.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+    }
+    else { /* Many choice (more than 1 correct answer) */
+        var reset = false;
+        var feedback;
+         if (label.dataset.correct == "true") {
+            if ("feedback" in label.dataset) {
+                feedback = jaxify(label.dataset.feedback);
+            } else {
+                feedback = "Correct!";
+            }
+            if (label.dataset.answered <= 0) {
+                if (fb.dataset.answeredcorrect < 0) {
+                    fb.dataset.answeredcorrect = 1;
+                    reset = true;
+                } else {
+                    fb.dataset.answeredcorrect++;
+                }
+                if (reset) {
+                    for (var i = 0; i < answers.length; i++) {
+                        var child = answers[i];
+                        child.className = "MCButton";
+                        child.dataset.answered = 0;
+                    }
+                }
+                label.classList.add("correctButton");
+                label.dataset.answered = 1;
+                fb.className = "Feedback";
+                fb.classList.add("correct");
+
+            }
+        } else {
+            if ("feedback" in label.dataset) {
+                feedback = jaxify(label.dataset.feedback);
+            } else {
+                feedback = "Incorrect -- try again.";
+            }
+            if (fb.dataset.answeredcorrect > 0) {
+                fb.dataset.answeredcorrect = -1;
+                reset = true;
+            } else {
+                fb.dataset.answeredcorrect--;
+            }
+
+            if (reset) {
+                for (var i = 0; i < answers.length; i++) {
+                    var child = answers[i];
+                    child.className = "MCButton";
+                    child.dataset.answered = 0;
+                }
+            }
+            label.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            //console.log(responsesContainer);
+            var response = label.firstChild.innerText;
+            if (label.querySelector(".QuizCode")){
+                response+= label.querySelector(".QuizCode").firstChild.innerText;
+            }
+            console.log(response);
+            //console.log(document.getElementById("quizWrap"+id));
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            if (label.dataset.correct == "true") {
+                if (typeof(responses[qnum]) == "object"){
+                    if (!responses[qnum].includes(response))
+                        responses[qnum].push(response);
+                } else{
+                    responses[qnum]= [ response ];
+                }
+            } else {
+                responses[qnum]= response;
+            }
+            console.log(responses);
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End save responses stuff
+
+
+
+        var numcorrect = fb.dataset.numcorrect;
+        var answeredcorrect = fb.dataset.answeredcorrect;
+        if (answeredcorrect >= 0) {
+            fb.innerHTML = feedback + " [" + answeredcorrect + "/" + numcorrect + "]";
+        } else {
+            fb.innerHTML = feedback + " [" + 0 + "/" + numcorrect + "]";
+        }
+
+
+    }
+
+    if (typeof MathJax != 'undefined') {
+        var version = MathJax.version;
+        console.log('MathJax version', version);
+        if (version[0] == "2") {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        } else if (version[0] == "3") {
+            MathJax.typeset([fb]);
+        }
+    } else {
+        console.log('MathJax not detected');
+    }
+
+}
+
+
+/* Function to produce the HTML buttons for a multiple choice/
+   many choice question  and to update the CSS tags based on
+   the question type */
+function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
+
+    var shuffled;
+    if (shuffle_answers == true) {
+        //console.log(shuffle_answers+" read as true");
+        shuffled = getRandomSubarray(qa.answers, qa.answers.length);
+    } else {
+        //console.log(shuffle_answers+" read as false");
+        shuffled = qa.answers;
+    }
+
+
+    var num_correct = 0;
+
+    shuffled.forEach((item, index, ans_array) => {
+        //console.log(answer);
+
+        // Make input element
+        var inp = document.createElement("input");
+        inp.type = "radio";
+        inp.id = "quizo" + id + index;
+        inp.style = "display:none;";
+        aDiv.append(inp);
+
+        //Make label for input element
+        var lab = document.createElement("label");
+        lab.className = "MCButton";
+        lab.id = id + '-' + index;
+        lab.onclick = check_mc;
+        var aSpan = document.createElement('span');
+        aSpan.classsName = "";
+        //qDiv.id="quizQn"+id+index;
+        if ("answer" in item) {
+            aSpan.innerHTML = jaxify(item.answer);
+            //aSpan.innerHTML=item.answer;
+        }
+        lab.append(aSpan);
+
+        // Create div for code inside question
+        var codeSpan;
+        if ("code" in item) {
+            codeSpan = document.createElement('span');
+            codeSpan.id = "code" + id + index;
+            codeSpan.className = "QuizCode";
+            var codePre = document.createElement('pre');
+            codeSpan.append(codePre);
+            var codeCode = document.createElement('code');
+            codePre.append(codeCode);
+            codeCode.innerHTML = item.code;
+            lab.append(codeSpan);
+            //console.log(codeSpan);
+        }
+
+        //lab.textContent=item.answer;
+
+        // Set the data attributes for the answer
+        lab.setAttribute('data-correct', item.correct);
+        if (item.correct) {
+            num_correct++;
+        }
+        if ("feedback" in item) {
+            lab.setAttribute('data-feedback', item.feedback);
+        }
+        lab.setAttribute('data-answered', 0);
+
+        aDiv.append(lab);
+
+    });
+
+    if (num_correct > 1) {
+        outerqDiv.className = "ManyChoiceQn";
+    } else {
+        outerqDiv.className = "MultipleChoiceQn";
+    }
+
+    return num_correct;
+
+}
+// Object-oriented wrapper for MC/MANY choice
+class MCQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) { super(qa, id, idx, opts, rootDiv); }
+    render() {
+        //console.log("options.shuffleAnswers " + this.options.shuffleAnswers);
+        const numCorrect = make_mc(
+            this.qa,
+            this.options.shuffleAnswers,
+            this.outerqDiv,
+            this.qDiv,
+            this.aDiv,
+            this.id
+        );
+        if ('answer_cols' in this.qa) {
+            this.aDiv.style.gridTemplateColumns =
+                'repeat(' + this.qa.answer_cols + ', 1fr)';
+        }
+        this.fbDiv.dataset.numcorrect = numCorrect;
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('multiple_choice', MCQuestion);
+Question.register('many_choice', MCQuestion);
+function check_numeric(ths, event) {
+
+    if (event.keyCode === 13) {
+        ths.blur();
+
+        var id = ths.id.split('-')[0];
+
+        var submission = ths.value;
+        if (submission.indexOf('/') != -1) {
+            var sub_parts = submission.split('/');
+            //console.log(sub_parts);
+            submission = sub_parts[0] / sub_parts[1];
+        }
+        //console.log("Reader entered", submission);
+
+        if ("precision" in ths.dataset) {
+            var precision = ths.dataset.precision;
+            submission = Number(Number(submission).toPrecision(precision));
+        }
+
+
+        //console.log("In check_numeric(), id="+id);
+        //console.log(event.srcElement.id)           
+        //console.log(event.srcElement.dataset.feedback)
+
+        var fb = document.getElementById("fb" + id);
+        fb.style.display = "none";
+        fb.innerHTML = "Incorrect -- try again.";
+
+        var answers = JSON.parse(ths.dataset.answers);
+        //console.log(answers);
+
+        var defaultFB = "Incorrect. Try again.";
+        var correct;
+        var done = false;
+        answers.every(answer => {
+            //console.log(answer.type);
+
+            correct = false;
+            // if (answer.type=="value"){
+            if ('value' in answer) {
+                var value;
+                if ("precision" in ths.dataset) {
+                    value = answer.value.toPrecision(ths.dataset.precision);
+                } else {
+                    value = answer.value;
+                }
+                if (submission == value) {
+                    if ("feedback" in answer) {
+                        fb.innerHTML = jaxify(answer.feedback);
+                    } else {
+                        fb.innerHTML = jaxify("Correct");
+                    }
+                    correct = answer.correct;
+                    //console.log(answer.correct);
+                    done = true;
+                }
+
+                // } else if (answer.type=="range") {
+            } else if ('range' in answer) {
+                console.log(answer.range);
+                console.log(submission, submission >=answer.range[0], submission < answer.range[1])
+                if ((submission >= answer.range[0]) && (submission < answer.range[1])) {
+                    fb.innerHTML = jaxify(answer.feedback);
+                    correct = answer.correct;
+                    console.log(answer.correct);
+                    done = true;
+                }
+            } else if (answer.type == "default") {
+                if ("feedback" in answer) {
+                    defaultFB = answer.feedback;
+                } 
+            }
+            if (done) {
+                return false; // Break out of loop if this has been marked correct
+            } else {
+                return true; // Keep looking for case that includes this as a correct answer
+            }
+        });
+        console.log("done:", done);
+
+        if ((!done) && (defaultFB != "")) {
+            fb.innerHTML = jaxify(defaultFB);
+            //console.log("Default feedback", defaultFB);
+        }
+
+        fb.style.display = "block";
+        if (correct) {
+            ths.className = "Input-text";
+            ths.classList.add("correctButton");
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+        } else {
+            ths.className = "Input-text";
+            ths.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            console.log(submission);
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            //console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            console.log(responses);
+            if (submission == ths.value){
+                responses[qnum]= submission;
+            } else {
+                responses[qnum]= ths.value + "(" + submission +")";
+            }
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End code to preserve responses
+
+        if (typeof MathJax != 'undefined') {
+            var version = MathJax.version;
+            console.log('MathJax version', version);
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([fb]);
+            }
+        } else {
+            console.log('MathJax not detected');
+        }
+        // After correct answer, if next JupyterQuiz question exists and has a text input, scroll by current question height
+        if (correct) {
+            // find the current question wrapper
+            var wrapper = ths.closest('.Quiz');
+            if (wrapper) {
+                var nextWrapper = wrapper.nextElementSibling;
+                if (nextWrapper && nextWrapper.classList.contains('Quiz')) {
+                    var nextInput = nextWrapper.querySelector('input.Input-text');
+                    if (nextInput) {
+                        var height = wrapper.getBoundingClientRect().height;
+                        console.log(height);
+                        nextInput.focus();
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+}
+// Object-oriented wrapper for numeric questions
+class NumericQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) {
+        super(qa, id, idx, opts, rootDiv);
+    }
+    render() {
+        make_numeric(this.qa, this.outerqDiv, this.qDiv, this.aDiv, this.id);
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('numeric', NumericQuestion);
+
+function isValid(el, charC) {
+    //console.log("Input char: ", charC);
+    if (charC == 46) {
+        if (el.value.indexOf('.') === -1) {
+            return true;
+        } else if (el.value.indexOf('/') != -1) {
+            var parts = el.value.split('/');
+            if (parts[1].indexOf('.') === -1) {
+                return true;
+            }
+        }
+        else {
+            return false;
+        }
+    } else if (charC == 47) {
+        if (el.value.indexOf('/') === -1) {
+            if ((el.value != "") && (el.value != ".")) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else if (charC == 45) {
+        var edex = el.value.indexOf('e');
+        if (edex == -1) {
+            edex = el.value.indexOf('E');
+        }
+
+        if (el.value == "") {
+            return true;
+        } else if (edex == (el.value.length - 1)) { // If just after e or E
+            return true;
+        } else {
+            return false;
+        }
+    } else if (charC == 101) { // "e"
+        if ((el.value.indexOf('e') === -1) && (el.value.indexOf('E') === -1) && (el.value.indexOf('/') == -1)) {
+            // Prev symbol must be digit or decimal point:
+            if (el.value.slice(-1).search(/\d/) >= 0) {
+                return true;
+            } else if (el.value.slice(-1).search(/\./) >= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else {
+        if (charC > 31 && (charC < 48 || charC > 57))
+            return false;
+    }
+    return true;
+}
+
+function numeric_keypress(evnt) {
+    var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+
+    if (charC == 13) {
+        check_numeric(this, evnt);
+    } else {
+        return isValid(this, charC);
+    }
+}
+
+
+
+
+
+function make_numeric(qa, outerqDiv, qDiv, aDiv, id) {
+
+
+
+    //console.log(answer);
+
+
+    outerqDiv.className = "NumericQn";
+    aDiv.style.display = 'block';
+
+    var lab = document.createElement("label");
+    lab.className = "InpLabel";
+    lab.innerHTML = "Type numeric answer here:";
+    aDiv.append(lab);
+
+    var inp = document.createElement("input");
+    inp.type = "text";
+    //inp.id="input-"+id;
+    inp.id = id + "-0";
+    inp.className = "Input-text";
+    inp.setAttribute('data-answers', JSON.stringify(qa.answers));
+    if ("precision" in qa) {
+        inp.setAttribute('data-precision', qa.precision);
+    }
+    aDiv.append(inp);
+    //console.log(inp);
+
+    //inp.addEventListener("keypress", check_numeric);
+    //inp.addEventListener("keypress", numeric_keypress);
+    /*
+    inp.addEventListener("keypress", function(event) {
+        return numeric_keypress(this, event);
+    }
+                        );
+                        */
+    //inp.onkeypress="return numeric_keypress(this, event)";
+    inp.onkeypress = numeric_keypress;
+    inp.onpaste = event => false;
+
+    inp.addEventListener("focus", function (event) {
+        this.value = "";
+        return false;
+    }
+    );
+
+
+}
+// Override show_questions to use object-oriented Question API
+function show_questions(json, container) {
+    // Accept container element or element ID
+    if (typeof container === 'string') {
+        container = document.getElementById(container);
+    }
+    if (!container) {
+        console.error('show_questions: invalid container', container);
+        return;
+    }
+
+    const shuffleQuestions = container.dataset.shufflequestions === 'True';
+    const shuffleAnswers = container.dataset.shuffleanswers === 'True';
+    const preserveResponses = container.dataset.preserveresponses === 'true';
+    const maxWidth = parseInt(container.dataset.maxwidth, 10) || 0;
+    let numQuestions = parseInt(container.dataset.numquestions, 10) || json.length;
+    if (numQuestions > json.length) numQuestions = json.length;
+
+    let questions = json;
+    if (shuffleQuestions || numQuestions < json.length) {
+        questions = getRandomSubarray(json, numQuestions);
+    }
+
+    questions.forEach((qa, index) => {
+        const id = makeid(8);
+        const options = {
+            shuffleAnswers: shuffleAnswers,
+            preserveResponses: preserveResponses,
+            maxWidth: maxWidth
+        };
+        Question.create(qa, id, index, options, container);
+    });
+
+    if (preserveResponses) {
+        const respDiv = document.createElement('div');
+        respDiv.id = 'responses' + container.id;
+        respDiv.className = 'JCResponses';
+        respDiv.dataset.responses = JSON.stringify([]);
+        respDiv.innerHTML = '<b>Select your answers and then follow the directions that will appear here.</b>';
+        container.appendChild(respDiv);
+    }
+
+    // Trigger MathJax typesetting if available
+    if (typeof MathJax != 'undefined') {
+        console.log("MathJax version", MathJax.version);
+        var version = MathJax.version;
+        setTimeout(function(){
+            var version = MathJax.version;
+            console.log('After sleep, MathJax version', version);
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                if (MathJax.hasOwnProperty('typeset') ) {
+                    MathJax.typeset([container]);
+                } else {
+                    console.log('WARNING: Trying to force load MathJax 3');
+                    window.MathJax = {
+                        tex: {
+                            inlineMath: [['$', '$'], ['\\(', '\\)']]
+                        },
+                        svg: {
+                            fontCache: 'global'
+                        }
+                    };
+
+                    (function () {
+                        var script = document.createElement('script');
+                        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+                        script.async = true;
+                        document.head.appendChild(script);
+                    })();
+                }
+            }
+        }, 500);
+if (typeof version == 'undefined') {
+        } else
+        {
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                if (MathJax.hasOwnProperty('typeset') ) {
+                    MathJax.typeset([container]);
+                } else {
+                    console.log('WARNING: Trying to force load MathJax 3');
+                    window.MathJax = {
+                        tex: {
+                            inlineMath: [['$', '$'], ['\\(', '\\)']]
+                        },
+                        svg: {
+                            fontCache: 'global'
+                        }
+                    };
+
+                    (function () {
+                        var script = document.createElement('script');
+                        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+                        script.async = true;
+                        document.head.appendChild(script);
+                    })();
+                }
+            } else {
+                console.log("MathJax not found");
+            }
+        }
+    }
+    // if (typeof MathJax !== 'undefined') {
+    //     const v = MathJax.version;
+    //     if (v[0] === '2') {
+    //         MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+    //     } else if (v[0] === '3') {
+    //         MathJax.typeset([container]);
+    //     }
+    // }
+
+    // Prevent link clicks from bubbling up
+    Array.from(container.getElementsByClassName('Link')).forEach(link => {
+        link.addEventListener('click', e => e.stopPropagation());
+    });
+}
+function levenshteinDistance(a, b) {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+
+    const matrix = Array(b.length + 1).fill(null).map(() => Array(a.length + 1).fill(null));
+
+    for (let i = 0; i <= a.length; i++) {
+        matrix[0][i] = i;
+    }
+
+    for (let j = 0; j <= b.length; j++) {
+        matrix[j][0] = j;
+    }
+
+    for (let j = 1; j <= b.length; j++) {
+        for (let i = 1; i <= a.length; i++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            matrix[j][i] = Math.min(
+                matrix[j - 1][i] + 1, // Deletion
+                matrix[j][i - 1] + 1, // Insertion
+                matrix[j - 1][i - 1] + cost // Substitution
+            );
+        }
+    }
+    return matrix[b.length][a.length];
+}
+// Object-oriented wrapper for string input questions
+class StringQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) {
+        super(qa, id, idx, opts, rootDiv);
+    }
+    render() {
+        make_string(this.qa, this.outerqDiv, this.qDiv, this.aDiv, this.id);
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('string', StringQuestion);
+
+function check_string(ths, event) {
+    if (event.keyCode === 13) {
+        ths.blur();
+
+        var id = ths.id.split('-')[0];
+        var submission = ths.value.trim();
+        var fb = document.getElementById("fb" + id);
+        fb.style.display = "none";
+        fb.innerHTML = "Incorrect -- try again.";
+
+        var answers = JSON.parse(ths.dataset.answers);
+        var defaultFB = "Incorrect. Try again.";
+        var correct;
+        var done = false;
+
+        // Handle default answer pattern: filter out and capture default feedback
+        var filteredAnswers = [];
+        answers.forEach(answer => {
+            if (answer.type === "default") {
+                defaultFB = answer.feedback;
+            } else {
+                filteredAnswers.push(answer);
+            }
+        });
+        answers = filteredAnswers;
+
+        answers.every(answer => {
+            correct = false;
+
+            let match = false;
+            if (answer.match_case) {
+                match = submission === answer.answer;
+            } else {
+                match = submission.toLowerCase() === answer.answer.toLowerCase();
+            }
+            console.log(submission);
+            console.log(answer.answer);
+            console.log(match);
+
+            if (match) {
+                if ("feedback" in answer) {
+                    fb.innerHTML = jaxify(answer.feedback);
+                } else {
+                    fb.innerHTML = jaxify("Correct");
+                }
+                correct = answer.correct;
+                done = true;
+            } else if (answer.fuzzy_threshold) {
+                var max_length = Math.max(submission.length, answer.answer.length);
+                var ratio;
+                if (answer.match_case) {
+                    ratio = 1- (levenshteinDistance(submission, answer.answer) / max_length);
+                } else {
+                    ratio = 1- (levenshteinDistance(submission.toLowerCase(),
+                                                    answer.answer.toLowerCase()) / max_length);
+                }
+                if (ratio >= answer.fuzzy_threshold) {
+                    if ("feedback" in answer) {
+                        fb.innerHTML = jaxify("(Fuzzy) " + answer.feedback);
+                    } else {
+                        fb.innerHTML = jaxify("Correct");
+                    }
+                    correct = answer.correct;
+                    done = true;
+                }
+
+            }
+
+            if (done) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        if ((!done) && (defaultFB != "")) {
+            fb.innerHTML = jaxify(defaultFB);
+        }
+
+        fb.style.display = "block";
+        if (correct) {
+            ths.className = "Input-text";
+            ths.classList.add("correctButton");
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+        } else {
+            ths.className = "Input-text";
+            ths.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            var qnum = document.getElementById("quizWrap" + id).dataset.qnum;
+            var responses = JSON.parse(responsesContainer.dataset.responses);
+            responses[qnum] = submission;
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+
+        if (typeof MathJax != 'undefined') {
+            var version = MathJax.version;
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([fb]);
+            }
+        } else {
+            console.log('MathJax not detected');
+        }
+        // After correct answer, if next JupyterQuiz question exists and has a text input, scroll by current question height
+        if (correct) {
+            var wrapper = ths.closest('.Quiz');
+            if (wrapper) {
+                var nextWrapper = wrapper.nextElementSibling;
+                if (nextWrapper && nextWrapper.classList.contains('Quiz')) {
+                    var nextInput = nextWrapper.querySelector('input.Input-text');
+                    if (nextInput) {
+                        var height = wrapper.getBoundingClientRect().height;
+                        nextInput.focus();
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+
+function string_keypress(evnt) {
+    var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+
+    if (charC == 13) {
+        check_string(this, evnt);
+    } 
+}
+
+
+function make_string(qa, outerqDiv, qDiv, aDiv, id) {
+    outerqDiv.className = "StringQn";
+    aDiv.style.display = 'block';
+
+    var lab = document.createElement("label");
+    lab.className = "InpLabel";
+    lab.innerHTML = "Type your answer here:";
+    aDiv.append(lab);
+
+    var inp = document.createElement("input");
+    inp.type = "text";
+    inp.id = id + "-0";
+    inp.className = "Input-text";
+    inp.setAttribute('data-answers', JSON.stringify(qa.answers));
+    // Apply optional input width (approx. number of characters, in em units)
+    if (qa.input_width != null) {
+        inp.style['min-width'] = qa.input_width + 'em';
+    }
+    aDiv.append(inp);
+
+    inp.onkeypress = string_keypress;
+    inp.onpaste = event => false;
+
+    inp.addEventListener("focus", function (event) {
+        this.value = "";
+        return false;
+    });
+}
+/*
+ * Handle asynchrony issues when re-running quizzes in Jupyter notebooks.
+ * Ensures show_questions is called after the container div is in the DOM.
+ */
+function try_show() {
+  if (document.getElementById("SiXQlXESbkJY")) {
+    show_questions(questionsSiXQlXESbkJY, SiXQlXESbkJY);
+  } else {
+    setTimeout(try_show, 200);
+  }
+};
+// Invoke immediately
+{
+  try_show();
+}
+}
+</script><script type="application/javascript">
+(() => {
+  if (window.MathJax) {
+    if (MathJax.typesetPromise) { MathJax.typesetPromise(); }
+    else if (MathJax.Hub && MathJax.Hub.Queue) { MathJax.Hub.Queue(['Typeset', MathJax.Hub]); }
+  }
+})();
+</script></div>
+</div>
+</section>
+</section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="markdown">
 <h1>%% [markdown]<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h1>
-<section id="id12">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>איזו פונקציה תחשב <span class="math notranslate nohighlight">\(\int_0^\infty e^{-x^2}\,dx\)</span> בדיוק נומרי טוב?<br />
-A. <code class="docutils literal notranslate"><span class="pre">np.sum</span></code><br />
-B. <code class="docutils literal notranslate"><span class="pre">integrate.quad</span></code><br />
-C. <code class="docutils literal notranslate"><span class="pre">np.mean</span></code><br />
-D. <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code></p></li>
-<li><p>עבור <span class="math notranslate nohighlight">\(x''+\omega^2 x=0\)</span>, מה נשתמש בו ל־ODE?<br />
-A. <code class="docutils literal notranslate"><span class="pre">optimize.minimize</span></code><br />
-B. <code class="docutils literal notranslate"><span class="pre">interpolate.interp1d</span></code><br />
-C. <code class="docutils literal notranslate"><span class="pre">integrate.solve_ivp</span></code><br />
-D. <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code></p></li>
-</ol>
-</section>
-<section id="id13">
-<h2>איור (סקיצה)<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>שרטטו סכמת וקטור מצב <span class="math notranslate nohighlight">\(\mathbf{y}=[x,v]\)</span> והקשר בין נגזרות לזמן.</p></li>
-</ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id14">
-<h1>%% [markdown]<a class="headerlink" href="#id14" title="Link to this heading">#</a></h1>
-<section id="id15">
-<h2>3. אופטימיזציה, שורשים, והתאמת עקומות<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<section id="id16">
+<h2>3. אופטימיזציה, שורשים, והתאמת עקומות<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
 <p><strong>שורשים:</strong> <code class="docutils literal notranslate"><span class="pre">optimize.root_scalar</span></code> לאיתור <span class="math notranslate nohighlight">\(x\)</span> כך ש־<span class="math notranslate nohighlight">\(f(x)=0\)</span>.<br />
 <strong>מינימום:</strong> <code class="docutils literal notranslate"><span class="pre">minimize_scalar</span></code> (חד־ממדי), <code class="docutils literal notranslate"><span class="pre">minimize</span></code> (רב־ממדי).<br />
 <strong>התאמת עקומות ניסוי:</strong> <code class="docutils literal notranslate"><span class="pre">optimize.curve_fit</span></code> — התאמה לא־ליניארית לנתונים <span class="math notranslate nohighlight">\((x,y)\)</span> והפקת טבלת covariance להערכת אי־ודאות.</p>
@@ -4327,10 +6021,10 @@ Estimated a=2.139 ± 0.050, b=0.459 ± 0.288
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id16">
-<h1>%% [markdown]<a class="headerlink" href="#id16" title="Link to this heading">#</a></h1>
-<section id="id17">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id17">
+<h1>%% [markdown]<a class="headerlink" href="#id17" title="Link to this heading">#</a></h1>
+<section id="id18">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>מה מחזירה <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> בנוסף לפרמטרים?<br />
 A. מטריצת ג’ייקוביאן<br />
@@ -4344,17 +6038,17 @@ C. <code class="docutils literal notranslate"><span class="pre">interp1d</span><
 D. <code class="docutils literal notranslate"><span class="pre">rfft</span></code></p></li>
 </ol>
 </section>
-<section id="id18">
-<h2>איור (סקיצה)<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<section id="id19">
+<h2>איור (סקיצה)<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכימה של שיוריים <span class="math notranslate nohighlight">\(r_i=y_i - \hat{y}_i\)</span> והמשמעות שלהם בבדיקת איכות התאמה.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id19">
-<h1>%% [markdown]<a class="headerlink" href="#id19" title="Link to this heading">#</a></h1>
-<section id="id20">
-<h2>4. אינטרפולציה והחלקה<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id20">
+<h1>%% [markdown]<a class="headerlink" href="#id20" title="Link to this heading">#</a></h1>
+<section id="id21">
+<h2>4. אינטרפולציה והחלקה<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
 <p><strong>אינטרפולציה חד־ממדית:</strong> <code class="docutils literal notranslate"><span class="pre">interpolate.interp1d(x,</span> <span class="pre">y,</span> <span class="pre">kind='linear'|'cubic'|...)</span></code> — קירוב ערכים בין נקודות מדידה.<br />
 <strong>Spline</strong>: <code class="docutils literal notranslate"><span class="pre">UnivariateSpline</span></code> מאפשר החלקה (smoothing) באמצעות פרמטר <span class="math notranslate nohighlight">\(s\)</span>.</p>
 <div class="cell docutils container">
@@ -4409,10 +6103,10 @@ D. <code class="docutils literal notranslate"><span class="pre">rfft</span></cod
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id21">
-<h1>%% [markdown]<a class="headerlink" href="#id21" title="Link to this heading">#</a></h1>
-<section id="id22">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id22">
+<h1>%% [markdown]<a class="headerlink" href="#id22" title="Link to this heading">#</a></h1>
+<section id="id23">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>איזה פרמטר ב־<code class="docutils literal notranslate"><span class="pre">UnivariateSpline</span></code> שולט על החלקה?<br />
 A. <code class="docutils literal notranslate"><span class="pre">k</span></code><br />
@@ -4426,15 +6120,15 @@ C. <code class="docutils literal notranslate"><span class="pre">&quot;spline&quo
 D. <code class="docutils literal notranslate"><span class="pre">&quot;poly3&quot;</span></code></p></li>
 </ol>
 </section>
-<section id="id23">
-<h2>איור (סקיצה)<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<section id="id24">
+<h2>איור (סקיצה)<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכימה של דגימות בדידות, אינטרפולציה ליניארית לעומת קובית, והחלקת spline.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id24">
-<h1>%% [markdown]<a class="headerlink" href="#id24" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id25">
+<h1>%% [markdown]<a class="headerlink" href="#id25" title="Link to this heading">#</a></h1>
 <section id="fft">
 <h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#fft" title="Link to this heading">#</a></h2>
 <p><strong>FFT חד־צדדי:</strong> <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code> לאותים ממשיים; תדירויות ב־<code class="docutils literal notranslate"><span class="pre">fft.rfftfreq(N,</span> <span class="pre">d=1/fs)</span></code>.<br />
@@ -4444,10 +6138,10 @@ D. <code class="docutils literal notranslate"><span class="pre">&quot;poly3&quot
 <p>ננתח אות סינוס מרובע תדרים ועם רעש, נזהה פסגות תדר.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id25">
-<h1>%% [markdown]<a class="headerlink" href="#id25" title="Link to this heading">#</a></h1>
-<section id="id26">
-<h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id26">
+<h1>%% [markdown]<a class="headerlink" href="#id26" title="Link to this heading">#</a></h1>
+<section id="id27">
+<h2>5. עיבוד אותות ו-FFT<a class="headerlink" href="#id27" title="Link to this heading">#</a></h2>
 <p><strong>FFT חד־צדדי:</strong> <code class="docutils literal notranslate"><span class="pre">fft.rfft</span></code> לאותים ממשיים; תדירויות ב־<code class="docutils literal notranslate"><span class="pre">fft.rfftfreq(N,</span> <span class="pre">d=1/fs)</span></code>.<br />
 <strong>נייקוויסט:</strong> <span class="math notranslate nohighlight">\(f_N = \tfrac{f_s}{2}\)</span>.<br />
 <strong>החלקה בסיסית:</strong> <code class="docutils literal notranslate"><span class="pre">signal.savgol_filter</span></code>.<br />
@@ -4500,10 +6194,10 @@ D. <code class="docutils literal notranslate"><span class="pre">&quot;poly3&quot
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id27">
-<h1>%% [markdown]<a class="headerlink" href="#id27" title="Link to this heading">#</a></h1>
-<section id="id28">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id28" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id28">
+<h1>%% [markdown]<a class="headerlink" href="#id28" title="Link to this heading">#</a></h1>
+<section id="id29">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id29" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>תדירות נייקוויסט היא:<br />
 A. <span class="math notranslate nohighlight">\(f_s\)</span><br />
@@ -4517,17 +6211,17 @@ C. <code class="docutils literal notranslate"><span class="pre">integrate.quad</
 D. <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code></p></li>
 </ol>
 </section>
-<section id="id29">
-<h2>איור (סקיצה)<a class="headerlink" href="#id29" title="Link to this heading">#</a></h2>
+<section id="id30">
+<h2>איור (סקיצה)<a class="headerlink" href="#id30" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>גרף סכמטי של דגימה בזמן וייצוגה בתחום התדר (FFT).</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id30">
-<h1>%% [markdown]<a class="headerlink" href="#id30" title="Link to this heading">#</a></h1>
-<section id="id31">
-<h2>6. אלגברה ליניארית מדעית<a class="headerlink" href="#id31" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id31">
+<h1>%% [markdown]<a class="headerlink" href="#id31" title="Link to this heading">#</a></h1>
+<section id="id32">
+<h2>6. אלגברה ליניארית מדעית<a class="headerlink" href="#id32" title="Link to this heading">#</a></h2>
 <p>נפתור <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span>, ונחשב ערכים עצמיים/וקטורים עצמיים:</p>
 <ul class="simple">
 <li><p>פתרון מערכת: <code class="docutils literal notranslate"><span class="pre">linalg.solve(A,</span> <span class="pre">b)</span></code></p></li>
@@ -4558,10 +6252,10 @@ Eigenvalues: [3.61803399+0.j 1.38196601+0.j]
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id32">
-<h1>%% [markdown]<a class="headerlink" href="#id32" title="Link to this heading">#</a></h1>
-<section id="id33">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id33" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id33">
+<h1>%% [markdown]<a class="headerlink" href="#id33" title="Link to this heading">#</a></h1>
+<section id="id34">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id34" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>עבור מטריצה סימטרית ממשית, נעדיף:<br />
 A. <code class="docutils literal notranslate"><span class="pre">eig</span></code><br />
@@ -4575,17 +6269,17 @@ C. <code class="docutils literal notranslate"><span class="pre">fft.rfft</span><
 D. <code class="docutils literal notranslate"><span class="pre">stats.ttest_ind</span></code></p></li>
 </ol>
 </section>
-<section id="id34">
-<h2>איור (סקיצה)<a class="headerlink" href="#id34" title="Link to this heading">#</a></h2>
+<section id="id35">
+<h2>איור (סקיצה)<a class="headerlink" href="#id35" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>המחשת כיווני וקטורים עצמיים והמתיחות לאורך כיוונים אלו.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id35">
-<h1>%% [markdown]<a class="headerlink" href="#id35" title="Link to this heading">#</a></h1>
-<section id="id36">
-<h2>7. סטטיסטיקה בסיסית למדידות<a class="headerlink" href="#id36" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id36">
+<h1>%% [markdown]<a class="headerlink" href="#id36" title="Link to this heading">#</a></h1>
+<section id="id37">
+<h2>7. סטטיסטיקה בסיסית למדידות<a class="headerlink" href="#id37" title="Link to this heading">#</a></h2>
 <p>נדגים שימוש בתפלגות נורמלית, אומדן פרמטרים, והתאמת התפלגות לנתונים:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">stats.norm</span></code> עבור PDF/CDF ודגימה אקראית.</p></li>
@@ -4620,10 +6314,10 @@ D. <code class="docutils literal notranslate"><span class="pre">stats.ttest_ind<
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id37">
-<h1>%% [markdown]<a class="headerlink" href="#id37" title="Link to this heading">#</a></h1>
-<section id="id38">
-<h2>שאלות רב־ברירה<a class="headerlink" href="#id38" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id38">
+<h1>%% [markdown]<a class="headerlink" href="#id38" title="Link to this heading">#</a></h1>
+<section id="id39">
+<h2>שאלות רב־ברירה<a class="headerlink" href="#id39" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>מה ההבדל בין <code class="docutils literal notranslate"><span class="pre">np.std(...,</span> <span class="pre">ddof=0)</span></code> ו-<code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>?<br />
 A. אין הבדל<br />
@@ -4637,15 +6331,15 @@ C. דגימות אקראיות<br />
 D. סטיית תקן</p></li>
 </ol>
 </section>
-<section id="id39">
-<h2>איור (סקיצה)<a class="headerlink" href="#id39" title="Link to this heading">#</a></h2>
+<section id="id40">
+<h2>איור (סקיצה)<a class="headerlink" href="#id40" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>המחשה של <span class="math notranslate nohighlight">\(68\)</span>–<span class="math notranslate nohighlight">\(95\)</span>–<span class="math notranslate nohighlight">\(99.7\%\)</span> סביב <span class="math notranslate nohighlight">\(\mu \pm \sigma, 2\sigma, 3\sigma\)</span>.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id40">
-<h1>%% [markdown]<a class="headerlink" href="#id40" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id41">
+<h1>%% [markdown]<a class="headerlink" href="#id41" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="capstone">
 <h1>דוגמאות מסכמות (Capstone)<a class="headerlink" href="#capstone" title="Link to this heading">#</a></h1>
@@ -4707,10 +6401,10 @@ D. סטיית תקן</p></li>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id41">
-<h1>%% [markdown]<a class="headerlink" href="#id41" title="Link to this heading">#</a></h1>
-<section id="id42">
-<h2>שאלות רב־ברירה (דוגמה 1)<a class="headerlink" href="#id42" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id42">
+<h1>%% [markdown]<a class="headerlink" href="#id42" title="Link to this heading">#</a></h1>
+<section id="id43">
+<h2>שאלות רב־ברירה (דוגמה 1)<a class="headerlink" href="#id43" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>אם <span class="math notranslate nohighlight">\(T=a\sqrt{L}\)</span>, אז <span class="math notranslate nohighlight">\(a\)</span> קשור ל־<span class="math notranslate nohighlight">\(g\)</span> כך ש:<br />
 A. <span class="math notranslate nohighlight">\(a = \dfrac{1}{2\pi}\sqrt{g}\)</span><br />
@@ -4724,17 +6418,17 @@ C. להאיץ את החישוב<br />
 D. להחליף את הפונקציה למודל</p></li>
 </ol>
 </section>
-<section id="id43">
-<h2>איור (סקיצה)<a class="headerlink" href="#id43" title="Link to this heading">#</a></h2>
+<section id="id44">
+<h2>איור (סקיצה)<a class="headerlink" href="#id44" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכמת ניסוי מטוטלת: נקודת תלייה, חוט באורך <span class="math notranslate nohighlight">\(L\)</span>, סטייה קטנה, מדידת תקופה.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id44">
-<h1>%% [markdown]<a class="headerlink" href="#id44" title="Link to this heading">#</a></h1>
-<section id="id45">
-<h2>דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית<a class="headerlink" href="#id45" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id45">
+<h1>%% [markdown]<a class="headerlink" href="#id45" title="Link to this heading">#</a></h1>
+<section id="id46">
+<h2>דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית<a class="headerlink" href="#id46" title="Link to this heading">#</a></h2>
 <p><strong>רקע:</strong> כוח גרר ריבועי: <span class="math notranslate nohighlight">\( \mathbf{F}_d = -\tfrac{1}{2}\rho C_d A v \mathbf{v} \)</span>.<br />
 שקול ל־ODE דו־ממדי עבור <span class="math notranslate nohighlight">\((x,y)\)</span> עם מהירויות <span class="math notranslate nohighlight">\((v_x,v_y)\)</span>:<br />
 [
@@ -4825,10 +6519,10 @@ D. להחליף את הפונקציה למודל</p></li>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id46">
-<h1>%% [markdown]<a class="headerlink" href="#id46" title="Link to this heading">#</a></h1>
-<section id="id47">
-<h2>שאלות רב־ברירה (דוגמה 2)<a class="headerlink" href="#id47" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id47">
+<h1>%% [markdown]<a class="headerlink" href="#id47" title="Link to this heading">#</a></h1>
+<section id="id48">
+<h2>שאלות רב־ברירה (דוגמה 2)<a class="headerlink" href="#id48" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>לשם עצירת ה־ODE בעת פגיעה בקרקע (<span class="math notranslate nohighlight">\(y=0\)</span>), השתמשנו ב־<br />
 A. <code class="docutils literal notranslate"><span class="pre">events</span></code> עם פונקציה שמחזירה <span class="math notranslate nohighlight">\(y\)</span><br />
@@ -4842,15 +6536,15 @@ C. <span class="math notranslate nohighlight">\(45^\circ\)</span><br />
 D. תלוי ב־<span class="math notranslate nohighlight">\(v_0\)</span> בלבד</p></li>
 </ol>
 </section>
-<section id="id48">
-<h2>איור (סקיצה)<a class="headerlink" href="#id48" title="Link to this heading">#</a></h2>
+<section id="id49">
+<h2>איור (סקיצה)<a class="headerlink" href="#id49" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>שרטטו כוחות על הקליע: משקל כלפי מטה וגרר ביחס ישר למהירות ובכיוון מנוגד.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id49">
-<h1>%% [markdown]<a class="headerlink" href="#id49" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id50">
+<h1>%% [markdown]<a class="headerlink" href="#id50" title="Link to this heading">#</a></h1>
 <section id="omega-n-zeta">
 <h2>דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span><a class="headerlink" href="#omega-n-zeta" title="Link to this heading">#</a></h2>
 <p><strong>רקע:</strong> משוואה: <span class="math notranslate nohighlight">\(x'' + 2\zeta\omega_n x' + \omega_n^2 x = 0\)</span><br />
@@ -4947,10 +6641,10 @@ Estimated Q ~ 9.96
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id50">
-<h1>%% [markdown]<a class="headerlink" href="#id50" title="Link to this heading">#</a></h1>
-<section id="id51">
-<h2>שאלות רב־ברירה (דוגמה 3)<a class="headerlink" href="#id51" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id51">
+<h1>%% [markdown]<a class="headerlink" href="#id51" title="Link to this heading">#</a></h1>
+<section id="id52">
+<h2>שאלות רב־ברירה (דוגמה 3)<a class="headerlink" href="#id52" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>הקשר בין <span class="math notranslate nohighlight">\(\omega_d\)</span> ו־<span class="math notranslate nohighlight">\(\omega_n\)</span> הוא:<br />
 A. <span class="math notranslate nohighlight">\(\omega_d = \omega_n\)</span><br />
@@ -4964,18 +6658,18 @@ C. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{2\zeta}\)</span><br 
 D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p></li>
 </ol>
 </section>
-<section id="id52">
-<h2>איור (סקיצה)<a class="headerlink" href="#id52" title="Link to this heading">#</a></h2>
+<section id="id53">
+<h2>איור (סקיצה)<a class="headerlink" href="#id53" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>סכמת מעטפת דעיכה <span class="math notranslate nohighlight">\(A e^{-\zeta\omega_n t}\)</span> והאוסילציה הפנימית בקצב <span class="math notranslate nohighlight">\(\omega_d\)</span>.</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id53">
-<h1>%% [markdown]<a class="headerlink" href="#id53" title="Link to this heading">#</a></h1>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="id54">
-<h1>נספח קצר — טיפים לשמירת תרשימים<a class="headerlink" href="#id54" title="Link to this heading">#</a></h1>
+<h1>%% [markdown]<a class="headerlink" href="#id54" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id55">
+<h1>נספח קצר — טיפים לשמירת תרשימים<a class="headerlink" href="#id55" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>לשימוש במאמרים/דוחות: עדיף <strong>SVG/PDF</strong> (וקטורי) עבור תרשימי קו/טקסט.</p></li>
 <li><p>לגדלים מדויקים: <code class="docutils literal notranslate"><span class="pre">fig.set_size_inches(width_inches,</span> <span class="pre">height_inches)</span></code> או <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(figsize=(w,h))</span></code>.</p></li>
@@ -5083,93 +6777,96 @@ D. <span class="math notranslate nohighlight">\(Q=\dfrac{1}{\zeta}\)</span></p><
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-approx-dfrac-1-sqrt-varepsilon-0-mu-0">5) בדיקת־שפיות: <span class="math notranslate nohighlight">\(c \approx \dfrac{1}{\sqrt{\varepsilon_0 \mu_0}}\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes">2. אינטגרציה וגזירה נומרית + ODEs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">אינטגרציה נומרית</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">נגזרות ומשוואות דיפרנציאליות רגילות (ODEs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">דוגמה: מתנד הרמוני</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">דוגמה:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">איור (סקיצה)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3. אופטימיזציה, שורשים, והתאמת עקומות</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">4. אינטרפולציה והחלקה</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4. אינטרפולציה והחלקה</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">איור (סקיצה)</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">5. עיבוד אותות ו-FFT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">5. עיבוד אותות ו-FFT</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">6. אלגברה ליניארית מדעית</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">6. אלגברה ליניארית מדעית</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">7. סטטיסטיקה בסיסית למדידות</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">שאלות רב־ברירה</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">7. סטטיסטיקה בסיסית למדידות</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">שאלות רב־ברירה</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">%% [markdown]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capstone">דוגמאות מסכמות (Capstone)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-t-l">דוגמה 1 — מטוטלת: הערכת <span class="math notranslate nohighlight">\(g\)</span> מהתלות <span class="math notranslate nohighlight">\(T(L)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">שאלות רב־ברירה (דוגמה 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">איור (סקיצה)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">שאלות רב־ברירה (דוגמה 1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">איור (סקיצה)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">דוגמה 2 — קליע עם גרר ריבועי: זווית שיגור מיטבית</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">שאלות רב־ברירה (דוגמה 2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">איור (סקיצה)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">שאלות רב־ברירה (דוגמה 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">איור (סקיצה)</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">%% [markdown]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">שאלות רב־ברירה (דוגמה 3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">איור (סקיצה)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omega-n-zeta">דוגמה 3 — מתנד מרוסן: זיהוי <span class="math notranslate nohighlight">\(\omega_n\)</span> ו־<span class="math notranslate nohighlight">\(\zeta\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">%% [markdown]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">נספח קצר — טיפים לשמירת תרשימים</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">%% [markdown]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">שאלות רב־ברירה (דוגמה 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">איור (סקיצה)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">%% [markdown]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">נספח קצר — טיפים לשמירת תרשימים</a></li>
 </ul>
 
   </nav></div>
