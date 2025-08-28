@@ -18,6 +18,15 @@ exclude_patterns:
 #   extra_extensions:
 #     - sphinx_thebe
 
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      tex:
+        inlineMath: [["$", "$"], ["\\(", "\\)"]]
+        processEscapes: true
+
+
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
