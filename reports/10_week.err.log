@@ -26,32 +26,19 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 # %%
-# Root finding example: solve x*cos(x) = 0 near x ~ pi/2
-g = lambda x: x*np.cos(x)
-root = optimize.root_scalar(g, bracket=(0.1, 2.0))
-print("root near (0.1,2.0):", root.root)
+# Interpolation demo
+x = np.linspace(0, 10, 11)
+y = np.sin(x) + 0.1*np.cos(3*x)
+f_lin = interpolate.interp1d(x, y, kind="linear")
+f_cub = interpolate.interp1d(x, y, kind="cubic")
 
-# Curve fitting example: y = a*x + b
-rng = np.random.default_rng(0)
-x = np.linspace(0, 10, 50)
-a_true, b_true = 2.0, 1.0
-y = a_true*x + b_true + rng.normal(0, 1.2, size=x.size)
+xf = np.linspace(0, 10, 400)
 
-def linear_model(x, a, b):
-    return a*x + b
-
-popt, pcov = optimize.curve_fit(linear_model, x, y)
-a_hat, b_hat = popt
-perr = np.sqrt(np.diag(pcov))
-
-print(f"Estimated a={a_hat:.3f} ± {perr[0]:.3f}, b={b_hat:.3f} ± {perr[1]:.3f}")
-
-fig, ax = plt.subplots()
-ax.errorbar(x, y, yerr=1.2, fmt="o", label="data")
-ax.plot(x, linear_model(x, *popt), label="fit")
-ax.set_title("Linear fit with curve_fit")
-ax.set_xlabel("x")
-ax.set_ylabel("y")
+fig, ax = plt.subplots(constrained_layout=True)
+ax.plot(x, y, "o", label="samples")
+ax.plot(xf, f_lin(xf), label="linear")
+ax.plot(xf, f_cub(xf), label="cubic")
+ax.set_title("Interpolation: linear vs cubic")
 ax.legend()
 plt.show()
 
@@ -60,13 +47,12 @@ plt.show()
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[19][39m[32m, line 4[39m
-[32m      1[39m [38;5;66;03m# %%[39;00m
-[32m      2[39m [38;5;66;03m# Root finding example: solve x*cos(x) = 0 near x ~ pi/2[39;00m
-[32m      3[39m g = [38;5;28;01mlambda[39;00m x: x*np.cos(x)
-[32m----> [39m[32m4[39m root = [43moptimize[49m.root_scalar(g, bracket=([32m0.1[39m, [32m2.0[39m))
-[32m      5[39m [38;5;28mprint[39m([33m"[39m[33mroot near (0.1,2.0):[39m[33m"[39m, root.root)
-[32m      7[39m [38;5;66;03m# Curve fitting example: y = a*x + b[39;00m
+[36mCell[39m[36m [39m[32mIn[26][39m[32m, line 5[39m
+[32m      3[39m x = np.linspace([32m0[39m, [32m10[39m, [32m11[39m)
+[32m      4[39m y = np.sin(x) + [32m0.1[39m*np.cos([32m3[39m*x)
+[32m----> [39m[32m5[39m f_lin = [43minterpolate[49m.interp1d(x, y, kind=[33m"[39m[33mlinear[39m[33m"[39m)
+[32m      6[39m f_cub = interpolate.interp1d(x, y, kind=[33m"[39m[33mcubic[39m[33m"[39m)
+[32m      8[39m xf = np.linspace([32m0[39m, [32m10[39m, [32m400[39m)
 
-[31mNameError[39m: name 'optimize' is not defined
+[31mNameError[39m: name 'interpolate' is not defined
 

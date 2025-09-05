@@ -208,18 +208,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 </ul>
 
     </div>
@@ -4623,13 +4611,11 @@ A x = b
    x = A^{-1} b
    \]</div>
 </li>
-<li><p>להשתמש ישירות באלגוריתם נומרי שמחשב את <span class="math notranslate nohighlight">\(x\)</span> בלי למצוא את <span class="math notranslate nohighlight">\(A^{-1}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-   x = \texttt{np.linalg.solve}(A, b)
-   \]</div>
-</li>
+<li><p>להשתמש ישירות באלגוריתם נומרי שמחשב את <span class="math notranslate nohighlight">\(x\)</span> בלי למצוא את <span class="math notranslate nohighlight">\(A^{-1}\)</span>:</p></li>
 </ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>מדוע לא נחשב את <span class="math notranslate nohighlight">\(A^{-1}\)</span> ישירות?</p>
@@ -6147,17 +6133,19 @@ y \approx a + b x
 \mathbf{y} \approx A \mathbf{c}
 \]</div>
 <p>כאשר:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(A\)</span> היא <strong>מטריצת design</strong> בגודל <span class="math notranslate nohighlight">\(N \times 2\)</span>, שבה כל שורה מייצגת נקודה אחת:
-$<span class="math notranslate nohighlight">\(
-A = 
-\begin{bmatrix}
-1 &amp; x_1 \\
-1 &amp; x_2 \\
-\vdots &amp; \vdots \\
-1 &amp; x_N
-\end{bmatrix}
-\)</span>$</p></li>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> היא <strong>מטריצת design</strong> בגודל <span class="math notranslate nohighlight">\(N \times 2\)</span>, שבה כל שורה מייצגת נקודה אחת:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  A = 
+  \begin{bmatrix}
+  1 &amp; x_1 \\
+  1 &amp; x_2 \\
+  \vdots &amp; \vdots \\
+  1 &amp; x_N
+  \end{bmatrix}
+  \end{split}\]</div>
+</li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{c} = \begin{bmatrix} a \\ b \end{bmatrix}\)</span> הוא וקטור הפרמטרים שאנחנו רוצים למצוא.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{y}\)</span> הוא וקטור התצפיות (כל הערכים שנמדדו בניסוי, כולל רעש).</p></li>
 </ul>
